@@ -55,3 +55,29 @@ v1 (`index.html`, `rasa.css`, `page.js`, `world.js`) is unchanged. Comparison pa
   - The page's class sets the light: violet on v2, Not Human's cool light on v3.
 
 The 3D can't use RASA's photos as textures, because rasaworld.com sends no CORS headers. That needs the files copied locally, which waits on the owner's OK.
+
+## Round 2 (2026-11-12): v3 updated, v4, v5, v6
+The pre-round state of v2/v3 is in `versions/r1-2026-11-12/`.
+
+- **All versions from v2 on**
+  - The logos sit inside the centred hero block, under the buttons (owner's reference: a momentopeople.com screenshot). The label comes first, then a row about 46rem wide, faded at both ends, with smaller logos.
+  - The video starts at 1.22×, so the showreel's black bands stay off screen.
+  - Every gallery photo opens in a lightbox (`page2.js`).
+- **v3**
+  - Violet (#B49CFF) is the accent: accent words, the events tab on top, sups, ticks and figures.
+  - The cards now carry what the arm is, chips for what it covers, one real figure, and a link.
+  - The gallery opens on RASA's only HD photo (`stats-google-hd`, 1920 px), via `content.js` for `html.v3`.
+- **v4** (`world4.js`, `rasa4.css`)
+  - A planet of light: 14k points, brighter on land, with RASA's cities and arcs between them.
+  - Dotted moons and orbits, a particle ring for the portals, a spiral galaxy at the close.
+  - A smaller footer mark.
+- **v5** (`rasa5.css`, `gallery5.js`)
+  - v3's glass world and v4's footer mark.
+  - Tabulah is drawn as an interface, with Thrill City's published figures; the bars are labelled illustrative.
+  - The gallery is a 3D ring, with cards of at most 260 px.
+  - Grain on the film.
+- **v6** (`rasa6.css`)
+  - v5 with a holographic accent: a thin-film gradient on the text, buttons, top tab, active card and footer line.
+  - A rainbow rim and stronger dispersion on the glass (`world2.js`, `html.v6`).
+
+Assets carry `?r=3` so local previews don't serve stale files.
