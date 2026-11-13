@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" class="v3 v9">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RASA · v9</title>
+<meta name="description" content="RASA designs live brand experiences, original IPs and the software behind them. Three arms, one RASA universe.">
+<!-- RASA World concept v9 (2026-11-12): RASA's content and colours in dark mode, driven by the effects of bleibtgleich.dev
+     (studied the same day, nothing copied): words that melt like liquid while you scroll and set crisp when you stop (an SVG
+     goo filter), a smoke trail that follows the pointer over the film, a Swiss grid cut by one hairline with heavy type
+     staggered across it, a giant split wordmark fixed in the corners (RASA / WORLD), pale tiles with ring marks, and the
+     moments as a world: photos on a turning sphere you can steer and click. The universes still open through portals. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts-web/fonts.css">
+<link rel="stylesheet" href="assets/css/rasa9.css?r=9">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<!-- the goo: one filter per melting block is made by page9.js; this is the static one for the corner wordmark -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs></defs></svg>
+
+<!-- the split wordmark, fixed in the corners -->
+<div class="corner-mark" aria-hidden="true"><span>RASA</span><span>WORLD</span></div>
+
+<div class="ticker" role="region" aria-label="Upcoming events">
+  <a href="#monuments"><b>Monuments</b> · San Francisco · Nov 14 <u>RSVP</u></a>
+  <a href="#monuments"><b>Nights of Wonder</b> · Transamerica Pyramid · Dec 10–27 <u>Tickets</u></a>
+</div>
+
+<header class="site-header">
+  <div class="nbar">
+    <a class="brand" href="#top" aria-label="RASA, back to the top"><span class="logo" aria-hidden="true"></span></a>
+    <p class="hd-note">Los Angeles<br>Connected worldwide</p>
+    <nav class="d-nav" aria-label="Sections"><a href="#ecosystem">Ecosystem</a><a href="#universes">Universes</a><a href="#tabulah">Tabulah</a><a href="#moments">Moments</a><a href="#work">Work</a></nav>
+    <a class="pill" href="#brief">Get in touch</a>
+    <button class="burger-btn" type="button" aria-expanded="false" aria-controls="m-nav" aria-label="Open menu">Menu</button>
+  </div>
+  <nav class="m-nav" id="m-nav" aria-label="Menu">
+    <a href="#ecosystem">Ecosystem</a><a href="#universes">Universes</a><a href="#tabulah">Tabulah</a><a href="#moments">Moments</a><a href="#work">Work</a><a href="#brief">Get in touch</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- 01 HERO: the film, a smoke trail under the pointer, the headline melting into place -->
+<section class="hero" aria-label="RASA">
+  <div class="film">
+    <video class="film-v" autoplay muted loop playsinline preload="auto"
+      poster="https://rasaworld.com/__l5e/assets-v1/c4d2f503-0bb8-480b-9444-046f60f8f3a8/pierplay2-poster.webp"
+      src="https://rasaworld.com/assets/rasa-showcase-2-BbDQtfYg.mp4"></video>
+    <canvas class="smoke" aria-hidden="true"></canvas>
+  </div>
+  <div class="hero-in">
+    <p class="lab">The all-in-one ecosystem<br>for unforgettable experiences</p>
+    <h1 class="hero-t goo" data-goo="load"><span>Live brand experiences</span><span>that create <em>legendary moments</em></span></h1>
+    <div class="ctas">
+      <a class="pill pill-l" href="#brief">Start your event brief</a>
+      <a class="pill pill-o" href="#universes">Enter the universes ↓</a>
+    </div>
+    <div class="logos" aria-label="Brands we have worked with">
+      <p class="lab">Powering legendary events at the world's most memorable brands</p>
+      <div class="logos-row"><div class="logos-track" data-logos></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ECOSYSTEM: Swiss grid, staggered type, three tiles -->
+<section class="sw eco" id="ecosystem" aria-labelledby="eco-h">
+  <div class="grid">
+    <p class="lab c-l">The ecosystem</p>
+    <h2 id="eco-h" class="big goo"><span class="l1">Three</span><span class="l2">arms.</span><span class="l3">One RASA universe.</span></h2>
+  </div>
+  <div class="tiles">
+    <article class="tile">
+      <div class="ring" aria-hidden="true"><i></i></div>
+      <p class="t-n">01</p>
+      <h3 class="t-t">Atelier by RASA</h3>
+      <p class="t-k">Strategy and production for global brands</p>
+      <p class="t-d">For brands that refuse to be ordinary: one team owns the idea, the venue, the night and the numbers.</p>
+      <ul class="chips"><li>Brand activations</li><li>Full productions</li><li>Venues</li><li>ROI reporting</li></ul>
+      <p class="t-s"><b>4,000+</b> guests at Google's Endless Summer Festival</p>
+      <a class="arrow" href="#work">See Atelier's work</a>
+    </article>
+    <article class="tile">
+      <div class="ring" aria-hidden="true"><i></i></div>
+      <p class="t-n">02</p>
+      <h3 class="t-t">RASA Creates</h3>
+      <p class="t-k">Original IPs, built to travel between cities</p>
+      <p class="t-d">Flagship festivals and franchise-ready formats, made with global brands and the community that shows up.</p>
+      <ul class="chips"><li>Thrill City</li><li>Pier Play</li><li>Portalverse</li><li>Monuments</li></ul>
+      <p class="t-s"><b>150K+</b> L.A. Comic Con audience reached by Portalverse</p>
+      <a class="arrow" href="#universes">Enter the universes</a>
+    </article>
+    <article class="tile">
+      <div class="ring" aria-hidden="true"><i></i></div>
+      <p class="t-n">03</p>
+      <h3 class="t-t">Tabulah by RASA</h3>
+      <p class="t-k">The software behind every RASA night</p>
+      <p class="t-d">One platform runs the door, the guest list and the follow-up, so the audience stays with you after the night.</p>
+      <ul class="chips"><li>Ticketing</li><li>CRM</li><li>Real-time engagement</li><li>ROI report</li></ul>
+      <p class="t-s"><b>Yours</b> to keep: the guest data from every event</p>
+      <a class="arrow" href="#tabulah">See how Tabulah works</a>
+    </article>
+  </div>
+</section>
+
+<!-- 03 OUTCOME -->
+<section class="sw outcome" aria-labelledby="out-h">
+  <div class="grid">
+    <h2 id="out-h" class="big goo"><span class="l1">We own</span><span class="l2">the</span><span class="l3">outcome.</span></h2>
+    <p class="note c-r">RASA designs live brand experiences, from targeted activations to full productions, powered by our own creative playbook, production expertise and VC-backed technology. The mission: moments people remember, with RASA accountable for strategy, venues, execution and ROI.</p>
+  </div>
+</section>
+
+<!-- 04 NUMBERS: a Swiss table across the hairline -->
+<section class="sw numbers" aria-labelledby="num-h">
+  <div class="grid"><h2 id="num-h" class="lab c-l">By the numbers</h2></div>
+  <div class="rows">
+    <div class="row"><p class="r-v goo" data-count="4000" data-suffix="+">4,000+</p><p class="r-k">Guests at Google's Endless Summer Festival</p></div>
+    <div class="row"><p class="r-v goo" data-count="700" data-suffix="+">700+</p><p class="r-k">VIPs at Honey Birdette × Playboy's Club Honey</p></div>
+    <div class="row"><p class="r-v goo" data-count="150" data-suffix="K+">150K+</p><p class="r-k">L.A. Comic Con audience reached by Portalverse</p></div>
+    <div class="row"><p class="r-v goo" data-count="12">12</p><p class="r-k">Brand experiences in our case studies</p></div>
+  </div>
+  <div class="grid"><a class="arrow c-r" href="#brief">Start your event brief</a></div>
+</section>
+
+<!-- 05 UNIVERSES: four worlds; each opens through a portal -->
+<section class="universes" id="universes" aria-labelledby="uni-h">
+  <div class="flank"><h2 id="uni-h" class="goo">Universes</h2><span class="goo">01–04</span></div>
+  <p class="lab uni-d">New cultural experiences in franchise-ready formats,<br>made to scale across cities. Step through each portal.</p>
+  <div class="portals">
+    <div class="portal-pin">
+      <article class="world" data-w="0" style="--img:url('https://rasaworld.com/assets/gallery-sixflags-BDv-u1_z.webp')">
+        <div class="world-bg"></div>
+        <div class="world-in"><p class="lab">Universe 01 / 04 · Six Flags Magic Mountain, Los Angeles</p><h3 class="w-t">Thrill City</h3>
+          <p class="w-d">With Six Flags Magic Mountain, RASA celebrated pass holders and pulled in new crowds with roller coasters and music.</p>
+          <ul class="w-stats"><li><b>12K</b>attendees over 2 nights</li><li><b>83%</b>were not season pass holders</li><li><b>47%</b>want to become pass holders</li></ul></div>
+      </article>
+      <article class="world" data-w="1">
+        <div class="world-bg"><video muted loop playsinline preload="none" data-src="https://rasaworld.com/__l5e/assets-v1/d30b809c-dc7e-4bbb-87d1-004cf2dbb6c9/pierplay-bg.mp4" poster="https://rasaworld.com/__l5e/assets-v1/ef782cdc-1af4-4d54-98de-c001bfa7549a/pier-play-crowd.webp"></video></div>
+        <div class="world-in"><p class="lab">Universe 02 / 04 · Santa Monica Pier</p><h3 class="w-t">Pier Play</h3>
+          <p class="w-d">With the historic Pier foundation and the City of Santa Monica, RASA curated a day-to-night event for the pier and its community.</p>
+          <ul class="w-stats"><li><b>11.2K</b>attendees over 3 nights</li><li><b>600K+</b>social accounts reached</li><li><b>40K+</b>content interactions</li></ul></div>
+      </article>
+      <article class="world" data-w="2" style="--img:url('https://rasaworld.com/__l5e/assets-v1/7f38cdac-aa7e-48db-a615-cc562fbb653a/portalverse.webp')">
+        <div class="world-bg"></div>
+        <div class="world-in"><p class="lab">Universe 03 / 04 · L.A. Convention Center</p><h3 class="w-t">Portalverse</h3>
+          <p class="w-d">The official closing night of L.A. Comic Con's 150K attendees: guests stepped into a world where myth and modern legend met.</p>
+          <ul class="w-stats"><li><b>150K</b>attendees at Portalverse</li><li><b>1</b>night hosting the official closing</li><li><b>95%</b>want to come back</li></ul></div>
+      </article>
+      <article class="world" id="monuments" data-w="3" style="--img:url('https://rasaworld.com/assets/monuments-slide-02-BZnP82WB.jpg')">
+        <div class="world-bg"></div>
+        <div class="world-in"><p class="lab">Universe 04 / 04 · Palace of Fine Arts · Eiffel Tower · Transamerica Pyramid</p><h3 class="w-t">Monuments</h3>
+          <p class="w-d">Music, art and visual shows in the world's most remarkable spaces, from BLOND:ISH at the Eiffel Tower to WhoMadeWho and Bedouin at the Palace of Fine Arts.</p>
+          <ul class="w-dates"><li><b>Nov 14</b>Monuments · San Francisco<a href="#brief">RSVP</a></li><li><b>Dec 10–27</b>Nights of Wonder · Transamerica Pyramid<a href="#brief">Tickets</a></li></ul></div>
+      </article>
+      <div class="portal-ui" aria-hidden="true"><span class="pu-n">01</span><span class="pu-bar"><i></i></span><span>04</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TABULAH: the guest list becomes an asset, drawn as its own interface -->
+<section class="sw tabulah" id="tabulah" aria-labelledby="tab-h">
+  <div class="grid">
+    <p class="lab c-l">Proprietary technology</p>
+    <h2 id="tab-h" class="big goo"><span class="l1">Guest list</span><span class="l2">→</span><span class="l3">asset.</span></h2>
+    <p class="note c-r">Tabulah by RASA runs ticketing, CRM and real-time engagement on one platform, so your audience stays with you after the night ends. The data is yours to keep and use.</p>
+  </div>
+  <div class="tab-wrap">
+    <ul class="feats"><li><span>Live data &amp; integrations</span><b>Yours to keep</b></li><li><span>Engagement analytics</span><b>Real-time</b></li><li><span>Post-event ROI report</span><b>Every event</b></li></ul>
+    <figure class="tab-ui" aria-label="An illustration of Tabulah's dashboard with Thrill City's published results">
+      <div class="tu tu-list">
+        <p class="tu-h"><i></i>Thrill City <span>Six Flags Magic Mountain · 2 nights</span></p>
+        <ul class="tu-rows"><li><s></s><u></u><em class="ok">Checked in</em></li><li><s></s><u></u><em class="ok">Checked in</em></li><li><s></s><u class="s"></u><em class="vip">VIP</em></li><li><s></s><u></u><em>RSVP</em></li></ul>
+        <p class="tu-big"><b data-count="12000">12,000</b> guests over two nights</p>
+      </div>
+      <div class="tu tu-live"><p class="tu-h"><i class="live"></i>Live <span>check-ins by hour</span></p>
+        <div class="bars" aria-hidden="true"><i style="--h:.22"></i><i style="--h:.4"></i><i style="--h:.64"></i><i style="--h:.88"></i><i style="--h:1"></i><i style="--h:.76"></i><i style="--h:.52"></i><i style="--h:.34"></i></div></div>
+      <div class="tu tu-roi"><p class="tu-h"><i></i>Post-event report <span>yours to keep</span></p>
+        <p class="kpi"><b>83%</b>were not season pass holders</p><p class="kpi"><b>47%</b>want to become pass holders</p></div>
+      <figcaption class="lab">Illustration with Thrill City's published results; the bars are illustrative.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 07 MOMENTS: a world of photos. Steer it with the pointer; click a photo to open it. -->
+<section class="moments" id="moments" aria-labelledby="mo-h">
+  <div class="flank"><h2 id="mo-h" class="goo">Moments</h2><span class="goo">A decade</span></div>
+  <div class="sphere" data-sphere aria-label="RASA moments, click a photo to open it"><div class="sphere-in"></div></div>
+  <p class="lab mo-d">A decade of events, cities and strong collaborators, and a loyal community that keeps showing up. Drag to turn the world; click any photo.</p>
+</section>
+
+<!-- 08 WORK: the cases across the hairline; the photo follows the pointer -->
+<section class="sw work" id="work" aria-labelledby="work-h">
+  <div class="grid">
+    <p class="lab c-l">Case studies</p>
+    <h2 id="work-h" class="big goo"><span class="l1">Explore</span><span class="l2">our</span><span class="l3">work.</span></h2>
+  </div>
+  <ol class="cases" data-cases></ol>
+  <div class="grid"><a class="arrow c-r" href="#work">View all case studies</a></div>
+  <div class="case-peek" aria-hidden="true"><img alt=""></div>
+</section>
+
+<!-- 09 CLOSE -->
+<section class="sw close" id="brief" aria-labelledby="close-h">
+  <div class="grid">
+    <p class="lab c-l">Atelier by RASA</p>
+    <h2 id="close-h" class="big goo"><span class="l1">Let's</span><span class="l2">make it</span><span class="l3">legendary.</span></h2>
+    <div class="c-r close-r">
+      <p class="note">Powering legendary events at the world's most memorable brands. Tell us about yours.</p>
+      <div class="ctas"><a class="pill pill-l" href="mailto:?subject=RASA%20event%20brief">Start your event brief</a><a class="pill pill-o" href="#monuments">Attend our community events</a></div>
+      <p class="lab">© '26</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-top">
+    <span class="logo foot-logo" aria-hidden="true"></span>
+    <form class="news" onsubmit="event.preventDefault(); this.classList.add('sent');">
+      <label class="lab" for="nl">Newsletter</label>
+      <div class="news-row"><input id="nl" type="email" placeholder="Your email" required><button type="submit">Opt in</button></div>
+      <p class="news-ok">Thanks. You're on the list.</p>
+    </form>
+  </div>
+  <div class="foot-cols">
+    <div><p class="lab">What we do</p><a href="#top">RASA World home</a><a href="#ecosystem">Atelier by RASA</a><a href="#tabulah">Event technology</a><a href="#universes">Our ecosystem &amp; IPs</a></div>
+    <div><p class="lab">Who we serve</p><a href="#brief">Brand leaders</a><a href="#brief">Agencies &amp; teams</a></div>
+    <div><p class="lab">About</p><a href="#moments">Our story</a><a href="#moments">Our values</a><a href="#ecosystem">Corporate services</a></div>
+    <div><p class="lab">Insights</p><a href="#work">Case studies</a><a href="#work">Blog</a><a href="#work">Experiential marketing guide</a><a href="#work">Press</a></div>
+    <div><p class="lab">Get in touch</p><a href="#brief">Contact</a><a href="#brief">Start your event brief</a><a href="#monuments">Event calendar</a><a href="https://www.instagram.com/" rel="noopener">Instagram ↗</a></div>
+  </div>
+  <div class="foot-base lab"><span>© 2026 Atelier by RASA · Crafted in Los Angeles, connected worldwide</span><span><a href="#top">Privacy</a> · <a href="#top">Terms</a></span></div>
+</footer>
+
+<script src="assets/vendor/lenis/lenis.min.js"></script>
+<script src="assets/js/content.js?r=9"></script>
+<script type="module" src="assets/js/page9.js?r=9"></script>
+</body>
+</html>

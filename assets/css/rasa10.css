@@ -1,0 +1,146 @@
+/* RASA World concept v10 (2026-11-12): the interactive universe, after mesh3d.gallery. Built on v3 + v4 + v5's CSS
+   (Not Human type, RASA violet, the tab interface); this file adds the frame (status, ruler of stops, credit), the
+   preloader, the stops as overlays over the 3D scene, letter-by-letter titles, the tiled gallery works and the map labels.
+   Without WebGL (html:not(.u-gl)) every stop is a plain section. */
+
+/* ---------------------------------------------------------------- layers */
+.u-scene { z-index: 1; pointer-events: auto; touch-action: pan-y; cursor: grab; opacity: 0; }
+.u-scene:active { cursor: grabbing; }
+html.no-gl .u-scene { display: none; }
+
+/* ---------------------------------------------------------------- preloader: a big counter, bottom left */
+.pre { position: fixed; inset: 0; z-index: 100; background: #08090d; display: flex; align-items: flex-end; padding: 0 var(--gut) 4vh; transition: transform 1s cubic-bezier(.76, 0, .24, 1); }
+.pre.done { transform: translateY(-101%); }
+.pre-n { font: 200 clamp(6rem, 19vw, 17rem)/.8 var(--display); letter-spacing: -.06em; color: var(--cream); font-variant-numeric: tabular-nums; }
+.pre-p { font: 200 clamp(3rem, 8vw, 7rem)/1 var(--display); color: var(--acc); margin: 0 0 .1em .1em; align-self: flex-end; }
+.pre-k { position: absolute; right: var(--gut); bottom: 5vh; font: 400 .7rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+html:not(.js) .pre { display: none; }
+
+/* ---------------------------------------------------------------- hero: the film closes into a point */
+.hero10 { height: 230vh; }
+.hero10 .film { clip-path: circle(var(--fr, 150vmax) at 50% 50%); }
+.hero10 .scroll-cue { display: none; }
+
+/* ---------------------------------------------------------------- the journey as overlays */
+html.u-gl .journey { height: var(--jh, 1400vh); pointer-events: none; position: relative; }
+html.u-gl .stop { position: fixed; inset: 0; z-index: 3; pointer-events: none; visibility: hidden; transition: visibility 0s linear .6s; }
+html.u-gl .stop.on { visibility: visible; transition: none; }
+.st-k { position: absolute; left: 0; right: 0; top: calc(44% - clamp(3rem, 7.6vw, 8.6rem) * .5 - 3.2rem); margin: 0; text-align: center; font: 400 .7rem/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+.st-t { position: absolute; left: var(--gut); right: var(--gut); top: 44%; transform: translateY(-50%); margin: 0; text-align: center;
+  font: 300 clamp(3rem, 7.6vw, 8.6rem)/.95 var(--display); letter-spacing: -.055em; color: var(--cream); perspective: 900px;
+  background: linear-gradient(180deg, #fff 30%, #cfc4ff); -webkit-background-clip: text; background-clip: text; }
+.st-t .w { display: inline-block; white-space: nowrap; }
+.st-t .ch { display: inline-block; color: var(--cream); }
+.st-sup { position: absolute; top: calc(44% - clamp(3rem, 7.6vw, 8.6rem) * .62); right: max(var(--gut), calc(50% - 34vw)); margin: 0; font: 300 clamp(1rem, 1.8vw, 1.8rem)/1 var(--display); letter-spacing: -.02em; color: var(--acc); }
+.st-cap { position: absolute; left: 0; right: 0; bottom: 11vh; margin: 0 auto; max-width: 40rem; padding: 0 var(--gut); text-align: center; font: 400 .74rem/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: rgba(243, 242, 247, .78); }
+
+/* the motion: letters rise and turn in one after another (a snappy power4-like ease); the rest whips in after them */
+html.u-gl .stop .ch { opacity: 0; transform: translateY(.6em) rotateX(-80deg); transform-origin: 50% 100%; transition: transform .35s ease, opacity .25s ease; }
+html.u-gl .stop.on .ch { opacity: 1; transform: none; transition: transform 1s cubic-bezier(.16, 1, .3, 1) calc(var(--i) * 26ms), opacity .5s ease calc(var(--i) * 26ms); }
+html.u-gl .stop :is(.st-k, .st-sup, .st-cap) { opacity: 0; transform: translateY(18px); transition: transform .3s ease, opacity .25s ease; }
+html.u-gl .stop.on :is(.st-k, .st-sup, .st-cap) { opacity: 1; transform: none; transition: transform .9s cubic-bezier(.16, 1, .3, 1) .2s, opacity .6s ease .2s; }
+html.u-gl .stop .st-card { opacity: 0; transform: translateX(60px); transition: transform .3s ease, opacity .25s ease; }
+html.u-gl .stop.on .st-card { opacity: 1; transform: none; transition: transform 1.1s cubic-bezier(.16, 1, .3, 1) .32s, opacity .6s ease .32s; pointer-events: auto; }
+
+/* the card with the key information */
+.st-card { position: absolute; right: var(--gut); bottom: 12vh; width: min(25rem, 30vw); padding: 22px; display: grid; gap: 12px;
+  background: rgba(12, 11, 20, .5); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2); }
+.st-card.st-wide { width: min(30rem, 34vw); }
+.sc-d { margin: 0; font: 300 1.02rem/1.4 var(--display); letter-spacing: -.01em; color: rgba(243, 242, 247, .88); }
+.sc-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; padding-top: 12px; border-top: 1px solid var(--line); }
+.sc-nums p { margin: 0; font: 400 .62rem/1.4 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--mute); }
+.sc-nums b { display: block; font: 200 1.9rem/1 var(--display); letter-spacing: -.05em; color: var(--acc); margin-bottom: 4px; text-transform: none; }
+.st-card .w-stats { gap: 1rem 1.4rem; margin: 0; }
+.st-card .w-stats b { font-size: 1.7rem; }
+.st-card .w-stats li { max-width: 7.5rem; font-size: .58rem; }
+.st-card .w-dates li { font-size: .7rem; padding: .6rem 0; }
+.st-card .w-dates b { font-size: 1.15rem; min-width: 5rem; }
+.sc-ph { padding: 0; border: 0; background: #15111a; cursor: zoom-in; display: block; aspect-ratio: 16 / 8; overflow: hidden; }
+.sc-ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.16, 1, .3, 1); }
+.sc-ph:hover img { transform: scale(1.04); }
+.tab-mini { grid-template-columns: 1.1fr 1fr; gap: 8px; }
+.tab-mini .tu-list { grid-row: auto; }
+.tab-mini .tu-card { padding: 12px; }
+.tab-mini .tu-rows { gap: 5px; margin-bottom: 10px; }
+.tab-mini .tu-rows li { padding: 6px 8px; grid-template-columns: 18px 1fr auto; }
+.tab-mini .tu-rows i { width: 18px; height: 18px; }
+.tab-mini .tu-big b { font-size: 2rem; }
+.tab-mini .tu-kpis b { font-size: 1.6rem; }
+.tab-mini figcaption { font-size: .55rem; }
+
+/* ---------------------------------------------------------------- the gallery stop: tiled works */
+.stop-gal .st-t { top: 17vh; transform: none; font-size: clamp(2.2rem, 4.6vw, 5rem); }
+.stop-gal .st-k { top: calc(17vh - 2rem); }
+.stop-gal .st-sup { top: calc(17vh - .4rem); right: max(var(--gut), calc(50% - 26vw)); }
+.gw { position: absolute; left: 50%; top: 57%; width: min(52vw, 780px, 88vh); aspect-ratio: 3 / 2; transform: translate(-50%, -50%); perspective: 1400px; }
+html.u-gl .stop-gal.on .gw { pointer-events: auto; }
+.gw-work { position: absolute; inset: 0; padding: 0; border: 0; background: none; cursor: zoom-in; transition: transform .7s cubic-bezier(.7, 0, .84, 0), opacity .6s ease; }
+.gw-work.out { transform: scale(1.35) translateZ(200px); opacity: 0; pointer-events: none; }
+.gw-tiles { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(var(--tx), 1fr); grid-template-rows: repeat(var(--ty), 1fr); gap: 3px; transform-style: preserve-3d; }
+.gw-tiles i { background-image: var(--img); background-size: calc(var(--tx) * 100% + (var(--tx) - 1) * 3px) calc(var(--ty) * 100% + (var(--ty) - 1) * 3px);
+  background-position: calc(var(--x) / (var(--tx) - 1) * 100%) calc(var(--y) / (var(--ty) - 1) * 100%); border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08); opacity: 0; transform: rotateX(80deg) translateZ(-60px) scale(.85);
+  transition: transform 1s cubic-bezier(.16, 1, .3, 1) var(--d), opacity .5s ease var(--d); }
+.gw-work.in .gw-tiles i { opacity: 1; transform: none; }
+.gw-work:hover .gw-tiles i { box-shadow: inset 0 0 0 1px rgba(180, 156, 255, .35); }
+.gw-name { position: absolute; left: 0; bottom: -2rem; font: 400 .68rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--cream); }
+.gw-src { display: none; }
+.stop-gal .gw-cap { bottom: 6vh; } .gw-name { bottom: -1.6rem; }
+.gw-all { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+.gw-all img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; cursor: zoom-in; }
+
+/* ---------------------------------------------------------------- the frame: status, ruler, credit */
+.frame { position: fixed; left: 0; right: 0; bottom: 0; z-index: 8; height: 60px; pointer-events: none; display: none; }
+html.u-gl:not(.u-after) .frame { display: block; }
+.fr-status, .fr-credit { position: absolute; bottom: 22px; margin: 0; font: 400 .68rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: rgba(243, 242, 247, .7); }
+.fr-status { left: var(--gut); } .fr-credit { right: var(--gut); }
+.ruler { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); display: flex; align-items: flex-end; height: 60px; pointer-events: auto; }
+.rt { position: relative; width: 30px; height: 60px; border: 0; padding: 0; background: none; cursor: pointer; display: flex; align-items: flex-end; justify-content: center; }
+.rt i { width: 1px; height: calc(8px + var(--near, 0) * 30px); background: rgba(243, 242, 247, calc(.35 + var(--near, 0) * .6)); transition: background .3s ease; }
+.rt.on i { background: var(--acc); width: 2px; }
+.rt span { position: absolute; bottom: 48px; left: 50%; transform: translate(-50%, 6px); white-space: nowrap; font: 400 .58rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--cream); opacity: 0; transition: opacity .25s ease, transform .4s cubic-bezier(.16, 1, .3, 1); pointer-events: none; }
+.rt:hover span, .rt:focus-visible span { opacity: 1; transform: translate(-50%, 0); }
+.rt:hover i { background: var(--cream); }
+
+/* ---------------------------------------------------------------- map labels on the bodies */
+.u-label { position: fixed; left: 0; top: 0; z-index: 1; padding: 5px 9px; border: 0; border-radius: 999px; background: rgba(12, 11, 20, .55); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: var(--cream); font: 400 .58rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+  cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .3s ease, color .2s ease, box-shadow .2s ease; }
+.u-label.on { opacity: 1; pointer-events: auto; }
+.u-label.hot, .u-label:hover { color: var(--acc); box-shadow: inset 0 0 0 1px rgba(180, 156, 255, .5); }
+html.no-gl .u-label, html:not(.u-gl) .u-label { display: none; }
+
+/* ---------------------------------------------------------------- after the journey */
+.work, .close { position: relative; z-index: 2; }
+
+/* ---------------------------------------------------------------- without WebGL: every stop is a plain section */
+html:not(.u-gl) .stop { position: relative; min-height: 80vh; padding: 14vh var(--gut) 10vh; display: grid; gap: 1rem; align-content: center; justify-items: center; text-align: center; }
+html:not(.u-gl) .stop > * { position: static; transform: none; }
+html:not(.u-gl) .st-card { width: min(100%, 32rem); text-align: left; }
+html:not(.u-gl) .gw { position: static; transform: none; width: 100%; aspect-ratio: auto; }
+
+/* ---------------------------------------------------------------- phones: the card is a bottom sheet */
+@media (max-width: 760px) {
+  .st-k { top: 17%; padding: 0 var(--gut); font-size: .6rem; }
+  .st-t { top: 29%; font-size: clamp(2.3rem, 11vw, 3.2rem); }
+  .st-sup { top: calc(29% + 3.9rem); left: 0; right: 0; text-align: center; font-size: 1rem; }
+  .st-cap { bottom: auto; top: calc(29% + 5.5rem); font-size: .6rem; }
+  .st-card, .st-card.st-wide { left: 8px; right: 8px; bottom: 66px; width: auto; max-height: 42vh; overflow: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .sc-ph { flex: none; aspect-ratio: auto; height: 17vh; }
+  html.u-gl .stop .st-card { transform: translateY(40px); }
+  .sc-nums b { font-size: 1.4rem; }
+  .sc-d { font-size: .92rem; }
+  .stop-gal .st-t { top: 14vh; font-size: 2.2rem; }
+  .stop-gal .st-k { top: calc(14vh - 1.8rem); }
+  .stop-gal .st-sup { top: calc(14vh + 2.2rem); }
+  .gw { width: calc(100vw - 32px); top: 52%; }
+  .stop-gal .gw-cap { top: auto; bottom: 80px; }
+  .rt { width: 22px; }
+  .rt span { display: none; }
+  .fr-status, .fr-credit { display: none; }
+  .tab-mini { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html.u-gl .stop .ch, html.u-gl .stop .st-card, .gw-tiles i { transition: none !important; } }
+/* the scene sits under <main>: let pointer events fall through the journey to the canvas */
+html.u-gl main { pointer-events: none; }
+html.u-gl main > section:not(.journey) { pointer-events: auto; }

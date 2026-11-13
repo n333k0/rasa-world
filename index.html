@@ -3,284 +3,223 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>RASA World</title>
-<meta name="description" content="RASA designs live brand experiences, original IPs and the software behind them. Three arms, one RASA universe.">
-<!-- RASA World concept v1 (2026-11-12): RASA's content on the Not Human landing system (full-screen sections, the header that
-     shrinks into a floating pill, one glass object that travels the whole page). Here the object is a world: a glass globe with
-     three moons (the three arms), portals into each RASA universe, and a galaxy of glass at the close.
-     Photos and video are loaded from rasaworld.com (not copied). Brief: prompt.md, design.md. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/rasa.css">
+<title>RASA World · Concepts</title>
+<meta name="description" content="RASA World: a concept for RASA's site, in ten versions. Every version opens in its own window.">
+<link rel="stylesheet" href="assets/fonts-web/fonts.css">
+<style>
+/* The hub for the RASA World concept (2026-11-12). It explains the concept, shows every version in a moving browser
+   mockup (its screens play in turn; "Live" loads the real page inside), and opens each version in its own window. */
+:root { --ink: #09090b; --cream: #f3f2f7; --mute: rgba(243, 242, 247, .62); --dim: rgba(243, 242, 247, .4); --line: rgba(255, 255, 255, .1); --acc: #b49cff; --acc-2: #8f6bff;
+  --display: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif; --body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif; --mono: 'DM Mono', ui-monospace, Menlo, monospace;
+  --gut: clamp(16px, 4vw, 64px); --ease: cubic-bezier(.2, .8, .2, 1); color-scheme: dark; }
+* { box-sizing: border-box; }
+html { background: var(--ink); scroll-behavior: smooth; }
+@media (min-width: 1500px) { html { font-size: calc(16px + (100vw - 1500px) * .008); } }
+body { margin: 0; color: var(--cream); font: 400 1rem/1.55 var(--body); -webkit-font-smoothing: antialiased; overflow-x: clip;
+  background: radial-gradient(80vw 60vh at 85% -10%, rgba(143, 107, 255, .18), transparent 60%), radial-gradient(70vw 50vh at -10% 40%, rgba(80, 120, 255, .08), transparent 60%), var(--ink); }
+a { color: inherit; }
+.k { margin: 0 0 14px; font: 400 .72rem/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.acc { color: var(--acc); }
+.grain { position: fixed; inset: -50%; pointer-events: none; z-index: 30; opacity: .06; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* ---- the menu: a floating pill; every chip opens that version in its own window */
+.menu { position: fixed; z-index: 20; top: 12px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; max-width: calc(100% - 16px); padding: 6px; border-radius: 999px;
+  background: rgba(14, 12, 20, .62); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); -webkit-backdrop-filter: blur(18px) saturate(1.3); backdrop-filter: blur(18px) saturate(1.3); }
+.menu .logo { width: 44px; height: 26px; margin: 0 8px 0 10px; flex: none; background: var(--cream); -webkit-mask: url(assets/rasa-logo.svg) center / contain no-repeat; mask: url(assets/rasa-logo.svg) center / contain no-repeat; }
+.chips { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; padding: 9px 11px; border-radius: 999px; border: 0; background: none; color: var(--mute); font: 400 .78rem/1 var(--mono); cursor: pointer; transition: background .2s ease, color .2s ease; text-decoration: none; }
+.chip:hover { background: rgba(255, 255, 255, .08); color: var(--cream); }
+.chip[data-new] { color: var(--acc); }
+.all { flex: none; margin-left: 4px; padding: 10px 14px; border-radius: 999px; border: 0; background: var(--cream); color: var(--ink); font: 500 .8rem/1 var(--body); cursor: pointer; white-space: nowrap; }
+.all:hover { background: var(--acc); }
+@media (max-width: 720px) { .all { display: none; } .menu { left: 8px; right: 8px; transform: none; } }
+
+/* ---- intro */
+header.hero { min-height: 92vh; display: grid; align-content: center; padding: 120px var(--gut) 8vh; }
+.hero h1 { margin: 0; font: 300 clamp(3rem, 8.6vw, 9.6rem)/.94 var(--display); letter-spacing: -.06em; }
+.hero h1 span { display: block; overflow: hidden; }
+.hero h1 span > i { display: inline-block; font-style: normal; transform: translateY(105%); animation: rise 1.1s var(--ease) forwards; }
+.hero h1 span:nth-child(2) > i { animation-delay: .1s; }
+@keyframes rise { to { transform: none; } }
+.hero .lede { margin: 2rem 0 0; max-width: 44rem; font: 300 clamp(1.2rem, 1.9vw, 1.6rem)/1.4 var(--display); letter-spacing: -.015em; color: rgba(243, 242, 247, .86); }
+.hero .row { margin-top: 2.4rem; display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 10px; height: 3.2rem; padding: 0 1.4rem; border-radius: 999px; text-decoration: none; font: 500 .95rem/1 var(--body); cursor: pointer; border: 0; transition: transform .4s var(--ease), background .2s ease; }
+.btn:hover { transform: scale(.97); }
+.btn.w { background: var(--cream); color: var(--ink); }
+.btn.g { background: none; color: var(--cream); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); }
+
+/* ---- concept */
+.concept { padding: 10vh var(--gut); display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; border-top: 1px solid var(--line); }
+.concept h2, .versions h2 { margin: 0; font: 300 clamp(2.2rem, 4.4vw, 4.8rem)/1 var(--display); letter-spacing: -.05em; }
+.concept .txt p { margin: 0 0 1.1rem; color: var(--mute); max-width: 36rem; font-size: 1.05rem; }
+.concept .txt p b { color: var(--cream); font-weight: 500; }
+.map { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.map li { padding: 16px; box-shadow: inset 0 0 0 1px var(--line); background: rgba(255, 255, 255, .02); }
+.map b { display: block; font: 300 1.25rem/1.15 var(--display); letter-spacing: -.02em; margin-bottom: 6px; }
+.map span { font-size: .86rem; color: var(--mute); }
+.map em { font: 400 .62rem/1 var(--mono); font-style: normal; letter-spacing: .08em; text-transform: uppercase; color: var(--acc); display: block; margin-bottom: 10px; }
+/* a little orbit drawing: the world, three moons, four portals */
+.orbit { position: relative; aspect-ratio: 1; max-width: 520px; width: 100%; margin: 0 auto; }
+.orbit svg { width: 100%; height: 100%; overflow: visible; }
+.orbit .ring { fill: none; stroke: rgba(255, 255, 255, .12); stroke-dasharray: 2 6; }
+.orbit .core { fill: url(#core); }
+.orbit .rim { fill: none; stroke: url(#holo); stroke-width: 2; }
+.orbit text { font: 400 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; fill: var(--mute); }
+.orbit .spin { transform-origin: 260px 260px; animation: spin 40s linear infinite; }
+.orbit .spin2 { transform-origin: 260px 260px; animation: spin 70s linear infinite reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 899px) { .concept { grid-template-columns: 1fr; } .map { grid-template-columns: 1fr; } }
+
+/* ---- versions: each one in a browser window that plays its screens */
+.versions { padding: 10vh var(--gut) 6vh; border-top: 1px solid var(--line); }
+.vhead { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 4vh; }
+.vhead p { margin: 0; color: var(--mute); max-width: 34rem; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px) clamp(20px, 3vw, 44px); }
+.v { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform 1s var(--ease); }
+.v.in { opacity: 1; transform: none; }
+html:not(.js) .v { opacity: 1; transform: none; }
+.win { position: relative; border-radius: 14px; overflow: hidden; background: #111016; box-shadow: 0 0 0 1px rgba(255, 255, 255, .1), 0 40px 80px -30px rgba(0, 0, 0, .8), 0 0 60px -20px rgba(143, 107, 255, .25); transform: perspective(1600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s var(--ease); }
+.bar { height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 12px; background: #19171f; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+.bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3742; }
+.bar i:nth-child(1) { background: #ff5f57; } .bar i:nth-child(2) { background: #febc2e; } .bar i:nth-child(3) { background: #28c840; }
+.url { margin-left: 10px; flex: 1; height: 22px; border-radius: 6px; background: rgba(255, 255, 255, .06); display: flex; align-items: center; padding: 0 10px; font: 400 .66rem/1 var(--mono); color: var(--dim); white-space: nowrap; overflow: hidden; }
+.screen { position: relative; aspect-ratio: 680 / 365; overflow: hidden; background: #0c0b10; }
+.screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 1.1s ease, transform 6s linear; }
+.screen img.on { opacity: 1; transform: scale(1); }
+.screen iframe { position: absolute; left: 0; top: 0; width: 1440px; height: 773px; border: 0; transform-origin: 0 0; background: #09090b; }
+.live-tag { position: absolute; z-index: 3; top: 10px; right: 10px; padding: 6px 9px; border-radius: 999px; background: rgba(9, 9, 11, .7); font: 400 .6rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--acc); display: none; }
+.v.live .live-tag { display: block; }
+.dots { position: absolute; z-index: 3; left: 12px; bottom: 10px; display: flex; gap: 4px; }
+.dots b { width: 16px; height: 2px; background: rgba(255, 255, 255, .25); }
+.dots b.on { background: var(--cream); }
+.meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; margin-top: 18px; align-items: baseline; }
+.meta .n { font: 200 3rem/1 var(--display); letter-spacing: -.06em; color: var(--acc); grid-row: 1 / span 2; }
+.meta h3 { margin: 0; font: 300 1.5rem/1.15 var(--display); letter-spacing: -.03em; }
+.meta p { margin: 0; color: var(--mute); font-size: .92rem; }
+.meta .ref { grid-column: 2; font: 400 .66rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
+.acts { grid-column: 2; display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.acts .btn { height: 2.5rem; padding: 0 1rem; font-size: .85rem; }
+.acts .link { font: 400 .72rem/1.4 var(--mono); color: var(--dim); align-self: center; word-break: break-all; }
+@media (max-width: 899px) { .grid { grid-template-columns: 1fr; } }
+
+footer { padding: 8vh var(--gut) 6vh; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--dim); font: 400 .72rem/1.5 var(--mono); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .hero h1 span > i { transform: none; } }
+</style>
 <script>document.documentElement.classList.add('js');</script>
-<script type="importmap">{ "imports": { "three": "./assets/vendor/three/three.module.js" } }</script>
 </head>
 <body>
-
-<!-- the room (light pools, grain) behind everything; the glass world is drawn on its own canvas above the dark sections -->
-<canvas class="room" aria-hidden="true"></canvas>
-<canvas class="glass" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
 
-<!-- what's on: a thin line above the header, gone once you scroll -->
-<div class="ticker" role="region" aria-label="Upcoming events">
-  <div class="ticker-in">
-    <a href="#monuments"><b>Monuments</b> · San Francisco · Nov 14 <span class="tk-cta">RSVP ↗</span></a>
-    <span class="tk-sep" aria-hidden="true"></span>
-    <a href="#monuments"><b>Nights of Wonder</b> · Transamerica Pyramid · Dec 10–27 <span class="tk-cta">Tickets ↗</span></a>
-  </div>
-</div>
+<nav class="menu" aria-label="Versions">
+  <span class="logo" aria-hidden="true"></span>
+  <div class="chips" data-chips></div>
+  <button class="all" type="button" data-open-all>Open all in windows</button>
+</nav>
 
-<!-- header: no ground at the top; past a little scroll it detaches into a floating glass pill (as on Not Human).
-     On a phone the pill stretches into the menu. -->
-<header class="site-header">
-  <div class="nbar">
-    <a class="brand" href="#top" aria-label="RASA World, back to the top"><span class="logo" aria-hidden="true"></span><span class="brand-word">World</span></a>
-    <nav class="d-nav" aria-label="Sections">
-      <a href="#ecosystem"><sup>/01</sup>Ecosystem</a><a href="#universes"><sup>/02</sup>Universes</a><a href="#tabulah"><sup>/03</sup>Technology</a><a href="#moments"><sup>/04</sup>Moments</a><a href="#work"><sup>/05</sup>Work</a>
-    </nav>
-    <a class="pill-cta d-cta" href="#brief">Get in touch <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-    <button class="burger-btn" type="button" aria-expanded="false" aria-controls="m-nav" aria-label="Open menu"><span class="burger"><i></i><i></i></span></button>
-    <nav class="m-nav" id="m-nav" aria-label="Menu">
-      <a style="--i:0" href="#ecosystem">Ecosystem</a><a style="--i:1" href="#universes">Universes</a><a style="--i:2" href="#tabulah">Technology</a><a style="--i:3" href="#moments">Moments</a><a style="--i:4" href="#work">Work</a>
-      <p style="--i:5" class="m-ev">Monuments · San Francisco · Nov 14<br>Nights of Wonder · Transamerica Pyramid · Dec 10–27</p>
-      <a style="--i:6" class="pill-cta" href="#brief">Start your event brief <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-    </nav>
-  </div>
+<header class="hero">
+  <p class="k">RASA World · a site concept · 2026</p>
+  <h1><span><i>One world.</i></span><span><i class="acc">Every universe.</i></span></h1>
+  <p class="lede">A new site for RASA, built around one idea: everything RASA makes lives in a single world. Ten versions explore how that world looks, moves and tells the story. Each one opens in its own window.</p>
+  <div class="row"><a class="btn w" href="#versions">See the versions ↓</a><a class="btn g" href="compare.html" target="_blank" rel="noopener">Side-by-side notes ↗</a></div>
 </header>
 
-<main id="top">
-
-<!-- 01 HERO: pinned. The film plays full screen; as you scroll it closes into a circle, and the circle becomes the world. -->
-<section class="hero" aria-label="RASA World">
-  <div class="hero-pin">
-    <div class="film">
-      <video class="film-v" autoplay muted loop playsinline preload="auto"
-        poster="https://rasaworld.com/__l5e/assets-v1/c4d2f503-0bb8-480b-9444-046f60f8f3a8/pierplay2-poster.webp"
-        src="https://rasaworld.com/assets/rasa-showcase-2-BbDQtfYg.mp4"></video>
-      <div class="film-shade" aria-hidden="true"></div>
-    </div>
-    <div class="hero-copy">
-      <p class="eyebrow hero-eb"><span class="dot" aria-hidden="true"></span>The all-in-one ecosystem for unforgettable experiences</p>
-      <h1 class="hero-t"><span class="ln"><span>Live brand experiences</span></span> <span class="ln"><span>that create</span></span> <span class="ln"><span class="pink">legendary moments</span></span></h1>
-      <div class="hero-ctas">
-        <a class="cta" href="#brief">Start your event brief <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-        <a class="cta-ghost" href="#universes">Enter the universes <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5"/></svg></a>
-      </div>
-    </div>
-    <div class="logos" aria-label="Brands we have worked with">
-      <p class="logos-k">Powering legendary events at the world's most memorable brands</p>
-      <div class="logos-row"><div class="logos-track" data-logos></div></div>
-    </div>
-    <!-- after the film closes: the world takes the stage -->
-    <div class="hero-after" aria-hidden="true">
-      <p class="eyebrow">Welcome to</p>
-      <p class="after-t">The RASA universe</p>
-    </div>
-    <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+<section class="concept" aria-labelledby="c-h">
+  <div class="txt">
+    <p class="k">The concept</p>
+    <h2 id="c-h">RASA, and <span class="acc">the RASA World.</span></h2>
+    <p style="margin-top:1.6rem"><b>RASA</b> is a Los Angeles live-experience company. It designs brand experiences, from targeted activations to full productions, and stays accountable for strategy, venues, execution and ROI. It works with Google, Delta, Playboy, Rivian and Aston Martin, among others.</p>
+    <p><b>RASA World</b> is how the site tells that story. RASA isn't a list of services; it's one ecosystem. The page opens on a film that closes into a <b>world</b>. Three <b>moons</b> orbit it, one for each arm. Its original IPs are <b>universes</b> you step into through portals. A decade of <b>moments</b> forms a wall, a ring or a sphere. At the close, the world gathers its <b>galaxy</b>: the community.</p>
+    <ul class="map">
+      <li><em>The world</em><b>RASA</b><span>The ecosystem: one company, one place.</span></li>
+      <li><em>Moon 01</em><b>Atelier by RASA</b><span>Strategy and production for global brands.</span></li>
+      <li><em>Moon 02</em><b>RASA Creates</b><span>Original IPs, built to travel between cities.</span></li>
+      <li><em>Moon 03</em><b>Tabulah by RASA</b><span>The software behind every night; the data stays yours.</span></li>
+      <li><em>Portals</em><b>Thrill City · Pier Play · Portalverse · Monuments</b><span>Four universes, each a full-screen world with its own results.</span></li>
+      <li><em>Galaxy</em><b>The movement</b><span>Moments, cases and the community that keeps showing up.</span></li>
+    </ul>
+  </div>
+  <div class="orbit" aria-hidden="true">
+    <svg viewBox="0 0 520 520">
+      <defs>
+        <radialGradient id="core" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#cbbdff" stop-opacity=".9"/><stop offset=".45" stop-color="#6f56d8" stop-opacity=".5"/><stop offset="1" stop-color="#16121f" stop-opacity=".2"/></radialGradient>
+        <linearGradient id="holo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b49cff"/><stop offset=".3" stop-color="#8fd3ff"/><stop offset=".55" stop-color="#ffd6a8"/><stop offset=".8" stop-color="#ff9fd8"/><stop offset="1" stop-color="#b49cff"/></linearGradient>
+      </defs>
+      <circle class="ring" cx="260" cy="260" r="120"/><circle class="ring" cx="260" cy="260" r="175"/><circle class="ring" cx="260" cy="260" r="240"/>
+      <circle class="core" cx="260" cy="260" r="72"/><circle class="rim" cx="260" cy="260" r="72"/>
+      <text x="260" y="264" text-anchor="middle" style="fill:#f3f2f7">RASA</text>
+      <g class="spin"><circle cx="380" cy="260" r="11" fill="#d9ccff"/><text x="380" y="290" text-anchor="middle">Atelier</text>
+        <circle cx="200" cy="156" r="9" fill="#b49cff"/><text x="200" y="140" text-anchor="middle">Creates</text>
+        <circle cx="200" cy="364" r="10" fill="#8fd3ff"/><text x="200" y="392" text-anchor="middle">Tabulah</text></g>
+      <g class="spin2"><circle cx="260" cy="20" r="14" fill="none" stroke="#b49cff"/><text x="260" y="50" text-anchor="middle">Thrill City</text>
+        <circle cx="500" cy="260" r="14" fill="none" stroke="#b49cff"/><text x="470" y="236" text-anchor="end">Pier Play</text>
+        <circle cx="260" cy="500" r="14" fill="none" stroke="#b49cff"/><text x="260" y="480" text-anchor="middle">Portalverse</text>
+        <circle cx="20" cy="260" r="14" fill="none" stroke="#b49cff"/><text x="48" y="236">Monuments</text></g>
+    </svg>
   </div>
 </section>
 
-<!-- 02 ECOSYSTEM: pinned. The globe holds the left; three moons orbit it, one per arm. Each step brings one moon forward. -->
-<section class="eco" id="ecosystem" aria-labelledby="eco-h">
-  <div class="eco-pin">
-    <div class="eco-head">
-      <p class="eyebrow">The ecosystem</p>
-      <h2 id="eco-h" class="h2">Three arms.<br><span class="pink">One RASA universe.</span></h2>
-    </div>
-    <div class="moon-tags" aria-hidden="true"><span>Atelier</span><span>Creates</span><span>Tabulah</span></div>
-    <div class="arms">
-      <article class="arm" data-arm="0">
-        <p class="arm-n">01 <span>/ 03</span></p>
-        <h3 class="arm-t">Atelier by RASA</h3>
-        <p class="arm-k">Our strategic experience arm for global brands.</p>
-        <p class="arm-d">A dedicated strategic arm with precision-led execution for global corporate visions: unforgettable events for brands that refuse to be ordinary.</p>
-        <a class="link" href="#work">About Atelier by RASA <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-      </article>
-      <article class="arm" data-arm="1">
-        <p class="arm-n">02 <span>/ 03</span></p>
-        <h3 class="arm-t">RASA Creates</h3>
-        <p class="arm-k">Our original IPs and flagship live experiences.</p>
-        <p class="arm-d">Flagship festivals, events and original IPs, built with global brands. They shape the RASA universe and set where live entertainment goes next.</p>
-        <a class="link" href="#universes">About RASA Creates <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-      </article>
-      <article class="arm" data-arm="2">
-        <p class="arm-n">03 <span>/ 03</span></p>
-        <h3 class="arm-t">Tabulah by RASA</h3>
-        <p class="arm-k">Our end-to-end event optimization software.</p>
-        <p class="arm-d">The software engine behind RASA's global entertainment ecosystem: community, data and on-site operations in one event optimization platform.</p>
-        <a class="link" href="#tabulah">About Tabulah by RASA <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-      </article>
-      <div class="arm-ticks" aria-hidden="true"><i></i><i></i><i></i></div>
-    </div>
+<section class="versions" id="versions" aria-labelledby="v-h">
+  <div class="vhead">
+    <div><p class="k">Ten versions</p><h2 id="v-h">The sites</h2></div>
+    <p>Each window plays the version's key screens. "Live" loads the real page inside the mockup, and "Open in window" opens it full size in its own window.</p>
   </div>
+  <div class="grid" data-grid></div>
 </section>
 
-<!-- 03 THE OUTCOME: one long sentence that lights up word by word; the world drifts to the side -->
-<section class="outcome" aria-labelledby="out-h">
-  <div class="wrap">
-    <p class="eyebrow">What we do</p>
-    <h2 id="out-h" class="h2 out-t">We own the outcome.</h2>
-    <p class="lede" data-focus>RASA designs live brand experiences, from targeted activations to full productions, powered by our own creative playbook, production expertise and VC-backed technology. The mission: moments people remember, with RASA accountable for strategy, venues, execution and ROI.</p>
-  </div>
-</section>
+<footer><span>RASA World concept · photos and video © RASA, loaded from rasaworld.com</span><span>Built 2026-11-12 · <a href="compare.html" target="_blank" rel="noopener">Notes and comparisons</a></span></footer>
 
-<!-- 04 BY THE NUMBERS: full screen, four counters -->
-<section class="numbers" aria-labelledby="num-h">
-  <div class="wrap">
-    <div class="rule-row"><h2 id="num-h" class="eyebrow">By the numbers</h2><a class="link" href="#brief">Start your event brief →</a></div>
-    <div class="num-grid">
-      <div class="num"><p class="num-v" data-count="4000" data-suffix="+">4,000+</p><p class="num-k">Guests at Google's Endless Summer Festival</p></div>
-      <div class="num"><p class="num-v" data-count="700" data-suffix="+">700+</p><p class="num-k">VIPs at Honey Birdette × Playboy's Club Honey</p></div>
-      <div class="num"><p class="num-v" data-count="150" data-suffix="K+">150K+</p><p class="num-k">L.A. Comic Con audience reached by Portalverse</p></div>
-      <div class="num"><p class="num-v" data-count="12">12</p><p class="num-k">Brand experiences in our case studies</p></div>
-    </div>
-  </div>
-</section>
+<script>
+// The versions: file, title, one line, the reference it follows, and the screens its window plays (compare/).
+const V = [
+  { f: 'v1.html', t: 'First pass', d: 'RASA type, pink and lavender, a milky glass globe. The film closes into the world.', ref: 'Base: Not Human landing', s: ['v1-hero', 'v1-world', 'v1-arms', 'v1-portal'] },
+  { f: 'v2.html', t: 'RASA type, violet', d: 'Centred hero, the three arms as cards, Not Human glass, a single violet accent.', ref: 'Round 1 notes', s: ['v2-hero', 'v2-world', 'v2-arms', 'v2-portal'] },
+  { f: 'v3.html', t: 'Not Human look', d: 'Not Human type and cards, with RASA violet. Fuller arm cards, sharp HD gallery.', ref: 'Round 2 notes', s: ['r2-v3-hero', 'r2-v3-arms', 'v3-world', 'v3-portal'] },
+  { f: 'v4.html', t: 'Planet of light', d: 'A world made of 14,000 points, with RASA\'s cities, arcs between them and a spiral galaxy.', ref: 'A different world', s: ['r2-v4-world', 'r2-v4-arms', 'r2-v4-close'] },
+  { f: 'v5.html', t: 'Improvements', d: 'Tabulah drawn as an interface, a 3D ring gallery that stays sharp, grain on the film.', ref: 'Round 2 improvements', s: ['r2-v5-hero', 'r2-v5-tabulah', 'r2-v5-gallery'] },
+  { f: 'v6.html', t: 'Holographic', d: 'v5 with an iridescent accent and a rainbow rim on the glass world.', ref: 'Round 2 improvements', s: ['r2-v6-hero', 'r2-v6-arms', 'r2-v6-tabulah'] },
+  { f: 'v7.html', t: 'Purple and lime', d: 'A cel-shaded line-art planet, orbit rings, the universes as cockpit windows.', ref: 'After secure-the-unknown.cyera.com', s: ['r3-v7-hero', 'r3-v7-world', 'r3-v7-arms', 'r3-v7-windows'] },
+  { f: 'v8.html', t: 'A night field', d: 'A violet grass world the camera travels through, particle shapes that re-form, liquid headings.', ref: 'After emotion-agency.com', s: ['r3-v8-world', 'r3-v8-arms', 'r3-v8-portal', 'r3-v8-close'] },
+  { f: 'v9.html', t: 'Liquid and Swiss', d: 'Headings that melt and set, a smoke cursor, a photo sphere you can drag.', ref: 'After bleibtgleich.dev', s: ['r3-v9-hero', 'r3-v9-arms', 'r3-v9-portal', 'r3-v9-moments'] },
+  { f: 'v10.html', t: 'The explorable universe', d: 'One 3D scene you fly through: the world, its moons, the universes and a gallery of moments.', ref: 'After mesh3d.gallery', s: ['r3-v10-universe', 'r3-v10-atelier', 'r3-v10-portalverse', 'r3-v10-gallery'] },
+];
+const base = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '');
+const openWin = (f, i) => window.open(f, 'rasa-' + f.replace('.html', ''), `popup=yes,width=${Math.min(1440, screen.availWidth)},height=${Math.min(900, screen.availHeight)},left=${40 + i * 24},top=${40 + i * 24}`);
 
-<!-- 05 UNIVERSES: RASA Experiences. Each one is a world of its own; the next opens through a glass portal at the centre. -->
-<section class="universes" id="universes" aria-labelledby="uni-h">
-  <div class="uni-intro wrap">
-    <p class="eyebrow">RASA Experiences</p>
-    <h2 id="uni-h" class="h2">Four universes,<br><span class="pink">built to travel.</span></h2>
-    <p class="uni-d">New cultural experiences in franchise-ready formats, made to scale across cities. Step through each portal.</p>
-  </div>
-  <div class="portals">
-    <div class="portal-pin">
-      <article class="world" data-w="0" style="--img:url('https://rasaworld.com/assets/gallery-sixflags-BDv-u1_z.webp')">
-        <div class="world-bg"></div>
-        <div class="world-in">
-          <p class="w-n">Universe 01 <span>/ 04</span></p>
-          <h3 class="w-t">Thrill City</h3>
-          <p class="w-place">Six Flags Magic Mountain · Los Angeles</p>
-          <p class="w-d">With Six Flags Magic Mountain, RASA celebrated pass holders and pulled in new crowds with roller coasters and music.</p>
-          <ul class="w-stats"><li><b>12K</b>attendees over 2 nights</li><li><b>83%</b>were not season pass holders</li><li><b>47%</b>want to become pass holders</li></ul>
-          <a class="link" href="#work">View case study <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-        </div>
-      </article>
-      <article class="world" data-w="1">
-        <div class="world-bg"><video muted loop playsinline preload="none" data-src="https://rasaworld.com/__l5e/assets-v1/d30b809c-dc7e-4bbb-87d1-004cf2dbb6c9/pierplay-bg.mp4" poster="https://rasaworld.com/__l5e/assets-v1/ef782cdc-1af4-4d54-98de-c001bfa7549a/pier-play-crowd.webp"></video></div>
-        <div class="world-in">
-          <p class="w-n">Universe 02 <span>/ 04</span></p>
-          <h3 class="w-t">Pier Play</h3>
-          <p class="w-place">Santa Monica Pier</p>
-          <p class="w-d">With the historic Pier foundation and the City of Santa Monica, RASA curated a day-to-night event for the pier and its community.</p>
-          <ul class="w-stats"><li><b>11.2K</b>attendees over 3 nights</li><li><b>600K+</b>social accounts reached</li><li><b>40K+</b>content interactions</li></ul>
-          <a class="link" href="#work">View case study <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-        </div>
-      </article>
-      <article class="world" data-w="2" style="--img:url('https://rasaworld.com/__l5e/assets-v1/7f38cdac-aa7e-48db-a615-cc562fbb653a/portalverse.webp')">
-        <div class="world-bg"></div>
-        <div class="world-in">
-          <p class="w-n">Universe 03 <span>/ 04</span></p>
-          <h3 class="w-t">Portalverse</h3>
-          <p class="w-place">L.A. Convention Center</p>
-          <p class="w-d">The official closing night of L.A. Comic Con's 150K attendees: guests stepped into a world where myth and modern legend met.</p>
-          <ul class="w-stats"><li><b>150K</b>attendees at Portalverse</li><li><b>1</b>night hosting the official closing at Bob Hope Patriotic Hall</li><li><b>95%</b>want to come back</li></ul>
-          <a class="link" href="#work">View case study <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-        </div>
-      </article>
-      <article class="world" id="monuments" data-w="3" style="--img:url('https://rasaworld.com/assets/monuments-slide-02-BZnP82WB.jpg')">
-        <div class="world-bg"></div>
-        <div class="world-in">
-          <p class="w-n">Universe 04 <span>/ 04</span></p>
-          <h3 class="w-t">Monuments</h3>
-          <p class="w-place">Palace of Fine Arts · Eiffel Tower · Transamerica Pyramid</p>
-          <p class="w-d">RASA's new series brings music, art and visual shows into the world's most remarkable spaces, from BLOND:ISH at the Eiffel Tower to WhoMadeWho and Bedouin at the Palace of Fine Arts. Each edition is shaped by its setting: iconic architecture, curated artists, immersive production and the community around it.</p>
-          <ul class="w-dates"><li><b>Nov 14</b>Monuments · San Francisco<a href="#brief">RSVP ↗</a></li><li><b>Dec 10–27</b>Nights of Wonder · Transamerica Pyramid<a href="#brief">Tickets ↗</a></li></ul>
-        </div>
-      </article>
-      <div class="portal-ui" aria-hidden="true"><span class="pu-n">01</span><span class="pu-bar"><i></i></span><span>04</span></div>
-    </div>
-  </div>
-</section>
+const chips = document.querySelector('[data-chips]');
+V.forEach((v, i) => { const a = document.createElement('a'); a.className = 'chip'; a.href = v.f; a.textContent = 'v' + (i + 1); a.title = v.t + ' (opens in its own window)';
+  if (i >= 6) a.dataset.new = ''; a.addEventListener('click', e => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); openWin(v.f, i); }); chips.append(a); });
+document.querySelector('[data-open-all]').addEventListener('click', () => { V.forEach((v, i) => openWin(v.f, i)); });
 
-<!-- 06 TABULAH: the technology arm -->
-<section class="tabulah" id="tabulah" aria-labelledby="tab-h">
-  <div class="wrap tab-grid">
-    <div class="tab-copy">
-      <p class="eyebrow">Proprietary technology</p>
-      <h2 id="tab-h" class="h2">Tabulah turns a guest list <span class="pink">into an asset.</span></h2>
-      <p class="tab-d">One platform runs ticketing, CRM and real-time engagement, so your audience stays with you after the night ends. The data is yours to keep and use.</p>
-      <ul class="feats">
-        <li><span>Live data &amp; integrations</span><b>Yours to keep</b></li>
-        <li><span>Engagement analytics</span><b>Real-time</b></li>
-        <li><span>Post-event ROI report</span><b>Every event</b></li>
-      </ul>
-      <a class="link" href="#brief">Learn more about the software <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-    </div>
-    <figure class="tab-fig"><img loading="lazy" src="https://rasaworld.com/__l5e/assets-v1/6a5a2e17-3c66-4804-b763-2240cdac0156/tabulah-event-phones.webp" alt="Tabulah by RASA event apps on phones for 100 Thieves, Aston Martin, and Miss Sixty × Mowalola × H. Lorenzo"></figure>
-  </div>
-</section>
-
-<!-- 07 THE BIGGER PICTURE: pinned. One moment fills the screen, then shrinks into its place in a wall of moments. -->
-<section class="moments" id="moments" aria-labelledby="mo-h">
-  <div class="mo-pin">
-    <div class="mo-grid" data-moments></div>
-    <div class="mo-copy">
-      <p class="eyebrow">The bigger picture</p>
-      <h2 id="mo-h" class="h2">Architects of moments<br><span class="pink">and a movement.</span></h2>
-      <p class="mo-d">A decade of events, cities and strong collaborators, and a loyal community that keeps showing up.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 08 WORK: the case studies as a list; the photo follows the pointer -->
-<section class="work" id="work" aria-labelledby="work-h">
-  <div class="wrap">
-    <div class="work-head">
-      <p class="eyebrow">Case studies</p>
-      <h2 id="work-h" class="h2">Explore our work</h2>
-      <p class="work-d">Google, Delta, Playboy, ClickUp, Rivian, Aston Martin Galpin, LA Fashion Week, Pier Play at the Santa Monica Pier, Thrill City at Six Flags Magic Mountain, and more.</p>
-    </div>
-    <ol class="cases" data-cases></ol>
-    <a class="cta-ghost all" href="#work">View all case studies <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-  </div>
-  <div class="case-peek" aria-hidden="true"><img alt=""></div>
-</section>
-
-<!-- 09 CLOSE: the world again, now with its galaxy -->
-<section class="close" id="brief" aria-labelledby="close-h">
-  <div class="wrap close-in">
-    <p class="eyebrow">Atelier by RASA</p>
-    <h2 id="close-h" class="close-t">Let's make it<br><span class="pink">legendary.</span></h2>
-    <p class="close-d">Powering legendary events at the world's most memorable brands. Tell us about yours.</p>
-    <div class="hero-ctas">
-      <a class="cta" href="mailto:?subject=RASA%20event%20brief">Start your event brief <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
-      <a class="cta-ghost" href="#monuments">Attend our community events</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot-top">
-      <span class="logo foot-logo" aria-hidden="true"></span>
-      <form class="news" onsubmit="event.preventDefault(); this.classList.add('sent');">
-        <label for="nl">Newsletter</label>
-        <div class="news-row"><input id="nl" type="email" placeholder="Your email" required><button type="submit">Opt in</button></div>
-        <p class="news-ok">Thanks. You're on the list.</p>
-      </form>
-    </div>
-    <div class="foot-cols">
-      <div><p class="fk">What we do</p><a href="#top">RASA World home</a><a href="#ecosystem">Our corporate events: Atelier by RASA</a><a href="#tabulah">Event technology</a><a href="#universes">Our ecosystem &amp; IPs</a></div>
-      <div><p class="fk">Who we serve</p><a href="#brief">Brand leaders</a><a href="#brief">Agencies &amp; teams</a></div>
-      <div><p class="fk">About</p><a href="#moments">Our story</a><a href="#moments">Our values</a><a href="#ecosystem">Corporate services</a></div>
-      <div><p class="fk">Insights</p><a href="#work">Case studies</a><a href="#work">Blog</a><a href="#work">Experiential marketing guide</a><a href="#work">Press</a></div>
-      <div><p class="fk">Get in touch</p><a href="#brief">Contact</a><a href="#brief">Start your event brief</a><a href="#monuments">Event calendar</a><a href="https://www.instagram.com/" rel="noopener">Instagram ↗</a></div>
-    </div>
-    <div class="foot-base"><span>© 2026 Atelier by RASA · Crafted in Los Angeles, connected worldwide</span><span><a href="#top">Privacy</a> · <a href="#top">Terms</a></span></div>
-  </div>
-</footer>
-
-<script src="assets/vendor/gsap/gsap.min.js"></script>
-<script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
-<script src="assets/vendor/lenis/lenis.min.js"></script>
-<script src="assets/js/content.js"></script>
-<script type="module" src="assets/js/page.js"></script>
-<script type="module" src="assets/js/world.js"></script>
+const grid = document.querySelector('[data-grid]');
+V.forEach((v, i) => {
+  const el = document.createElement('article'); el.className = 'v';
+  el.innerHTML = `<div class="win"><div class="bar"><i></i><i></i><i></i><span class="url">rasaworld.com · ${v.f.replace('.html', '')}</span></div>
+    <div class="screen">${v.s.map(s => `<img src="compare/${s}.jpg" alt="${v.t}: a screen" loading="lazy" onerror="this.remove()">`).join('')}<span class="live-tag">Live</span><div class="dots">${v.s.map(() => '<b></b>').join('')}</div></div></div>
+    <div class="meta"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${v.t}</h3><p>${v.d}</p><span class="ref">${v.ref}</span>
+      <div class="acts"><button class="btn w" type="button" data-open>Open in window ↗</button><button class="btn g" type="button" data-live>Live</button><a class="link" href="${v.f}" target="_blank" rel="noopener">${base}${v.f}</a></div></div>`;
+  grid.append(el);
+  el.querySelector('[data-open]').addEventListener('click', () => openWin(v.f, i));
+  // the window plays its screens in turn; "Live" swaps them for the real page, scaled to fit
+  let k = 0, timer = null;
+  const show = () => { const imgs = [...el.querySelectorAll('.screen img')], dots = [...el.querySelectorAll('.dots b')]; if (!imgs.length) return; k %= imgs.length; imgs.forEach((im, j) => im.classList.toggle('on', j === k)); dots.forEach((d, j) => d.classList.toggle('on', j === k)); k++; };
+  const play = () => { if (!timer) { show(); timer = setInterval(show, 2600); } }, stop = () => { clearInterval(timer); timer = null; };
+  const scr = el.querySelector('.screen');
+  el.querySelector('[data-live]').addEventListener('click', e => {
+    const b = e.currentTarget;
+    if (el.classList.toggle('live')) { stop(); const f = document.createElement('iframe'); f.src = v.f; f.title = v.t + ', live'; f.loading = 'lazy'; scr.append(f); fit(); b.textContent = 'Screens'; }
+    else { scr.querySelector('iframe')?.remove(); b.textContent = 'Live'; play(); }
+  });
+  const fit = () => { const f = scr.querySelector('iframe'); if (f) f.style.transform = `scale(${scr.clientWidth / 1440})`; };
+  addEventListener('resize', fit);
+  // tilt toward the pointer
+  const w = el.querySelector('.win');
+  w.addEventListener('pointermove', e => { const r = w.getBoundingClientRect(); w.style.setProperty('--ry', ((e.clientX - r.left) / r.width - .5) * 6 + 'deg'); w.style.setProperty('--rx', (.5 - (e.clientY - r.top) / r.height) * 5 + 'deg'); });
+  w.addEventListener('pointerleave', () => { w.style.setProperty('--ry', '0deg'); w.style.setProperty('--rx', '0deg'); });
+  new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { el.classList.add('in'); if (!el.classList.contains('live')) play(); } else stop(); }), { threshold: .15 }).observe(el);
+  setTimeout(show, 0);
+});
+</script>
 </body>
 </html>

@@ -81,3 +81,26 @@ The pre-round state of v2/v3 is in `versions/r1-2026-11-12/`.
   - A rainbow rim and stronger dispersion on the glass (`world2.js`, `html.v6`).
 
 Assets carry `?r=3` so local previews don't serve stale files.
+
+## Round 3 (2026-11-12): v7–v10 and the hub
+- `index.html` is now the hub: the concept, ten browser mockups that play each version's screens (or load it live), and a menu that opens each version in its own window. v1 moved to `v1.html`.
+- **v7** (`rasa7.css`, `page7.js`, `world7.js`), after secure-the-unknown.cyera.com
+  - Royal purple, plum and a lime accent.
+  - A cel-shaded line-art planet with crystals and asteroids.
+  - Orbit rings with split text in the hero.
+  - The universes as cockpit windows, each with a console of figures.
+  - A light-beam loader.
+- **v8** (`rasa8.css`, `page8.js`, `world8.js`), after emotion-agency.com
+  - A night field of violet grass that the camera travels through.
+  - A 9k-point sculpture that re-forms per section (the RASA mark, orbs, a globe, a ring, a cube, a galaxy).
+  - A loading gate and liquid headings.
+  - A serif with italics.
+- **v9** (`rasa9.css`, `page9.js`), after bleibtgleich.dev
+  - Headings that melt and set, and a smoke-trail cursor.
+  - A Swiss grid on one hairline, and the split "RASA / WORLD" corner mark.
+  - A draggable photo sphere.
+- **v10** (`rasa10.css`, `page10.js`, `world10.js`), after mesh3d.gallery
+  - The page is one explorable 3D universe with 11 camera stops.
+  - Drag to look around, click a body to fly to it, and a tick ruler for navigation.
+  - Titles build letter by letter, and particle numerals sit behind them.
+  - The gallery assembles each photo from tiles.
