@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>RASA World · Concepts</title>
-<meta name="description" content="RASA World: a concept for RASA's site, in ten versions. Every version opens in its own window.">
+<meta name="description" content="RASA World: a concept for RASA's site, in seven directions. Each one opens in its own window.">
 <link rel="stylesheet" href="assets/fonts-web/fonts.css">
 <style>
 /* The hub for the RASA World concept (2026-11-12). It explains the concept, shows every version in a moving browser
@@ -121,8 +121,8 @@ footer { padding: 8vh var(--gut) 6vh; border-top: 1px solid var(--line); display
 <header class="hero">
   <p class="k">RASA World · a site concept · 2026</p>
   <h1><span><i>One world.</i></span><span><i class="acc">Every universe.</i></span></h1>
-  <p class="lede">A new site for RASA, built around one idea: everything RASA makes lives in a single world. Ten versions explore how that world looks, moves and tells the story. Each one opens in its own window.</p>
-  <div class="row"><a class="btn w" href="#versions">See the versions ↓</a><a class="btn g" href="compare.html" target="_blank" rel="noopener">Side-by-side notes ↗</a></div>
+  <p class="lede">A new site for RASA, built around one idea: everything RASA makes lives in a single world. Seven directions show how that world can look, move and tell the story. Each one opens in its own window.</p>
+  <div class="row"><a class="btn w" href="#versions">See the directions ↓</a></div>
 </header>
 
 <section class="concept" aria-labelledby="c-h">
@@ -162,43 +162,38 @@ footer { padding: 8vh var(--gut) 6vh; border-top: 1px solid var(--line); display
 
 <section class="versions" id="versions" aria-labelledby="v-h">
   <div class="vhead">
-    <div><p class="k">Ten versions</p><h2 id="v-h">The sites</h2></div>
-    <p>Each window plays the version's key screens. "Live" loads the real page inside the mockup, and "Open in window" opens it full size in its own window.</p>
+    <div><p class="k">Seven directions</p><h2 id="v-h">The sites</h2></div>
+    <p>Each window plays the site's key screens. "Live" loads the real page inside the mockup, and "Open in window" opens it full size in its own window.</p>
   </div>
   <div class="grid" data-grid></div>
 </section>
 
-<footer><span>RASA World concept · photos and video © RASA, loaded from rasaworld.com</span><span>Built 2026-11-12 · <a href="compare.html" target="_blank" rel="noopener">Notes and comparisons</a></span></footer>
+<footer><span>RASA World · a site concept</span><span>Photos and video © RASA</span></footer>
 
 <script>
-// The versions: file, title, one line, the reference it follows, and the screens its window plays (compare/).
+// The directions, in the order shown: file, name, what it is, and the screens its window plays (compare/).
 const V = [
-  { f: 'v1.html', t: 'First pass', d: 'RASA type, pink and lavender, a milky glass globe. The film closes into the world.', ref: 'Base: Not Human landing', s: ['v1-hero', 'v1-world', 'v1-arms', 'v1-portal'] },
-  { f: 'v2.html', t: 'RASA type, violet', d: 'Centred hero, the three arms as cards, Not Human glass, a single violet accent.', ref: 'Round 1 notes', s: ['v2-hero', 'v2-world', 'v2-arms', 'v2-portal'] },
-  { f: 'v3.html', t: 'Not Human look', d: 'Not Human type and cards, with RASA violet. Fuller arm cards, sharp HD gallery.', ref: 'Round 2 notes', s: ['r2-v3-hero', 'r2-v3-arms', 'v3-world', 'v3-portal'] },
-  { f: 'v4.html', t: 'Planet of light', d: 'A world made of 14,000 points, with RASA\'s cities, arcs between them and a spiral galaxy.', ref: 'A different world', s: ['r2-v4-world', 'r2-v4-arms', 'r2-v4-close'] },
-  { f: 'v5.html', t: 'Improvements', d: 'Tabulah drawn as an interface, a 3D ring gallery that stays sharp, grain on the film.', ref: 'Round 2 improvements', s: ['r2-v5-hero', 'r2-v5-tabulah', 'r2-v5-gallery'] },
-  { f: 'v6.html', t: 'Holographic', d: 'v5 with an iridescent accent and a rainbow rim on the glass world.', ref: 'Round 2 improvements', s: ['r2-v6-hero', 'r2-v6-arms', 'r2-v6-tabulah'] },
-  { f: 'v7.html', t: 'Purple and lime', d: 'A cel-shaded line-art planet, orbit rings, the universes as cockpit windows.', ref: 'After secure-the-unknown.cyera.com', s: ['r3-v7-hero', 'r3-v7-world', 'r3-v7-arms', 'r3-v7-windows'] },
-  { f: 'v8.html', t: 'A night field', d: 'A violet grass world the camera travels through, particle shapes that re-form, liquid headings.', ref: 'After emotion-agency.com', s: ['r3-v8-world', 'r3-v8-arms', 'r3-v8-portal', 'r3-v8-close'] },
-  { f: 'v9.html', t: 'Liquid and Swiss', d: 'Headings that melt and set, a smoke cursor, a photo sphere you can drag.', ref: 'After bleibtgleich.dev', s: ['r3-v9-hero', 'r3-v9-arms', 'r3-v9-portal', 'r3-v9-moments'] },
-  { f: 'v10.html', t: 'The explorable universe', d: 'One 3D scene you fly through: the world, its moons, the universes and a gallery of moments.', ref: 'After mesh3d.gallery', s: ['r3-v10-universe', 'r3-v10-atelier', 'r3-v10-portalverse', 'r3-v10-gallery'] },
+  { f: 'v6.html', t: 'Prism', d: 'A glass world that bends the light around it, with an iridescent shimmer on the type, the buttons and its rim. The three arms orbit as moons, each universe opens through a portal, and the moments turn in a ring.', s: ['r2-v6-hero', 'r2-v6-arms', 'r2-v6-tabulah'] },
+  { f: 'v8.html', t: 'Night Garden', d: 'You walk into a night field of violet light. A sculpture of particles re-forms in every chapter: the RASA mark, three orbs for the arms, a globe, a portal, a galaxy. Headings arrive like liquid and settle.', s: ['r3-v8-world', 'r3-v8-arms', 'r3-v8-portal', 'r3-v8-close'] },
+  { f: 'v4.html', t: 'Lightmap', d: 'The world as a planet of light: thousands of points, RASA\'s cities lit up and arcs travelling between them. A map of where RASA has already made moments, with dotted moons and a galaxy at the close.', s: ['r2-v4-world', 'r2-v4-arms', 'r2-v4-close'] },
+  { f: 'v7.html', t: 'Orbit', d: 'A drawn planet in royal purple and lime, with crystals drifting past. Brands launch moments into orbit; each universe is seen through a window, with its results on a console below.', s: ['r3-v7-hero', 'r3-v7-world', 'r3-v7-arms', 'r3-v7-windows'] },
+  { f: 'v9.html', t: 'Liquid', d: 'Type that melts and sets as you scroll, a trail of violet smoke behind the cursor, and a sphere of moments you can turn by hand. Precise, editorial, alive.', s: ['r3-v9-hero', 'r3-v9-arms', 'r3-v9-portal', 'r3-v9-moments'] },
+  { f: 'v5.html', t: 'Halo', d: 'The glass world in RASA violet. Tabulah shown as the live product it is, from guest list to results, and a ring of moments that turns as you scroll and opens every photo.', s: ['r2-v5-hero', 'r2-v5-tabulah', 'r2-v5-gallery'] },
+  { f: 'v2.html', t: 'Origin', d: 'RASA\'s own voice: bold condensed type, one violet, a glass world with three moons. The three arms as cards, the four universes opening one through the next.', s: ['v2-hero', 'v2-world', 'v2-arms', 'v2-portal'] },
 ];
 const base = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '');
 const openWin = (f, i) => window.open(f, 'rasa-' + f.replace('.html', ''), `popup=yes,width=${Math.min(1440, screen.availWidth)},height=${Math.min(900, screen.availHeight)},left=${40 + i * 24},top=${40 + i * 24}`);
 
 const chips = document.querySelector('[data-chips]');
-V.forEach((v, i) => { const a = document.createElement('a'); a.className = 'chip'; a.href = v.f; a.textContent = 'v' + (i + 1); a.title = v.t + ' (opens in its own window)';
-  if (i >= 6) a.dataset.new = ''; a.addEventListener('click', e => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); openWin(v.f, i); }); chips.append(a); });
+V.forEach((v, i) => { const a = document.createElement('a'); a.className = 'chip'; a.href = v.f; a.textContent = v.t; a.title = v.t + ' (opens in its own window)'; a.addEventListener('click', e => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); openWin(v.f, i); }); chips.append(a); });
 document.querySelector('[data-open-all]').addEventListener('click', () => { V.forEach((v, i) => openWin(v.f, i)); });
 
 const grid = document.querySelector('[data-grid]');
 V.forEach((v, i) => {
   const el = document.createElement('article'); el.className = 'v';
-  el.innerHTML = `<div class="win"><div class="bar"><i></i><i></i><i></i><span class="url">rasaworld.com · ${v.f.replace('.html', '')}</span></div>
+  el.innerHTML = `<div class="win"><div class="bar"><i></i><i></i><i></i><span class="url">rasaworld.com · ${v.t.toLowerCase()}</span></div>
     <div class="screen">${v.s.map(s => `<img src="compare/${s}.jpg" alt="${v.t}: a screen" loading="lazy" onerror="this.remove()">`).join('')}<span class="live-tag">Live</span><div class="dots">${v.s.map(() => '<b></b>').join('')}</div></div></div>
-    <div class="meta"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${v.t}</h3><p>${v.d}</p><span class="ref">${v.ref}</span>
-      <div class="acts"><button class="btn w" type="button" data-open>Open in window ↗</button><button class="btn g" type="button" data-live>Live</button><a class="link" href="${v.f}" target="_blank" rel="noopener">${base}${v.f}</a></div></div>`;
+    <div class="meta"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${v.t}</h3><p>${v.d}</p>      <div class="acts"><button class="btn w" type="button" data-open>Open in window ↗</button><button class="btn g" type="button" data-live>Live</button><a class="link" href="${v.f}" target="_blank" rel="noopener">${base}${v.f}</a></div></div>`;
   grid.append(el);
   el.querySelector('[data-open]').addEventListener('click', () => openWin(v.f, i));
   // the window plays its screens in turn; "Live" swaps them for the real page, scaled to fit
