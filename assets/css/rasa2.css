@@ -417,3 +417,7 @@ html:not(.js) .acard { width: auto; }
 .lb button { position: absolute; width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .1); color: var(--cream); font-size: 20px; cursor: pointer; transition: background .2s ease; }
 .lb button:hover { background: rgba(255, 255, 255, .2); }
 .lb-x { top: 20px; right: 20px; } .lb-p { left: 20px; top: 50%; transform: translateY(-50%); } .lb-n { right: 20px; top: 50%; transform: translateY(-50%); }
+
+/* 2026-11-13: the hero lines hide their overflow (the words rise into place), which clipped descenders such as the g in
+   "legendary"; each line now has room below, given back with a negative margin so the spacing doesn't change */
+.hero-t .ln { padding-bottom: .16em; margin-bottom: -.16em; }

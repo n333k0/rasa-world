@@ -39,7 +39,7 @@ function onHeader() {
 const defs = $('.defs defs'), SVGNS = 'http://www.w3.org/2000/svg';
 const goos = $$('.goo').map((el, i) => {
   const f = document.createElementNS(SVGNS, 'filter');
-  f.setAttribute('id', 'goo-' + i); f.setAttribute('x', '-10%'); f.setAttribute('y', '-30%'); f.setAttribute('width', '120%'); f.setAttribute('height', '160%'); f.setAttribute('filterUnits', 'objectBoundingBox');
+  f.setAttribute('id', 'goo-' + i); f.setAttribute('x', '-20%'); f.setAttribute('y', '-60%'); f.setAttribute('width', '140%'); f.setAttribute('height', '220%'); f.setAttribute('filterUnits', 'objectBoundingBox');
   f.setAttribute('color-interpolation-filters', 'sRGB');
   const b = document.createElementNS(SVGNS, 'feGaussianBlur'); b.setAttribute('in', 'SourceGraphic'); b.setAttribute('stdDeviation', '0'); b.setAttribute('result', 'b');
   const m = document.createElementNS(SVGNS, 'feColorMatrix'); m.setAttribute('in', 'b'); m.setAttribute('mode', 'matrix'); m.setAttribute('values', '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9');

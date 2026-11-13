@@ -47,7 +47,7 @@
   const track = document.querySelector('[data-logos]');
   if (track) for (let k = 0; k < 2; k++) {                    // two copies so the marquee loops without a seam
     const set = el('div', 'logos-set'); if (k) set.setAttribute('aria-hidden', 'true');
-    LOGOS.forEach(([src, alt]) => { const i = el('img'); i.src = R + src; i.alt = k ? '' : alt; i.loading = 'lazy'; i.decoding = 'async'; set.append(i); });
+    LOGOS.forEach(([src, alt]) => { const i = el('img'); i.src = R + src; i.alt = k ? '' : alt; i.loading = 'eager'; i.decoding = 'async'; if (!k) i.fetchPriority = 'high'; set.append(i); });
     track.append(set);
   }
 
