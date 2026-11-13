@@ -1,0 +1,4 @@
+/* RASA World concept v4 (2026-11-12): v3 plus a smaller footer mark. The world itself is world4.js. */
+.foot-logo { width: clamp(56px, 4.6vw, 76px); }
+/* the planet reads better with a little less room glare on the "after" line */
+.after-t { text-shadow: 0 2px 30px rgba(9, 9, 11, .8); }

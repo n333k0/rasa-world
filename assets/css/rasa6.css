@@ -1,0 +1,26 @@
+/* RASA World concept v6 (2026-11-12): v5 with a holographic accent instead of a flat violet (owner: "use a different accent
+   colour or use that kind of halo rainbow effect more"). The accent is a thin-film rainbow that drifts slowly; the glass
+   world gets the same rainbow on its rim (world2.js, html.v6). */
+:root { --holo: linear-gradient(100deg, #b49cff 0%, #8fd3ff 22%, #c9f7e4 38%, #ffd6a8 55%, #ff9fd8 72%, #b49cff 100%); --acc: #c3b2ff; }
+@keyframes holo { to { background-position: 200% 50%; } }
+.acc, .hero-t .acc, .tabulah .h2 .acc, .acard-stat b, .tu-big b {
+  background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: holo 9s linear infinite; }
+/* buttons: white pill with a rainbow rim */
+.cta { position: relative; background: var(--cream); }
+.cta::before { content: ''; position: absolute; inset: -2px; border-radius: inherit; z-index: -1; background: var(--holo); background-size: 200% 100%; animation: holo 6s linear infinite; filter: blur(5px); opacity: .85; }
+.pill-cta { background: var(--holo); background-size: 200% 100%; animation: holo 9s linear infinite; color: #0b0912; }
+/* the events tab */
+.ticker { background: var(--holo); background-size: 200% 100%; animation: holo 14s linear infinite; }
+/* cards: the active one gets a rainbow edge */
+.acard.on .acard-in { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18); }
+.acard.on .acard-in::after { content: ''; position: absolute; inset: 0; padding: 1px; background: var(--holo); background-size: 200% 100%; animation: holo 8s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; z-index: 3; }
+.acard-art .trace { stroke: url(#holoStroke); stroke: #c9f7e4; }
+.dot, .tu-dot { background: conic-gradient(#b49cff, #8fd3ff, #c9f7e4, #ffd6a8, #ff9fd8, #b49cff); box-shadow: 0 0 12px rgba(201, 247, 228, .6); }
+.tu-bars i { background: linear-gradient(180deg, #8fd3ff, #b49cff 50%, rgba(255, 159, 216, .25)); }
+.num:nth-child(odd) .num-v, .w-n, .w-dates b { background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: holo 10s linear infinite; }
+.gal-card:hover { box-shadow: inset 0 0 0 1px rgba(201, 247, 228, .7); }
+/* the footer mark keeps v4's size; the line under it shimmers */
+.foot { border-top: 0; }
+.foot::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--holo); background-size: 200% 100%; animation: holo 12s linear infinite; opacity: .7; }
+@media (prefers-reduced-motion: reduce) { .acc, .cta::before, .pill-cta, .ticker, .acard-in::after { animation: none !important; } }

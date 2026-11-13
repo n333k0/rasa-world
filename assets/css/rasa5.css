@@ -1,0 +1,56 @@
+/* RASA World concept v5 (2026-11-12): v3 + v4's small footer mark + the improvements round. */
+
+/* the film: a fine moving grain over the video */
+.film::after { content: ''; position: absolute; inset: -20%; pointer-events: none; opacity: .22; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: filmgrain .9s steps(6) infinite; }
+@keyframes filmgrain { 0% { transform: translate(0, 0); } 20% { transform: translate(-4%, 3%); } 40% { transform: translate(3%, -2%); } 60% { transform: translate(-2%, -4%); } 80% { transform: translate(4%, 2%); } 100% { transform: translate(0, 0); } }
+.film-v { filter: contrast(1.06) saturate(1.05); }
+
+/* Tabulah: its own interface instead of the phones photo */
+.tab-ui { margin: 0; position: relative; display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: auto auto; gap: 14px; }
+.tu-card { position: relative; padding: 20px; background: rgba(14, 12, 22, .5); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.tu-list { grid-row: 1 / span 2; display: flex; flex-direction: column; }
+.tu-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; font: 400 .7rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--mute); }
+.tu-head b { font: 400 1rem/1 var(--display); letter-spacing: -.02em; text-transform: none; color: var(--cream); }
+.tu-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 10px var(--acc-2); }
+.tu-dot.live { animation: livepulse 1.4s ease-in-out infinite; }
+@keyframes livepulse { 50% { opacity: .3; } }
+.tu-rows { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 8px; }
+.tu-rows li { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 10px; padding: 9px 10px; background: rgba(255, 255, 255, .03); }
+.tu-rows i { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, rgba(180, 156, 255, .55), rgba(143, 107, 255, .15)); }
+.tu-l { height: 7px; border-radius: 4px; background: rgba(255, 255, 255, .16); width: 78%; }
+.tu-l.s { width: 54%; }
+.tu-rows em { font: 400 .6rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; font-style: normal; color: var(--mute); padding: 5px 8px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14); }
+.tu-rows em.ok { color: var(--acc); box-shadow: inset 0 0 0 1px rgba(180, 156, 255, .4); }
+.tu-rows em.vip { color: var(--ink); background: var(--acc); box-shadow: none; }
+.tu-big { margin: auto 0 0; display: grid; gap: 4px; }
+.tu-big b { font: 200 clamp(2.6rem, 4.4vw, 4.4rem)/1 var(--display); letter-spacing: -.06em; color: var(--acc); }
+.tu-big span { font: 400 .7rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--mute); }
+.tu-bars { height: 120px; display: flex; align-items: flex-end; gap: 6px; }
+.tu-bars i { flex: 1; height: calc(var(--h) * 100%); background: linear-gradient(180deg, var(--acc), rgba(143, 107, 255, .25)); transform-origin: bottom; animation: barin 1.2s var(--ease) both; }
+.tu-bars i:nth-child(n) { animation-delay: calc(var(--h) * .3s); }
+@keyframes barin { from { transform: scaleY(.1); } }
+.tu-kpis { display: grid; gap: 12px; }
+.tu-kpis p { margin: 0; display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 12px; font: 400 .72rem/1.35 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--mute); }
+.tu-kpis b { font: 200 2.4rem/1 var(--display); letter-spacing: -.05em; color: var(--cream); }
+.tab-ui figcaption { grid-column: 1 / -1; font: 400 .62rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: rgba(243, 242, 247, .4); }
+/* the copy gets the accent too */
+.tabulah .h2 .acc { color: var(--acc); }
+@media (max-width: 899px) { .tab-ui { grid-template-columns: 1fr; } .tu-list { grid-row: auto; } }
+
+/* the ring of moments */
+.gal { position: relative; height: 320vh; }
+.gal-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.gal-copy { position: absolute; top: calc(96px + 2vh); left: 0; right: 0; text-align: center; z-index: 2; pointer-events: none; }
+.gal-copy .eyebrow { justify-content: center; }
+.gal-copy .h2 { font-size: clamp(2.4rem, 4.6vw, 5.4rem); }
+.gal-copy .mo-d { margin: 1rem auto 0; max-width: 34rem; }
+.gal-stage { position: absolute; left: 0; right: 0; top: 66%; height: 0; perspective: 1600px; perspective-origin: 50% -20%; }
+.gal-ring { position: absolute; left: 50%; top: 0; width: 0; height: 0; transform-style: preserve-3d; transform: translateZ(calc(var(--R, 600px) * -1)) rotateX(-7deg); }
+.gal-card { position: absolute; left: 0; top: 0; margin: calc(var(--w) * -.6667) 0 0 calc(var(--w) / -2); --w: clamp(150px, 15vw, 260px); width: var(--w); aspect-ratio: 3 / 4; overflow: hidden; backface-visibility: hidden; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); transition: box-shadow .3s ease; }
+.gal-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.gal-card:hover img { transform: scale(1.06); }
+.gal-card:hover { box-shadow: inset 0 0 0 1px rgba(180, 156, 255, .6); }
+.gal-card figcaption { position: absolute; left: 10px; bottom: 9px; font: 400 .58rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(0, 0, 0, .7); }
+@media (max-width: 720px) { .gal-stage { top: 62%; } .gal-copy .mo-d { display: none; } }
