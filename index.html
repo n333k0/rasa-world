@@ -80,20 +80,27 @@ header.hero { min-height: 92vh; display: grid; align-content: center; padding: 1
 .v { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform 1s var(--ease); }
 .v.in { opacity: 1; transform: none; }
 html:not(.js) .v { opacity: 1; transform: none; }
-.win { position: relative; border-radius: 14px; overflow: hidden; background: #111016; box-shadow: 0 0 0 1px rgba(255, 255, 255, .1), 0 40px 80px -30px rgba(0, 0, 0, .8), 0 0 60px -20px rgba(143, 107, 255, .25); transform: perspective(1600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s var(--ease); }
-.bar { height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 12px; background: #19171f; border-bottom: 1px solid rgba(255, 255, 255, .06); }
-.bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3742; }
-.bar i:nth-child(1) { background: #ff5f57; } .bar i:nth-child(2) { background: #febc2e; } .bar i:nth-child(3) { background: #28c840; }
-.url { margin-left: 10px; flex: 1; height: 22px; border-radius: 6px; background: rgba(255, 255, 255, .06); display: flex; align-items: center; padding: 0 10px; font: 400 .66rem/1 var(--mono); color: var(--dim); white-space: nowrap; overflow: hidden; }
-.screen { position: relative; aspect-ratio: 680 / 365; overflow: hidden; background: #0c0b10; }
-.screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 1.1s ease, transform 6s linear; }
-.screen img.on { opacity: 1; transform: scale(1); }
-.screen iframe { position: absolute; left: 0; top: 0; width: 1440px; height: 773px; border: 0; transform-origin: 0 0; background: #09090b; }
-.live-tag { position: absolute; z-index: 3; top: 10px; right: 10px; padding: 6px 9px; border-radius: 999px; background: rgba(9, 9, 11, .7); font: 400 .6rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--acc); display: none; }
+/* each site plays as a video of the page being scrolled, on a dark laptop in a dark, lit scene (owner, 2026-11-13: no zoom,
+   nothing cropped). The screen is 16:10, the same as the recordings, so the whole page width always shows. */
+.scene { position: relative; aspect-ratio: 16 / 11.2; border-radius: 18px; overflow: hidden; display: grid; place-items: center;
+  background: radial-gradient(70% 55% at 50% 38%, rgba(143, 107, 255, .2), transparent 70%), radial-gradient(90% 40% at 50% 100%, rgba(60, 40, 120, .35), transparent 70%), linear-gradient(180deg, #0d0b14 0%, #08070c 62%, #0b0a10 62.2%, #121019 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06); }
+.scene::before { content: ''; position: absolute; left: 0; right: 0; top: 62%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .08), transparent); }
+.scene::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .08; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.laptop { position: relative; width: 78%; margin-top: -2%; transform: perspective(1800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .8s var(--ease); }
+.lid { position: relative; padding: 2.1% 2.1% 2.6%; border-radius: 3.2% 3.2% .8% .8% / 5% 5% 1.2% 1.2%; background: linear-gradient(180deg, #1b1a20, #0e0d12); box-shadow: 0 0 0 1px rgba(255, 255, 255, .09), inset 0 0 0 1px rgba(0, 0, 0, .6), 0 30px 60px -20px rgba(0, 0, 0, .9); }
+.lid::before { content: ''; position: absolute; top: .9%; left: 50%; width: .9%; aspect-ratio: 1; border-radius: 50%; transform: translateX(-50%); background: radial-gradient(circle at 40% 40%, #3a3f55, #0a0a0e 70%); }
+.screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #09090b; border-radius: .4%; }
+.screen video, .screen .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.screen::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255, 255, 255, .07) 0%, transparent 32%, transparent 70%, rgba(255, 255, 255, .025)); }
+.screen iframe { position: absolute; left: 0; top: 0; width: 1440px; height: 900px; border: 0; transform-origin: 0 0; background: #09090b; z-index: 2; }
+.base { position: relative; width: 116%; margin-left: -8%; height: 0; padding-bottom: 3.1%; border-radius: 0 0 14% 14% / 0 0 100% 100%;
+  background: linear-gradient(180deg, #2a2930 0%, #17161c 38%, #0b0a0e 100%); box-shadow: 0 1px 0 rgba(255, 255, 255, .12) inset, 0 26px 40px -12px rgba(0, 0, 0, .9); }
+.base::before { content: ''; position: absolute; left: 41%; right: 41%; top: 0; height: 34%; border-radius: 0 0 10px 10px; background: linear-gradient(180deg, #0c0b0f, #1d1c22); }
+.glow { position: absolute; left: 10%; right: 10%; bottom: 13%; height: 16%; border-radius: 50%; background: radial-gradient(closest-side, rgba(150, 120, 255, .28), transparent); filter: blur(10px); pointer-events: none; }
+.live-tag { position: absolute; z-index: 3; top: 8px; right: 8px; padding: 6px 9px; border-radius: 999px; background: rgba(9, 9, 11, .75); font: 400 .6rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--acc); display: none; }
 .v.live .live-tag { display: block; }
-.dots { position: absolute; z-index: 3; left: 12px; bottom: 10px; display: flex; gap: 4px; }
-.dots b { width: 16px; height: 2px; background: rgba(255, 255, 255, .25); }
-.dots b.on { background: var(--cream); }
 .meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; margin-top: 18px; align-items: baseline; }
 .meta .n { font: 200 3rem/1 var(--display); letter-spacing: -.06em; color: var(--acc); grid-row: 1 / span 2; }
 .meta h3 { margin: 0; font: 300 1.5rem/1.15 var(--display); letter-spacing: -.03em; }
@@ -163,7 +170,7 @@ footer { padding: 8vh var(--gut) 6vh; border-top: 1px solid var(--line); display
 <section class="versions" id="versions" aria-labelledby="v-h">
   <div class="vhead">
     <div><p class="k">Seven directions</p><h2 id="v-h">The sites</h2></div>
-    <p>Each window plays the site's key screens. "Live" loads the real page inside the mockup, and "Open in window" opens it full size in its own window.</p>
+    <p>Each laptop plays a recording of the site being scrolled. "Live" loads the real page on its screen, and "Open in window" opens it full size in its own window.</p>
   </div>
   <div class="grid" data-grid></div>
 </section>
@@ -191,29 +198,26 @@ document.querySelector('[data-open-all]').addEventListener('click', () => { V.fo
 const grid = document.querySelector('[data-grid]');
 V.forEach((v, i) => {
   const el = document.createElement('article'); el.className = 'v';
-  el.innerHTML = `<div class="win"><div class="bar"><i></i><i></i><i></i><span class="url">rasaworld.com · ${v.t.toLowerCase()}</span></div>
-    <div class="screen">${v.s.map(s => `<img src="compare/${s}.jpg" alt="${v.t}: a screen" loading="lazy" onerror="this.remove()">`).join('')}<span class="live-tag">Live</span><div class="dots">${v.s.map(() => '<b></b>').join('')}</div></div></div>
+  const slug = v.t.toLowerCase().replace(/\s+/g, '-');
+  el.innerHTML = `<div class="scene"><span class="glow"></span><div class="laptop"><div class="lid"><div class="screen">
+      <video muted loop playsinline preload="none" poster="assets/video/${slug}.jpg" aria-label="${v.t}, a recording of the page being scrolled"><source src="assets/video/${slug}.mp4" type="video/mp4"></video>
+      <span class="live-tag">Live</span></div></div><div class="base"></div></div></div>
     <div class="meta"><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${v.t}</h3><p>${v.d}</p>      <div class="acts"><button class="btn w" type="button" data-open>Open in window ↗</button><button class="btn g" type="button" data-live>Live</button><a class="link" href="${v.f}" target="_blank" rel="noopener">${base}${v.f}</a></div></div>`;
   grid.append(el);
   el.querySelector('[data-open]').addEventListener('click', () => openWin(v.f, i));
-  // the window plays its screens in turn; "Live" swaps them for the real page, scaled to fit
-  let k = 0, timer = null;
-  const show = () => { const imgs = [...el.querySelectorAll('.screen img')], dots = [...el.querySelectorAll('.dots b')]; if (!imgs.length) return; k %= imgs.length; imgs.forEach((im, j) => im.classList.toggle('on', j === k)); dots.forEach((d, j) => d.classList.toggle('on', j === k)); k++; };
-  const play = () => { if (!timer) { show(); timer = setInterval(show, 2600); } }, stop = () => { clearInterval(timer); timer = null; };
-  const scr = el.querySelector('.screen');
-  el.querySelector('[data-live]').addEventListener('click', e => {
-    const b = e.currentTarget;
-    if (el.classList.toggle('live')) { stop(); const f = document.createElement('iframe'); f.src = v.f; f.title = v.t + ', live'; f.loading = 'lazy'; scr.append(f); fit(); b.textContent = 'Screens'; }
-    else { scr.querySelector('iframe')?.remove(); b.textContent = 'Live'; play(); }
-  });
+  // the laptop plays its recording while it is on screen; "Live" swaps it for the real page, scaled to the screen
+  const scr = el.querySelector('.screen'), vid = el.querySelector('video');
   const fit = () => { const f = scr.querySelector('iframe'); if (f) f.style.transform = `scale(${scr.clientWidth / 1440})`; };
   addEventListener('resize', fit);
-  // tilt toward the pointer
-  const w = el.querySelector('.win');
-  w.addEventListener('pointermove', e => { const r = w.getBoundingClientRect(); w.style.setProperty('--ry', ((e.clientX - r.left) / r.width - .5) * 6 + 'deg'); w.style.setProperty('--rx', (.5 - (e.clientY - r.top) / r.height) * 5 + 'deg'); });
-  w.addEventListener('pointerleave', () => { w.style.setProperty('--ry', '0deg'); w.style.setProperty('--rx', '0deg'); });
-  new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { el.classList.add('in'); if (!el.classList.contains('live')) play(); } else stop(); }), { threshold: .15 }).observe(el);
-  setTimeout(show, 0);
+  el.querySelector('[data-live]').addEventListener('click', e => {
+    const b = e.currentTarget;
+    if (el.classList.toggle('live')) { vid.pause(); const f = document.createElement('iframe'); f.src = v.f; f.title = v.t + ', live'; scr.append(f); fit(); b.textContent = 'Video'; }
+    else { scr.querySelector('iframe')?.remove(); b.textContent = 'Live'; vid.play().catch(() => {}); }
+  });
+  const lap = el.querySelector('.laptop');
+  el.querySelector('.scene').addEventListener('pointermove', e => { const r = lap.getBoundingClientRect(); lap.style.setProperty('--ry', ((e.clientX - r.left) / r.width - .5) * 5 + 'deg'); lap.style.setProperty('--rx', (.5 - (e.clientY - r.top) / r.height) * 3 + 'deg'); });
+  el.querySelector('.scene').addEventListener('pointerleave', () => { lap.style.setProperty('--ry', '0deg'); lap.style.setProperty('--rx', '0deg'); });
+  new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { el.classList.add('in'); if (!el.classList.contains('live')) vid.play().catch(() => {}); } else vid.pause(); }), { threshold: .25 }).observe(el);
 });
 </script>
 </body>
