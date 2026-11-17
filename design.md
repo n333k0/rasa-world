@@ -104,3 +104,22 @@ Assets carry `?r=3` so local previews don't serve stale files.
   - Drag to look around, click a body to fly to it, and a tick ruler for navigation.
   - Titles build letter by letter, and particle numerals sit behind them.
   - The gallery assembles each photo from tiles.
+
+## Round 4 (2026-11-17): the client chose Prism; `site.html`
+The client sent a copy round ("Website Copy.docx"; text in `docs/client-copy-r1-2026-11-17.txt`). It goes on Prism, kept as its own page, `site.html` (`site.css`, `burst.js`). v6 is unchanged.
+
+- **Hero**
+  - The headline is "The ecosystem for the future of live experiences.", with the "Bringing people together…" line as the subhead.
+  - "Start your event brief" is removed everywhere. One button, "Enter RASA World", remains.
+  - The logos are bigger and labelled "Partnering with the world's most recognized brands".
+  - The welcome line reads "Welcome to RASA World".
+- **Ecosystem:** "Three arms. One ecosystem." uses Origin's (v2) card layout, with the large moving drawing stroked in Prism's rainbow. The order is Creates, Atelier, Tabulah, with the client's copy.
+- **What we do / We own the outcome:** cut.
+- **RASA by the numbers:** five figures (200+, 12+, 137K+, 1B+, 1M+).
+- **Live experience IPs:** a new intro, and the client's copy and metrics for all four universes.
+- **Tabulah:** the new copy, three figures (130K, 200+, 40%) and a "Meet Ophelia" link.
+- **The bigger picture:** "Culture-defining live experiences". The photo captions are gone, in the ring and in the lightbox.
+- **Close (Atelier by RASA):** "Iconic events for the world's most memorable brands", with the client's subhead.
+- **Menu:** /06 News, which links to the footer's News column for now.
+- **Starburst:** v8's particle sculpture in Prism's rainbow (`burst.js`). It shows only where the glass world rests: the RASA mark at the numbers, a data cube at Tabulah and a galaxy at the work list.
+- **Hub:** `index.html` now opens with an "In progress · the site" section that plays `assets/video/site.mp4` on a laptop, with a Live view, and adds a "The site" chip to the menu.

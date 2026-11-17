@@ -1,0 +1,59 @@
+/* RASA World, the client site (2026-11-17): Prism (v6) with the client's copy round. Loaded after rasa2–rasa6. */
+
+/* the hero: the headline on two lines, a subhead under it, one button, bigger logos (client: "make brand logos bigger") */
+.site .hero-t { font-size: clamp(2.4rem, min(5.6vw, 9.6vh), 8rem); }
+.hero-sub { margin: clamp(18px, 2.6vh, 28px) auto 0; max-width: 40rem; font: 300 clamp(1.02rem, 1.25vw, 1.3rem)/1.45 var(--display); letter-spacing: -.01em; color: rgba(243, 242, 247, .78); opacity: 0; animation: fadeUp 1s var(--ease) .35s forwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.site .hero .hero-ctas { justify-content: center; }
+.site .logos { width: min(100%, 64rem); margin-top: clamp(40px, 6vh, 72px); }
+.site .logos-set img { height: clamp(24px, 2.3vw, 40px); max-width: 160px; opacity: .82; }
+.site .logos-set { gap: clamp(40px, 4.4vw, 76px); padding-right: clamp(40px, 4.4vw, 76px); }
+.site .logos-row { -webkit-mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+@media (max-width: 720px) { .site .logos-set img { height: 24px; max-width: 110px; } .hero-sub { font-size: .98rem; } }
+
+/* the ecosystem: Origin's card (title, a large drawing, then the copy) in Prism's type; the drawing in Prism's rainbow */
+.site .acard-in { grid-template-rows: auto 1fr auto; aspect-ratio: 1 / 1.08; }
+.site .acard-art .trace { stroke: url(#holoStroke); stroke-width: 1.6; filter: drop-shadow(0 0 5px rgba(201, 247, 228, .35)); }
+.site .acard-art .g { fill: rgba(255, 255, 255, .16); }
+.site .acard-art .on { fill: #fff; animation: hue 6s linear infinite; }
+.site .acard-art .runner { fill: #c9f7e4; filter: drop-shadow(0 0 8px #8fd3ff) drop-shadow(0 0 14px #ff9fd8); animation: hue 4s linear infinite; }
+@keyframes hue { 0% { fill: #b49cff; } 20% { fill: #8fd3ff; } 40% { fill: #c9f7e4; } 60% { fill: #ffd6a8; } 80% { fill: #ff9fd8; } 100% { fill: #b49cff; } }
+.site .acard-k { color: var(--cream); opacity: .8; }
+.site .acard-d { font-size: .98rem; }
+@media (max-width: 720px) { .site .acard-in { aspect-ratio: auto; height: auto; min-height: min(62vh, 30rem); } .site .acard-d { font-size: .86rem; } }
+
+/* five figures in one row (two then three on a phone) */
+.num-grid.n5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.n5 .num { padding-right: 1.1rem; margin-right: 1.1rem; }
+.n5 .num-v { font-size: clamp(2.6rem, 5.4vw, 7.4rem); }
+@media (max-width: 900px) { .num-grid.n5 { grid-template-columns: 1fr 1fr; } .n5 .num { border-right: 0; margin-right: 0; } .n5 .num:last-child { grid-column: 1 / -1; } }
+
+/* Tabulah's three figures */
+.tab-nums { list-style: none; margin: 0 0 2rem; padding: 1.4rem 0 0; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: clamp(20px, 3vw, 48px); border-top: 1px solid var(--line); }
+.tab-nums li { display: grid; gap: 6px; }
+.tab-nums b { font: 200 clamp(2.2rem, 3.4vw, 3.6rem)/1 var(--display); letter-spacing: -.05em; background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: holo 10s linear infinite; }
+.tab-nums span { font: 400 .66rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--mute); }
+
+/* photos: no captions (client: "remove captions from every photo") */
+.site .gal-card figcaption, .site .lb-cap { display: none; }
+
+/* the close: Atelier's line is longer than v6's, so a size down */
+.site .close-t { font-size: clamp(2.4rem, min(5.2vw, 9.4vh), 6.8rem); white-space: normal; max-width: 13ch; line-height: 1; }
+.site .close-in { max-width: 52rem; }
+
+/* Tabulah's heading is longer now: a size down so it holds three lines */
+.site .tabulah .h2 { font-size: clamp(2.2rem, min(4.2vw, 8vh), 4.6rem); line-height: 1.02; }
+
+/* v8's starburst: a cloud of points on its own canvas, above the room and under the copy */
+.burst { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; pointer-events: none; z-index: 1; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .hero-sub { animation: none; opacity: 1; } .site .acard-art .on, .site .acard-art .runner, .tab-nums b { animation: none; } }
+
+/* the close's buttons sit on the left edge with the copy (rasa2 centres every button row) */
+.site .close .hero-ctas { justify-content: flex-start; }
+
+/* phone: the two-line headline would break badly, so it runs as one paragraph and fades in */
+@media (max-width: 720px) {
+  .site .hero-t { font-size: clamp(2.1rem, 9.6vw, 2.8rem); line-height: 1.02; animation: fadeUp 1s var(--ease) both; }
+  .site .hero-t .ln, .site.js .hero-t .ln > span { display: inline; overflow: visible; transform: none; animation: none; }
+}

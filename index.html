@@ -113,6 +113,20 @@ html:not(.js) .v { opacity: 1; transform: none; }
 
 footer { padding: 8vh var(--gut) 6vh; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--dim); font: 400 .72rem/1.5 var(--mono); }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .hero h1 span > i { transform: none; } }
+/* the site in progress (2026-11-17): the client chose Prism; this is that page with their copy round, featured above the directions */
+.now { padding: 10vh var(--gut) 8vh; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+.now .scene { box-shadow: inset 0 0 0 1px rgba(201, 247, 228, .14); }
+.now .laptop { width: 84%; }
+.now h2 { margin: 0; font: 300 clamp(2.4rem, 4.8vw, 5.2rem)/.98 var(--display); letter-spacing: -.05em; }
+.now .lede { margin: 1.4rem 0 0; color: var(--mute); font-size: 1.02rem; line-height: 1.55; max-width: 32rem; }
+.now .k .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; background: conic-gradient(#b49cff, #8fd3ff, #c9f7e4, #ffd6a8, #ff9fd8, #b49cff); box-shadow: 0 0 10px rgba(201, 247, 228, .7); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.now .done { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 8px; max-width: 32rem; }
+.now .done li { display: grid; grid-template-columns: 1.2rem 1fr; color: var(--mute); font-size: .9rem; line-height: 1.45; }
+.now .done li::before { content: '✓'; color: var(--acc); font-size: .8rem; }
+.now .acts { grid-column: auto; margin-top: 1.8rem; }
+.now .stamp { margin-top: 1.2rem; font: 400 .66rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
+@media (max-width: 899px) { .now { grid-template-columns: 1fr; } }
 </style>
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -129,8 +143,28 @@ footer { padding: 8vh var(--gut) 6vh; border-top: 1px solid var(--line); display
   <p class="k">RASA World · a site concept · 2026</p>
   <h1><span><i>One world.</i></span><span><i class="acc">Every universe.</i></span></h1>
   <p class="lede">A new site for RASA, built around one idea: everything RASA makes lives in a single world. Seven directions show how that world can look, move and tell the story. Each one opens in its own window.</p>
-  <div class="row"><a class="btn w" href="#versions">See the directions ↓</a></div>
+  <div class="row"><a class="btn w" href="#now">See the site ↓</a><a class="btn g" href="#versions">The seven directions</a></div>
 </header>
+
+<!-- the site we are building: Prism, chosen by the client, with their copy round (2026-11-17) -->
+<section class="now v in" id="now" aria-labelledby="now-h">
+  <div class="scene"><span class="glow"></span><div class="laptop"><div class="lid"><div class="screen" data-now-screen>
+    <video muted loop playsinline autoplay preload="metadata" poster="assets/video/site.jpg" aria-label="RASA World, a recording of the page being scrolled"><source src="assets/video/site.mp4" type="video/mp4"></video>
+    <span class="live-tag">Live</span></div></div><div class="base"></div></div></div>
+  <div class="txt">
+    <p class="k"><span class="live-dot" aria-hidden="true"></span>In progress · the site</p>
+    <h2 id="now-h">RASA World, <span class="acc">built on Prism.</span></h2>
+    <p class="lede">RASA chose Prism. This is the site we're building from it, now with RASA's own copy and the best of the other directions: Origin's cards for the three arms and Night Garden's starburst.</p>
+    <ul class="done">
+      <li>New hero: the ecosystem for the future of live experiences</li>
+      <li>Three arms, one ecosystem, drawn in Prism's rainbow</li>
+      <li>RASA by the numbers, live experience IPs and Tabulah, updated</li>
+      <li>Bigger brand logos, News in the menu, no photo captions</li>
+    </ul>
+    <div class="acts"><a class="btn w" href="site.html" target="_blank" rel="noopener">Open the site ↗</a><button class="btn g" type="button" data-now-live>Live</button></div>
+    <p class="stamp">Round 1 of RASA's notes · Nov 17, 2026</p>
+  </div>
+</section>
 
 <section class="concept" aria-labelledby="c-h">
   <div class="txt">
@@ -219,6 +253,18 @@ V.forEach((v, i) => {
   el.querySelector('.scene').addEventListener('pointerleave', () => { lap.style.setProperty('--ry', '0deg'); lap.style.setProperty('--rx', '0deg'); });
   new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { el.classList.add('in'); if (!el.classList.contains('live')) vid.play().catch(() => {}); } else vid.pause(); }), { threshold: .25 }).observe(el);
 });
+// the site in progress: its laptop plays the recording; "Live" loads the real page on the screen
+{
+  const sec = document.querySelector('.now'), scr = sec.querySelector('[data-now-screen]'), vid = scr.querySelector('video'), b = sec.querySelector('[data-now-live]');
+  const fit = () => { const f = scr.querySelector('iframe'); if (f) f.style.transform = `scale(${scr.clientWidth / 1440})`; };
+  addEventListener('resize', fit);
+  b.addEventListener('click', () => {
+    if (sec.classList.toggle('live')) { vid.pause(); const f = document.createElement('iframe'); f.src = 'site.html'; f.title = 'RASA World, live'; scr.append(f); fit(); b.textContent = 'Video'; }
+    else { scr.querySelector('iframe')?.remove(); b.textContent = 'Live'; vid.play().catch(() => {}); }
+  });
+  const chip = document.createElement('a'); chip.className = 'chip'; chip.href = 'site.html'; chip.textContent = 'The site'; chip.dataset.new = ''; chip.target = '_blank'; chip.rel = 'noopener';
+  document.querySelector('[data-chips]').prepend(chip);
+}
 </script>
 </body>
 </html>
