@@ -116,3 +116,8 @@
   .fp-list li { font: 400 .66rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--cream, #f3f2f7); }
 }
 @media (prefers-reduced-motion: reduce) { .fp-pin, .fp-pin::after { animation: none; } .fp-land, .fp-lines line, .fp-pin, .fp-lab { transition: none; } }
+
+/* "Welcome to RASA World" (round 3, owner): the name runs past the glass world on both sides, over it, not inside it */
+.site .after-t { font-size: clamp(3.4rem, min(12.5vw, 20vh), 15rem); line-height: .92; letter-spacing: -.055em; white-space: nowrap; text-shadow: 0 4px 60px rgba(9, 9, 11, .55); }
+.site .hero-after .eyebrow { margin-bottom: clamp(.4rem, 1.4vh, 1rem); }
+@media (max-width: 720px) { .site .after-t { font-size: 19vw; } }

@@ -88,15 +88,23 @@ const CH = [['.hero', -1], ['.eco', -1], ['.numbers', 0], ['.uni-intro', -1], ['
 const S = { x: innerWidth * .8, y: innerHeight * .3, size: 0, fade: 0 }, T = Object.assign({}, S);
 let shape = 1, from = 1, k = 1;
 function chapter() { const mid = innerHeight / 2; for (const c of CH) { const r = c.el.getBoundingClientRect(); if (r.top <= mid && r.bottom > mid) return c; } return CH[0]; }
-const grid = document.querySelector('.num-grid');
+const grid = document.querySelector('.num-grid'); let lastRoom = 0;
+// the mark spans the figures' width, capped so it fits the screen; the room under the grid is sized to hold it, set on load
+// and on resize (not on arrival) so nothing below jumps while scrolling
+function fit() {
+  const W = grid ? grid.getBoundingClientRect().width : innerWidth * .9, H = innerHeight;
+  const size = Math.min(W / 2.4, H * .62 / 1.46), room = Math.round(size * 1.46 + Math.min(H * .16, 140));
+  if (room !== lastRoom && grid) { grid.parentElement.style.paddingBottom = room + 'px'; lastRoom = room; }
+  return { size, room };
+}
+fit(); addEventListener('resize', fit);
 function place(c) {
   T.follow = 0;
   const W = innerWidth, H = innerHeight, m = Math.min(W, H), wide = W >= 900;
   if (c.s === '.numbers') {
-    // anchored to the figures: centred, in the room left under the grid (site.css), so it reads the same at any window size
-    const g = grid ? grid.getBoundingClientRect() : { bottom: H * .6 }, room = Math.min(H * .36, 340);
-    const size = Math.min(W * .62 / 2.4, room * .8 / 1.46);
-    Object.assign(T, { x: W / 2, y: g.bottom + room * .55, size, fade: 1 }); T.follow = 1;
+    // anchored to the figures (round 3, owner: bigger, centred, lined up with the numbers): centred on the grid, in the room under it
+    const g = grid ? grid.getBoundingClientRect() : { left: W * .05, width: W * .9, bottom: H * .6 }, f = fit();
+    Object.assign(T, { x: g.left + g.width / 2, y: g.bottom + f.room / 2, size: f.size, fade: 1 }); T.follow = 1;
   }
   else if (c.s === '.tabulah') Object.assign(T, { x: wide ? W * .88 : W * .84, y: wide ? H * .87 : H * .1, size: wide ? m * .07 : W * .09, fade: .9 });
   else if (c.s === '.work') Object.assign(T, { x: wide ? W * .88 : W * .8, y: H * .55, size: m * .22, fade: .35 });
