@@ -182,7 +182,7 @@ const G = Array.from({ length: GAL }, () => { const r = 1.4 + Math.pow(Math.rand
 
 /* ---------------------------------------------------------------- where the world goes, per section */
 const $ = s => document.querySelector(s);
-const SEC = { hero: $('.hero'), eco: $('.eco'), outcome: $('.outcome'), numbers: $('.numbers'), intro: $('.uni-intro'), portals: $('.portals'),
+const SEC = { hero: $('.hero'), eco: $('.eco'), outcome: $('.outcome'), numbers: $('.numbers'), footprint: $('.footprint'), intro: $('.uni-intro'), portals: $('.portals'),
   tabulah: $('.tabulah'), moments: $('.moments, .gal'), work: $('.work'), news: $('.news-sec'), close: $('.close'), foot: $('.foot') };
 const tags = [...document.querySelectorAll('.moon-tags span')];
 window.RWS = null; const S = { x: innerWidth / 2, y: innerHeight / 2, R: 0, fade: 0, moons: 0, orbit: 1.8, gal: 0, hollow: 0, act: -1, lines: 1 };
@@ -205,7 +205,7 @@ function target(st) {
     Object.assign(T, { x: wide ? W * .84 : W * .88, y: H * .5, R: m * (wide ? .28 : .24), fade: 1, moons: .6, orbit: 1.5 });
     // site.html, phone: the paragraph fills the top of the screen, so the world rests below it, smaller
     if (!wide && root.classList.contains('site')) Object.assign(T, { x: W * .78, y: H * .86, R: m * .2 });
-  } else if (st === 'numbers') {
+  } else if (st === 'numbers' || st === 'footprint') {
     Object.assign(T, { x: wide ? W * .84 : W * .88, y: H * .3, R: 0, fade: 0 });
   } else if (st === 'intro') {
     Object.assign(T, { x: wide ? W * .74 : W * .76, y: wide ? H * .5 : H * .22, R: wide ? m * .2 : W * .16, fade: 1 });
