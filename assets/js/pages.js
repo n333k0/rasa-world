@@ -31,12 +31,5 @@
   const topic = $('[data-form="contact"] select[name="topic"]');
   topic?.addEventListener('change', () => $$('[data-when]').forEach(f => f.classList.toggle('on', f.dataset.when === topic.value)));
 
-  // forms: checked here, then thanked. Sending needs RASA's own inbox or CRM wired in (see docs/client-log.md).
-  $$('form[data-form]').forEach(f => f.addEventListener('submit', e => {
-    e.preventDefault();
-    let ok = true;
-    f.querySelectorAll('[required]').forEach(i => { const bad = !i.value.trim() || (i.type === 'email' && !/^\S+@\S+\.\S+$/.test(i.value)); i.setAttribute('aria-invalid', String(bad)); if (bad) ok = false; });
-    if (!ok) { f.querySelector('[aria-invalid="true"]')?.focus(); return; }
-    f.classList.add('sent');
-  }));
+  // forms: sent to RASA's inbox by forms.js
 })();

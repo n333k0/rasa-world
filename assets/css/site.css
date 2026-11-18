@@ -120,3 +120,26 @@
 .site .after-t { font-size: clamp(3.4rem, min(12.5vw, 20vh), 15rem); line-height: .92; letter-spacing: -.055em; white-space: nowrap; text-shadow: 0 4px 60px rgba(9, 9, 11, .55); }
 .site .hero-after .eyebrow { margin-bottom: clamp(.4rem, 1.4vh, 1rem); }
 @media (max-width: 720px) { .site .after-t { font-size: 19vw; } }
+
+/* phone (round 3, owner: "the cards cover the text"): the three arm cards start under the heading and fit the screen
+   that is left, the drawing giving way first, so the heading and the copy are never covered */
+@media (max-width: 720px) {
+  .site .eco-head { top: 80px; }
+  .site .eco-head .h2 { font-size: clamp(2.1rem, 10vw, 2.6rem); }
+  .site .arms-track { top: 214px; bottom: auto; }
+  .site .acard-in { aspect-ratio: auto; min-height: 0; height: calc(100svh - 214px - 4.5svh); grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px; padding: 20px; }
+  .site .acard-n { font-size: 1.55rem; }
+  .site .acard-art { max-height: none; height: 100%; min-height: 0; }
+  .site .acard-k { font-size: .6rem; }
+  .site .acard-d { font-size: .84rem; line-height: 1.45; }
+  .site .acard-go { padding: 9px 14px; }
+}
+@media (max-width: 720px) and (max-height: 700px) { .site .acard-d { font-size: .8rem; } .site .acard-art { opacity: .8; } }
+
+/* phone: buttons wrap inside the side margins instead of running past them (long labels such as the calendar's) */
+@media (max-width: 720px) {
+  .site main .pill-cta, .site main .cta, .site main .cta-ghost, .site .close .cta, .site .close .cta-ghost { white-space: normal; max-width: 100%; height: auto; min-height: 3rem; padding-top: .8rem; padding-bottom: .8rem; line-height: 1.25; text-align: left; box-sizing: border-box; }
+  .pg-btns > a { max-width: 100%; }
+}
+.news .form-err { margin: 10px 0 0; font-size: .82rem; color: #ff9fd8; }
+.news .form-err a { color: inherit; }

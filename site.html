@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/css/rasa4.css?r=11">
 <link rel="stylesheet" href="assets/css/rasa5.css?r=11">
 <link rel="stylesheet" href="assets/css/rasa6.css?r=11">
-<link rel="stylesheet" href="assets/css/site.css?r=8">
+<link rel="stylesheet" href="assets/css/site.css?r=9">
 <script>document.documentElement.classList.add('js');</script>
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three/three.module.js" } }</script>
 </head>
@@ -346,9 +346,9 @@
   <div class="wrap">
     <div class="foot-top">
       <span class="logo foot-logo" aria-hidden="true"></span>
-      <form class="news" onsubmit="event.preventDefault(); this.classList.add('sent');">
+      <form class="news" data-form="newsletter">
         <label for="nl">Newsletter</label>
-        <div class="news-row"><input id="nl" type="email" placeholder="Your email" required><button type="submit">Opt in</button></div>
+        <div class="news-row"><input id="nl" name="email" type="email" placeholder="Your email" required><button type="submit">Opt in</button></div>
         <p class="news-ok">Thanks. You're on the list.</p>
       </form>
     </div>
@@ -370,8 +370,9 @@
 <script src="assets/js/content.js?r=12"></script>
 <script type="module" src="assets/js/page2.js?r=13"></script>
 <script type="module" src="assets/js/gallery5.js?r=11"></script>
-<script type="module" src="assets/js/world2.js?r=16"></script>
+<script type="module" src="assets/js/world2.js?r=17"></script>
 <script type="module" src="assets/js/burst.js?r=10"></script>
 <script type="module" src="assets/js/footprint.js?r=1"></script>
+<script src="assets/js/forms.js?r=1" defer></script>
 </body>
 </html>
