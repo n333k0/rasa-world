@@ -89,12 +89,15 @@ const S = { x: innerWidth * .8, y: innerHeight * .3, size: 0, fade: 0 }, T = Obj
 let shape = 1, from = 1, k = 1;
 function chapter() { const mid = innerHeight / 2; for (const c of CH) { const r = c.el.getBoundingClientRect(); if (r.top <= mid && r.bottom > mid) return c; } return CH[0]; }
 const grid = document.querySelector('.num-grid'); let lastRoom = 0;
-// the mark spans the figures' width, capped so it fits the screen; the room under the grid is sized to hold it, set on load
-// and on resize (not on arrival) so nothing below jumps while scrolling
+// one screen holds the figures and the mark (round 3, owner: "bigger, centred vertically, aligned to the numbers"): the room
+// under the grid takes the rest of the screen, and the mark is as big as fits in it, never wider than the figures. Set on load
+// and on resize (not on arrival) so nothing below jumps while scrolling.
 function fit() {
-  const W = grid ? grid.getBoundingClientRect().width : innerWidth * .9, H = innerHeight;
-  const size = Math.min(W / 2.4, H * .62 / 1.46), room = Math.round(size * 1.46 + Math.min(H * .16, 140));
-  if (room !== lastRoom && grid) { grid.parentElement.style.paddingBottom = room + 'px'; lastRoom = room; }
+  const H = innerHeight, wrap = grid && grid.parentElement;
+  const gw = grid ? grid.getBoundingClientRect().width : innerWidth * .9;
+  const block = grid ? grid.getBoundingClientRect().bottom - wrap.getBoundingClientRect().top : H * .3;
+  const room = Math.round(Math.max(H - block - 24, 220)), size = Math.min(gw / 2.4, (room - Math.min(H * .1, 90)) / 1.46);
+  if (room !== lastRoom && grid) { wrap.style.paddingBottom = room + 'px'; lastRoom = room; }
   return { size, room };
 }
 fit(); addEventListener('resize', fit);
@@ -136,7 +139,7 @@ function frame(now) {
   for (const key of ['x', 'y', 'size', 'fade']) S[key] = lerp(S[key], T[key], e);
   if (S.size < 1 && T.size) S.size = T.size;                                // appear in place, not grow from a dot
   const tilt = shape === 3 ? -1.05 : -.25;
-  q.setFromAxisAngle(Y, (shape === 0 ? Math.sin(time * .5) * .35 : time * .25) + lnx * .8).premultiply(q2.setFromAxisAngle(X, tilt + lny * .4));
+  q.setFromAxisAngle(Y, (shape === 0 ? Math.sin(time * .5) * .06 : time * .25) + lnx * (shape === 0 ? .15 : .8)).premultiply(q2.setFromAxisAngle(X, (shape === 0 ? 0 : tilt) + lny * (shape === 0 ? .1 : .4)));
   const u = mat.uniforms;
   u.uRot.value.setFromMatrix4(m4.makeRotationFromQuaternion(q));
   u.uFrom.value = from; u.uTo.value = shape; u.uK.value = k;
