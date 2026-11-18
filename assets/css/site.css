@@ -79,3 +79,7 @@
    small labels and figures keep the same rainbow, standing still */
 .site .num-v, .site .w-n, .site .w-dates b, .site .tab-nums b, .site .nw-meta b, .site .acard-stat b, .site .tu-big b { animation: none !important; }
 .site .acard-art .on { animation: none; }
+
+/* the burger's two lines sat ~7px left of the circle's centre (the button's own padding); centre them absolutely (2026-11-18) */
+.site .burger-btn { position: relative; padding: 0; }
+.site .burger { position: absolute; left: 50%; top: 50%; margin: -8px 0 0 -8px; }
