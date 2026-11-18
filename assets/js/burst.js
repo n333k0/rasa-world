@@ -88,9 +88,16 @@ const CH = [['.hero', -1], ['.eco', -1], ['.numbers', 0], ['.uni-intro', -1], ['
 const S = { x: innerWidth * .8, y: innerHeight * .3, size: 0, fade: 0 }, T = Object.assign({}, S);
 let shape = 1, from = 1, k = 1;
 function chapter() { const mid = innerHeight / 2; for (const c of CH) { const r = c.el.getBoundingClientRect(); if (r.top <= mid && r.bottom > mid) return c; } return CH[0]; }
+const grid = document.querySelector('.num-grid');
 function place(c) {
+  T.follow = 0;
   const W = innerWidth, H = innerHeight, m = Math.min(W, H), wide = W >= 900;
-  if (c.s === '.numbers') Object.assign(T, { x: wide ? W * .74 : W * .5, y: wide ? H * .24 : H * .19, size: wide ? m * .16 : W * .19, fade: 1 });
+  if (c.s === '.numbers') {
+    // anchored to the figures: centred, in the room left under the grid (site.css), so it reads the same at any window size
+    const g = grid ? grid.getBoundingClientRect() : { bottom: H * .6 }, room = Math.min(H * .36, 340);
+    const size = Math.min(W * .62 / 2.4, room * .8 / 1.46);
+    Object.assign(T, { x: W / 2, y: g.bottom + room * .55, size, fade: 1 }); T.follow = 1;
+  }
   else if (c.s === '.tabulah') Object.assign(T, { x: wide ? W * .88 : W * .84, y: wide ? H * .87 : H * .1, size: wide ? m * .07 : W * .09, fade: .9 });
   else if (c.s === '.work') Object.assign(T, { x: wide ? W * .88 : W * .8, y: H * .55, size: m * .22, fade: .35 });
   else Object.assign(T, { fade: 0 });
@@ -99,9 +106,9 @@ function place(c) {
 /* ---------------------------------------------------------------- frame */
 const ptr = { x: -1e4, y: -1e4, nx: 0, ny: 0 };
 addEventListener('pointermove', e => { ptr.x = e.clientX; ptr.y = e.clientY; ptr.nx = e.clientX / innerWidth - .5; ptr.ny = e.clientY / innerHeight - .5; }, { passive: true });
-let dpr = 1, last = performance.now(), time = 0, lnx = 0, lny = 0;
+let drewLast = false, dpr = 1, last = performance.now(), time = 0, lnx = 0, lny = 0;
 function size() {
-  const W = innerWidth, H = innerHeight; dpr = Math.min(devicePixelRatio || 1, 1.75);
+  const W = innerWidth, H = innerHeight; dpr = Math.min(devicePixelRatio || 1, 1.5);
   R.setPixelRatio(dpr); R.setSize(W, H, false);
   cam.left = 0; cam.right = W; cam.top = 0; cam.bottom = -H; cam.updateProjectionMatrix();
 }
@@ -117,7 +124,7 @@ function frame(now) {
   // a new chapter with a shape: burst from the last shape into the new one (from the globe the first time)
   if (c.k >= 0 && c.k !== shape) { from = k > .5 ? shape : from; shape = c.k; k = 0; }
   k = Math.min(1, k + dt / (reduced ? .01 : 1.8));
-  const e = 1 - Math.exp(-dt * 4);
+  const e = 1 - Math.exp(-dt * (T.follow ? 14 : 4));             // keeps up with the scroll where it is anchored
   for (const key of ['x', 'y', 'size', 'fade']) S[key] = lerp(S[key], T[key], e);
   if (S.size < 1 && T.size) S.size = T.size;                                // appear in place, not grow from a dot
   const tilt = shape === 3 ? -1.05 : -.25;
@@ -128,6 +135,7 @@ function frame(now) {
   u.uC.value.set(S.x, S.y, 0); u.uSize.value = S.size; u.uFade.value = clamp(S.fade);
   u.uTime.value = time; u.uDpr.value = dpr; u.uPtr.value.set(ptr.x, ptr.y);
   pts.visible = S.fade > .01;
-  R.clear(); if (pts.visible) R.render(scene, cam);
+  if (pts.visible || drewLast) { R.clear(); if (pts.visible) R.render(scene, cam); }
+  drewLast = pts.visible;
 }
 requestAnimationFrame(frame);

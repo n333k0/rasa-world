@@ -196,7 +196,7 @@ function target(st) {
   const W = innerWidth, H = innerHeight, m = Math.min(W, H), wide = W >= 900;
   Object.assign(T, { hollow: 0, act: -1, gal: 0, moons: 0, orbit: 1.8, lines: 1 });
   if (st === 'hero') {
-    const p = RW.hero || 0, D = m * .44, a = seg(p, .52, .66);
+    const p = RW.hero || 0, D = m * (root.classList.contains('site') ? (W < 600 ? .82 : .62) : .44), a = seg(p, .52, .66);
     Object.assign(T, { x: W / 2, y: H / 2, R: D / 2, fade: a, moons: seg(p, .7, .95) });
   } else if (st === 'eco') {
     const R = wide ? m * .17 : Math.min(W * .16, H * .075);
@@ -230,7 +230,8 @@ const moonS = [1, 1, 1];
 const RIG = [{ p: [-4, 3, -5], c: 1.5, s: 5 }, { p: [5, -2, -4], c: 1.1, s: 5 }, { p: [-1.5, 2.2, 4], c: .45, s: 40 }];
 let W = 0, H = 0, dpr = 1, last = performance.now(), time = 0, spin = 0;
 function size() {
-  W = innerWidth; H = innerHeight; dpr = Math.min(devicePixelRatio || 1, 1.75);
+  // the client site caps the glass at 1.5x pixel density: on Retina laptops with built-in graphics this is the biggest saving (2026-11-18)
+  W = innerWidth; H = innerHeight; dpr = Math.min(devicePixelRatio || 1, root.classList.contains('site') ? 1.5 : 1.75);
   roomR.setSize(W, H, false); glassR.setPixelRatio(dpr); glassR.setSize(W, H, false);
   cam.left = 0; cam.right = W; cam.top = 0; cam.bottom = -H; cam.updateProjectionMatrix();
   U.uRes.value.set(W, H);
@@ -308,6 +309,10 @@ function frame(now) {
   bodies.visible = mA > .01 || gA > .01;
 
   roomR.render(roomScene, flatCam);
-  glassR.render(scene, cam);
+  // nothing of the world on screen (numbers, Tabulah, photos, work, news): draw one last empty frame, then stop drawing the glass
+  const drawn = globe.visible || bodies.visible || orbits.some(o => o.visible);
+  if (drawn || glassLive) glassR.render(scene, cam);
+  glassLive = drawn;
 }
+let glassLive = true;
 requestAnimationFrame(frame);

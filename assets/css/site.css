@@ -71,3 +71,11 @@
 .nw-grid a:hover .ar { transform: translate(2px, -2px); opacity: 1; }
 @media (max-width: 1000px) { .nw-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .nw-grid { grid-template-columns: 1fr; } .nw-grid a { min-height: 11rem; } }
+
+/* RASA by the numbers: room under the figures for the particle RASA mark (burst.js centres it there) */
+.site .numbers .wrap { padding-bottom: min(36vh, 340px); }
+
+/* speed (2026-11-18): the drifting rainbow repaints its text on every frame, so it stays on the headlines only;
+   small labels and figures keep the same rainbow, standing still */
+.site .num-v, .site .w-n, .site .w-dates b, .site .tab-nums b, .site .nw-meta b, .site .acard-stat b, .site .tu-big b { animation: none !important; }
+.site .acard-art .on { animation: none; }

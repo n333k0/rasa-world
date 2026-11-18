@@ -131,3 +131,12 @@ The client sent a copy round ("Website Copy.docx"; text in `docs/client-copy-r1-
 - **06 News:** goes to a new "In the press" section (`.news-sec`). It shows six recent articles taken from rasaworld.com/press, and `world2.js` hides the glass world there.
 - **Still open:** the starburst (waiting on Ahmad), the higher-quality showreel (coming from Chloe) and "the map" (to be clarified).
 - **Request log:** every client request is now tracked in `docs/client-log.md`, which moves to Notion once it's connected.
+
+## Round 5b (2026-11-18): circle, particle mark, speed
+- **Welcome circle:** the film closes into a bigger circle on `site.html` (0.62 of the short side, 0.82 on phones, was 0.44), so "RASA World" sits well inside it. `page2.js` uses `heroD()` and `world2.js` uses the same factor, so the two stay matched.
+- **Particle RASA mark:** it is anchored under the figures, centred in their own room (`site.css` pads `.numbers .wrap`), instead of placed as a fraction of the window. It reads the same at every window size.
+- **Speed:**
+  - The glass and the starburst render at most 1.5× pixel density on the site.
+  - The glass stops drawing when nothing of the world is on screen.
+  - The rainbow shimmer stays on headlines only; the small labels and figures keep their colours but no longer animate.
+- **Before hosting:** about 45 photos, the logos and both videos still load from rasaworld.com. They need to be copied into the site, or RASA's next deploy will break them.

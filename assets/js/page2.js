@@ -4,6 +4,8 @@
 // window.RW each frame (hero progress, active arm, portal geometry) for world.js. Every scene has a readable static
 // default in CSS; this file only refines it.
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// the circle the film closes into; the client site (html.site) makes it bigger so "RASA World" sits well inside it (2026-11-18)
+const heroD = () => document.documentElement.classList.contains('site') ? (innerWidth < 600 ? .82 : .62) : .44;
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
 const lerp = (a, b, t) => a + (b - a) * t;
 const seg = (t, a, b) => clamp((t - a) / (b - a));
@@ -51,7 +53,7 @@ matchMedia('(min-width: 1024px)').addEventListener('change', m => m.matches && s
 const hero = $('.hero'), heroPin = $('.hero-pin'), film = $('.film'), filmV = $('.film-v');
 function heroScene() {
   const p = pinP(hero); RW.hero = p;
-  const W = innerWidth, H = innerHeight, D = Math.min(W, H) * .44;
+  const W = innerWidth, H = innerHeight, D = Math.min(W, H) * heroD();
   const c = o4(seg(p, 0, .16));
   setVar(heroPin, '--co', (1 - c).toFixed(3)); setVar(heroPin, '--cy', (-c * 80).toFixed(1) + 'px');
   const k = io(seg(p, .06, .58));
