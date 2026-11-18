@@ -31,17 +31,24 @@
     ['/assets/gallery-8-fIX-X96N.webp', 'Crowd Energy'],
     ['/assets/gallery-venue-C9Y8klu-.webp', 'Cathedral Vibes'],
   ];
+  // every case links to its own page (round 3: pages/case-<slug>.html, built from rasaworld.com's case studies); all 12
   const CASES = [
-    ['Santa Monica Pier, CA', 'Hawkefest 2026', 'A Renaissance takeover of the Santa Monica Pier', '/__l5e/assets-v1/eb0d7f7a-d5ab-4af2-aa88-7bb977730846/hawkefest-card.webp'],
-    ['H. Lorenzo, Los Angeles', 'H. Lorenzo', 'Mowalola × Miss Sixty launch', '/__l5e/assets-v1/bcb95da5-9a0b-455c-b3c2-0acde9cf8035/hlorenzo-mowalola-cover.webp'],
-    ['Mountain View', 'Google', 'Visitor Experience: Endless Summer Festival', '/assets/case-google--RZdNVEq.webp'],
-    ['Los Angeles', 'Portalverse', "L.A. Comic Con's official closing", '/assets/case-portalverse-Bd66J1Ry.webp'],
-    ['Miami', 'Delta', '80 years of service in Miami', '/__l5e/assets-v1/b7ca131a-774d-4bf6-88e0-feae76b0970a/delta-hero-collage.webp'],
-    ['Los Angeles', 'Honey Birdette × Playboy', "'Club Honey'", '/assets/case-honeybirdette-Cv8kaL8w.webp'],
-    ['Los Angeles, CA', 'Rivian', 'During Frieze Los Angeles', '/assets/case-rivian-CJPJIk3o.webp'],
-    ['Los Angeles', 'Aston Martin Galpin', 'A private brand experience', '/assets/astonmartin-3-BaHCbhlY.webp'],
-    ['Six Flags Magic Mountain', 'Thrill City', 'Roller coasters and music, two nights', null],
+    ['Santa Monica Pier, CA', 'Hawkefest 2026', 'A Renaissance takeover of the Santa Monica Pier', '/__l5e/assets-v1/eb0d7f7a-d5ab-4af2-aa88-7bb977730846/hawkefest-card.webp', 'hawkefest-2026'],
+    ['H. Lorenzo, Los Angeles', 'H. Lorenzo', 'Mowalola × Miss Sixty launch', '/__l5e/assets-v1/bcb95da5-9a0b-455c-b3c2-0acde9cf8035/hlorenzo-mowalola-cover.webp', 'hlorenzo-mowalola-miss-sixty'],
+    ['Mountain View', 'Google', 'Visitor Experience: Endless Summer Festival', '/assets/case-google--RZdNVEq.webp', 'google-visitor-experience'],
+    ['Los Angeles', 'Portalverse', "L.A. Comic Con's official closing", '/assets/case-portalverse-Bd66J1Ry.webp', 'portalverse'],
+    ['Miami', 'Delta', '80 years of service in Miami', '/__l5e/assets-v1/b7ca131a-774d-4bf6-88e0-feae76b0970a/delta-hero-collage.webp', 'delta'],
+    ['Los Angeles', 'Honey Birdette × Playboy', "'Club Honey'", '/assets/case-honeybirdette-Cv8kaL8w.webp', 'honey-birdette'],
+    ['Santa Monica Pier', 'Pier Play', 'Day-to-night on the Santa Monica Pier', '/assets/case-pierplay-BB06VCA4.webp', 'pier-play'],
+    ['Six Flags Magic Mountain', 'Thrill City', 'Roller coasters and music, two nights', '/assets/case-sixflags-DLY0lQ8i.webp', 'thrill-city'],
+    ['W Hotel Hollywood', 'LA Fashion Week 2025', 'The official afterparty', '/assets/case-lafw-C8hyXqqN.webp', 'lafw'],
+    ['Nightingale, Los Angeles', 'ClickUp', 'LA Tech Week closing party', '/assets/clickup-3-BnDIYDXu.webp', 'clickup'],
+    ['Los Angeles, CA', 'Rivian', 'During Frieze Los Angeles', '/assets/case-rivian-CJPJIk3o.webp', 'rivian'],
+    ['Six Flags Magic Mountain', 'Aston Martin Galpin', 'A private brand experience', '/assets/astonmartin-3-BaHCbhlY.webp', 'aston-martin'],
   ];
+  const BASE = document.documentElement.classList.contains('inner') ? '' : 'pages/';   // inner pages live in pages/
+  window.RASA_LOGOS = LOGOS.map(([src, alt]) => ({ src: R + src, alt }));
+
   const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
 
   const track = document.querySelector('[data-logos]');
@@ -67,9 +74,12 @@
   });
 
   const list = document.querySelector('[data-cases]');
-  if (list) CASES.forEach(([where, who, what, img], n) => {
+  if (list) CASES.forEach(([where, who, what, img, slug], n) => {
     const li = el('li', 'case');
-    li.innerHTML = `<a href="#work"${img ? ` data-img="${R + img}"` : ''}><span class="c-n">${String(n + 1).padStart(2, '0')}</span><span class="c-where">${where}</span><span class="c-t"><b>${who}</b> <span>${what}</span></span>${img ? `<img class="c-thumb" src="${R + img}" alt="" loading="lazy" decoding="async">` : ''}<svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>`;
+    li.innerHTML = `<a href="${BASE}case-${slug}.html"${img ? ` data-img="${R + img}"` : ''}><span class="c-n">${String(n + 1).padStart(2, '0')}</span><span class="c-where">${where}</span><span class="c-t"><b>${who}</b> <span>${what}</span></span>${img ? `<img class="c-thumb" src="${R + img}" alt="" loading="lazy" decoding="async">` : ''}<svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>`;
     list.append(li);
   });
+
+  // inner pages: a wall of every partner logo where rasaworld.com shows its logo marquee ("Trusted by")
+  document.querySelectorAll('[data-logos-wall]').forEach(w => LOGOS.forEach(([src, alt]) => { const i = el('img'); i.src = R + src; i.alt = alt; i.loading = 'lazy'; w.append(i); }));
 })();
