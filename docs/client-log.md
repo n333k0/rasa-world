@@ -13,3 +13,4 @@ Every client request: what they asked, what we did, and whether it reached them.
 | 7 | 2026-11-18 | Chloe, WhatsApp | Starburst: Ahmad to weigh in | Left as is | Waiting on client (Ahmad) | n/a |
 | 8 | 2026-11-18 | Chloe, WhatsApp | Higher-quality showreel | Waiting for the file | Waiting on client (Chloe) | n/a |
 | 9 | 2026-11-18 | Chloe, WhatsApp | "The one thing we are missing is the map" | Not started: we need to know which map they mean | Question to client | 2026-11-18, asked by Neeko on WhatsApp |
+| 10 | 2026-11-18 | Chloe, WhatsApp | "Updated web design by Friday AM with my text changes + elements"; asks whether she can edit the text herself | Rounds 1–2 are live. Due Friday Nov 20, 9:00 PST (in Google Calendar, reminders 1 day and 3 h before). Text access: not built yet | In progress | Not yet |
