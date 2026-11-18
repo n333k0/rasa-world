@@ -20,7 +20,7 @@ const scene = new THREE.Scene();
 const cam = new THREE.OrthographicCamera(0, 1, 0, -1, -4000, 4000);
 
 /* ---------------------------------------------------------------- shapes: 0 the RASA mark, 1 the globe, 2 the data cube, 3 the galaxy */
-const NP = 9000;
+const NP = innerWidth < 720 ? 12000 : 26000;                           // round 3: denser and finer (was 9k)
 const fib = (i, n) => { const y = 1 - (i + .5) / n * 2, r = Math.sqrt(1 - y * y), t = Math.PI * (3 - Math.sqrt(5)) * i; return [Math.cos(t) * r, y, Math.sin(t) * r]; };
 const SH = Array.from({ length: 4 }, () => new Float32Array(NP * 3));
 for (let i = 0; i < NP; i++) {
@@ -60,23 +60,26 @@ const mat = new THREE.ShaderMaterial({
       vec2 dp = s - uPtr; float pd = length(dp); s += dp / max(pd, 1.) * 40. * exp(-pd * pd / 9000.);
       gl_Position = projectionMatrix * viewMatrix * vec4(s.x, -s.y, p.z * uSize, 1.);
       float depth = clamp(p.z * .5 + .5, 0., 1.);
-      gl_PointSize = uDpr * (1.3 + aRnd.y * 2.4) * (.7 + depth * .7) * clamp(uSize / 220., .6, 1.5);
+      float sp = aRnd.y > .985 ? 2.2 : 1.;                                      // one in seventy is a sparkle
+      gl_PointSize = uDpr * (2.2 + aRnd.y * 1.6) * sp * (.8 + depth * .4) * clamp(uSize / 220., .8, 1.3);
       vCol = mix(holo(aRnd.z + p.x * .25 + p.y * .15 + uTime * .05), vec3(1.), aRnd.w * .3);
-      vA = uFade * (.3 + depth * .7) * (1. + sin(3.14159 * k) * .6);             // a flash while the points fly
+      vA = uFade * (.7 + depth * .5) * (1. + sin(3.14159 * k) * .6) * (.75 + .25 * sin(uTime * 2. + aRnd.w * 60.)); // a slow twinkle             // a flash while the points fly
     }`,
-  fragmentShader: `varying float vA; varying vec3 vCol; void main() { float d = length(gl_PointCoord - .5); if (d > .5) discard; float a = vA * smoothstep(.5, .12, d); gl_FragColor = vec4(vCol * a, a); }`,
+  fragmentShader: `varying float vA; varying vec3 vCol; void main() { float d = length(gl_PointCoord - .5); if (d > .5) discard;
+    float a = vA * (smoothstep(.26, .08, d) + .28 * smoothstep(.5, .2, d));   // sharp core, soft halo
+    gl_FragColor = vec4(mix(vCol, vec3(1.), smoothstep(.15, .0, d) * .5) * a, a); }`,
 });
 const pts = new THREE.Points(geo, mat); pts.frustumCulled = false; scene.add(pts);
 // the RASA mark: sample the logo (same-origin SVG) into points
 {
   const img = new Image(); img.src = 'assets/rasa-logo.svg';
   img.onload = () => {
-    const W = 434, H = 264, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+    const W = 868, H = 528, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
     x.drawImage(img, 0, 0, W, H); const d = x.getImageData(0, 0, W, H).data, on = [];
-    for (let y = 0; y < H; y += 2) for (let X = 0; X < W; X += 2) if (d[(y * W + X) * 4 + 3] > 128) on.push([X, y]);
+    for (let y = 0; y < H; y++) for (let X = 0; X < W; X++) if (d[(y * W + X) * 4 + 3] > 128) on.push([X, y]);
     if (!on.length) return;
     const s = geo.attributes.position;
-    for (let i = 0; i < NP; i++) { const [X, Y] = on[Math.floor(Math.random() * on.length)]; s.setXYZ(i, (X / W - .5) * 2.4 + (Math.random() - .5) * .008, -(Y / H - .5) * 2.4 * H / W, (Math.random() - .5) * .12); }
+    for (let i = 0; i < NP; i++) { const [X, Y] = on[Math.floor(Math.random() * on.length)]; s.setXYZ(i, (X / W - .5) * 2.4 + (Math.random() - .5) * .004, -(Y / H - .5) * 2.4 * H / W, (Math.random() - .5) * .12); }
     s.needsUpdate = true;
   };
 }
@@ -88,26 +91,17 @@ const CH = [['.hero', -1], ['.eco', -1], ['.numbers', 0], ['.uni-intro', -1], ['
 const S = { x: innerWidth * .8, y: innerHeight * .3, size: 0, fade: 0 }, T = Object.assign({}, S);
 let shape = 1, from = 1, k = 1;
 function chapter() { const mid = innerHeight / 2; for (const c of CH) { const r = c.el.getBoundingClientRect(); if (r.top <= mid && r.bottom > mid) return c; } return CH[0]; }
-const grid = document.querySelector('.num-grid'); let lastRoom = 0;
-// one screen holds the figures and the mark (round 3, owner: "bigger, centred vertically, aligned to the numbers"): the room
-// under the grid takes the rest of the screen, and the mark is as big as fits in it, never wider than the figures. Set on load
-// and on resize (not on arrival) so nothing below jumps while scrolling.
-function fit() {
-  const H = innerHeight, wrap = grid && grid.parentElement;
-  const gw = grid ? grid.getBoundingClientRect().width : innerWidth * .9;
-  const block = grid ? grid.getBoundingClientRect().bottom - wrap.getBoundingClientRect().top : H * .3;
-  const room = Math.round(Math.max(H - block - 24, 220)), size = Math.min(gw / 2.4, (room - Math.min(H * .1, 90)) / 1.46);
-  if (room !== lastRoom && grid) { wrap.style.paddingBottom = room + 'px'; lastRoom = room; }
-  return { size, room };
-}
-fit(); addEventListener('resize', fit);
+const grid = document.querySelector('.num-grid'); const head = document.querySelector('.numbers .rule-row');
 function place(c) {
   T.follow = 0;
   const W = innerWidth, H = innerHeight, m = Math.min(W, H), wide = W >= 900;
   if (c.s === '.numbers') {
-    // anchored to the figures (round 3, owner: bigger, centred, lined up with the numbers): centred on the grid, in the room under it
-    const g = grid ? grid.getBoundingClientRect() : { left: W * .05, width: W * .9, bottom: H * .6 }, f = fit();
-    Object.assign(T, { x: g.left + g.width / 2, y: g.bottom + f.room / 2, size: f.size, fade: 1 }); T.follow = 1;
+    // round 3 (owner's sketch): behind the figures, centred on the block from "RASA by the numbers" to the bottom of the grid,
+    // about 44% of the screen wide on a computer and the figures' width on a phone
+    const g = grid ? grid.getBoundingClientRect() : { left: W * .05, width: W * .9, top: H * .4, bottom: H * .6 };
+    const top = head ? head.getBoundingClientRect().top : g.top;
+    const size = wide ? Math.min(W * .44 / 2.4, H * .58 / 1.46) : g.width * .96 / 2.4;
+    Object.assign(T, { x: g.left + g.width / 2, y: (top + g.bottom) / 2, size, fade: wide ? .5 : .45 }); T.follow = 1;
   }
   else if (c.s === '.tabulah') Object.assign(T, { x: wide ? W * .88 : W * .84, y: wide ? H * .87 : H * .1, size: wide ? m * .07 : W * .09, fade: .9 });
   else if (c.s === '.work') Object.assign(T, { x: wide ? W * .88 : W * .8, y: H * .55, size: m * .22, fade: .35 });
@@ -119,7 +113,7 @@ const ptr = { x: -1e4, y: -1e4, nx: 0, ny: 0 };
 addEventListener('pointermove', e => { ptr.x = e.clientX; ptr.y = e.clientY; ptr.nx = e.clientX / innerWidth - .5; ptr.ny = e.clientY / innerHeight - .5; }, { passive: true });
 let drewLast = false, dpr = 1, last = performance.now(), time = 0, lnx = 0, lny = 0;
 function size() {
-  const W = innerWidth, H = innerHeight; dpr = Math.min(devicePixelRatio || 1, 1.5);
+  const W = innerWidth, H = innerHeight; dpr = Math.min(devicePixelRatio || 1, 2);
   R.setPixelRatio(dpr); R.setSize(W, H, false);
   cam.left = 0; cam.right = W; cam.top = 0; cam.bottom = -H; cam.updateProjectionMatrix();
 }

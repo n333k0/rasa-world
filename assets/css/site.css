@@ -72,8 +72,7 @@
 @media (max-width: 1000px) { .nw-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .nw-grid { grid-template-columns: 1fr; } .nw-grid a { min-height: 11rem; } }
 
-/* RASA by the numbers: room under the figures for the particle RASA mark (burst.js centres it there) */
-.site .numbers .wrap { padding-bottom: min(36vh, 340px); }
+/* RASA by the numbers: the particle RASA mark sits behind the figures, centred on them (burst.js), so no room under the grid */
 
 /* speed (2026-11-18): the drifting rainbow repaints its text on every frame, so it stays on the headlines only;
    small labels and figures keep the same rainbow, standing still */
