@@ -57,3 +57,17 @@
   .site .hero-t { font-size: clamp(2.1rem, 9.6vw, 2.8rem); line-height: 1.02; animation: fadeUp 1s var(--ease) both; }
   .site .hero-t .ln, .site.js .hero-t .ln > span { display: inline; overflow: visible; transform: none; animation: none; }
 }
+
+/* 06 News (2026-11-18): the latest press as a grid of cards that open the article */
+.news-sec { position: relative; z-index: 2; padding: 14vh 0 10vh; }
+.nw-grid { list-style: none; margin: clamp(28px, 4vh, 48px) 0 2.4rem; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.nw-grid li { background: #09090b; min-width: 0; }
+.nw-grid a { position: relative; display: grid; grid-template-rows: auto 1fr; gap: 1.6rem; height: 100%; min-height: 15rem; padding: clamp(20px, 2vw, 30px); color: var(--cream); text-decoration: none; transition: background .3s ease; }
+.nw-grid a:hover { background: rgba(255, 255, 255, .035); }
+.nw-meta { display: flex; justify-content: space-between; gap: 12px; font: 400 .66rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--mute); }
+.nw-meta b { font-weight: 400; background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: holo 10s linear infinite; }
+.nw-t { align-self: end; font: 300 clamp(1.15rem, 1.5vw, 1.5rem)/1.22 var(--display); letter-spacing: -.02em; padding-right: 1.4rem; }
+.nw-grid .ar { position: absolute; right: clamp(20px, 2vw, 30px); bottom: clamp(20px, 2vw, 30px); width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.4; opacity: .6; transition: transform .3s ease, opacity .3s ease; }
+.nw-grid a:hover .ar { transform: translate(2px, -2px); opacity: 1; }
+@media (max-width: 1000px) { .nw-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .nw-grid { grid-template-columns: 1fr; } .nw-grid a { min-height: 11rem; } }

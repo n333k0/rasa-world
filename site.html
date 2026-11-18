@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/css/rasa4.css?r=11">
 <link rel="stylesheet" href="assets/css/rasa5.css?r=11">
 <link rel="stylesheet" href="assets/css/rasa6.css?r=11">
-<link rel="stylesheet" href="assets/css/site.css?r=1">
+<link rel="stylesheet" href="assets/css/site.css?r=2">
 <script>document.documentElement.classList.add('js');</script>
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three/three.module.js" } }</script>
 </head>
@@ -51,8 +51,6 @@
 <!-- what's on: a thin line above the header, gone once you scroll -->
 <div class="ticker" role="region" aria-label="Upcoming events">
   <div class="ticker-in">
-    <a href="#monuments"><b>Monuments</b> · San Francisco · Nov 14 <span class="tk-cta">RSVP ↗</span></a>
-    <span class="tk-sep" aria-hidden="true"></span>
     <a href="#monuments"><b>Nights of Wonder</b> · Transamerica Pyramid · Dec 10–27 <span class="tk-cta">Tickets ↗</span></a>
   </div>
 </div>
@@ -69,7 +67,7 @@
     <button class="burger-btn" type="button" aria-expanded="false" aria-controls="m-nav" aria-label="Open menu"><span class="burger"><i></i><i></i></span></button>
     <nav class="m-nav" id="m-nav" aria-label="Menu">
       <a style="--i:0" href="#ecosystem">Ecosystem</a><a style="--i:1" href="#universes">IPs</a><a style="--i:2" href="#tabulah">Technology</a><a style="--i:3" href="#moments">Moments</a><a style="--i:4" href="#work">Work</a><a style="--i:5" href="#news">News</a>
-      <p style="--i:6" class="m-ev">Monuments · San Francisco · Nov 14<br>Nights of Wonder · Transamerica Pyramid · Dec 10–27</p>
+      <p style="--i:6" class="m-ev">Nights of Wonder · Transamerica Pyramid · Dec 10–27</p>
       <a style="--i:7" class="pill-cta" href="#brief">Get in touch <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
     </nav>
   </div>
@@ -153,7 +151,7 @@
     <div class="num-grid n5">
       <div class="num"><p class="num-v" data-count="200" data-suffix="+">200+</p><p class="num-k">Events delivered</p></div>
       <div class="num"><p class="num-v" data-count="12" data-suffix="+">12+</p><p class="num-k">Cities across three regions</p></div>
-      <div class="num"><p class="num-v" data-count="137" data-suffix="K+">137K+</p><p class="num-k">Community members</p></div>
+      <div class="num"><p class="num-v" data-count="130" data-suffix="K+">130K+</p><p class="num-k">Community members</p></div>
       <div class="num"><p class="num-v" data-count="1" data-suffix="B+">1B+</p><p class="num-k">Social reach and impressions</p></div>
       <div class="num"><p class="num-v" data-count="1" data-suffix="M+">1M+</p><p class="num-k">Square feet activated</p></div>
     </div>
@@ -229,7 +227,7 @@
         <li><b>200+</b><span>Events</span></li>
         <li><b>40%</b><span>Workflow automation</span></li>
       </ul>
-      <a class="link" href="#tabulah">Meet Ophelia <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
+      <!-- "Meet Ophelia" link on hold (client, 2026-11-18) -->
     </div>
     <figure class="tab-ui" aria-label="An illustration of Tabulah's event dashboard, with Thrill City's published results">
       <div class="tu-card tu-list">
@@ -283,7 +281,26 @@
   <div class="case-peek" aria-hidden="true"><img alt=""></div>
 </section>
 
-<!-- 09 CLOSE: the world again, now with its galaxy -->
+<!-- 09 NEWS (client, 2026-11-18: "06/News goes to a news section"): RASA's latest press, from rasaworld.com/press -->
+<section class="news-sec" id="news" aria-labelledby="news-h">
+  <div class="wrap">
+    <div class="work-head">
+      <p class="eyebrow">News</p>
+      <h2 id="news-h" class="h2">In the <span class="acc">press.</span></h2>
+    </div>
+    <ul class="nw-grid">
+      <li><a href="https://www.morningstar.com/news/business-wire/20261105470878/rasa-world-debuts-monuments-a-new-global-series-transforming-iconic-landmarks-into-immersive-cultural-experiences" target="_blank" rel="noopener"><span class="nw-meta"><b>Morningstar</b><time datetime="2026-11-05">Nov 5, 2026</time></span><span class="nw-t">RASA World Debuts MONUMENTS, a New Global Series Transforming Iconic Landmarks into Immersive Cultural Experiences</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a></li>
+      <li><a href="https://www.sfchronicle.com/sf/article/transamerica-pyramid-holiday-market-san-francisco-22506434.php" target="_blank" rel="noopener"><span class="nw-meta"><b>San Francisco Chronicle</b><time datetime="2026-11-02">Nov 2, 2026</time></span><span class="nw-t">Transamerica Pyramid holiday market coming to San Francisco</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a></li>
+      <li><a href="https://finance.yahoo.com/media-advertising/articles/rasa-world-reports-triple-digit-150000668.html" target="_blank" rel="noopener"><span class="nw-meta"><b>Yahoo Finance</b><time datetime="2026-06-30">Jun 30, 2026</time></span><span class="nw-t">RASA World Reports Triple-Digit Growth Across Its Pier Play Festival Platform</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a></li>
+      <li><a href="https://www.businesswire.com/news/home/20260616301598/en/FOUR-STRAIGHT-SELL-OUTS-NOW-TWO-DAYS-RASA-WORLDS-PIER-PLAY-DOUBLES-ON-THE-SANTA-MONICA-PIER-THIS-OCTOBER" target="_blank" rel="noopener"><span class="nw-meta"><b>Business Wire</b><time datetime="2026-06-16">Jun 16, 2026</time></span><span class="nw-t">Four Straight Sell-Outs, Now Two Days: RASA World's Pier Play Doubles on the Santa Monica Pier</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a></li>
+      <li><a href="https://rasaworld.com/press/flaunt-six-flags-thrill-city" target="_blank" rel="noopener"><span class="nw-meta"><b>Flaunt</b><time datetime="2025-04-16">Apr 16, 2025</time></span><span class="nw-t">Six Flags Got a Glow-Up—and It's Called THRILL CITY</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a></li>
+      <li><a href="https://rasaworld.com/press/rolling-stone-rasa-la-to-london" target="_blank" rel="noopener"><span class="nw-meta"><b>Rolling Stone UK</b><time datetime="2024-10-15">Oct 15, 2024</time></span><span class="nw-t">RASA Expands Its Experiential Reach From LA to London, Connecting Culture and Community in Iconic Spaces</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a></li>
+    </ul>
+    <a class="cta-ghost all" href="https://rasaworld.com/press" target="_blank" rel="noopener">All press <svg class="ar" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg></a>
+  </div>
+</section>
+
+<!-- 10 CLOSE: the world again, now with its galaxy -->
 <section class="close" id="brief" aria-labelledby="close-h">
   <div class="wrap close-in">
     <p class="eyebrow">Atelier by RASA</p>
@@ -312,7 +329,7 @@
       <div><p class="fk">What we do</p><a href="#top">RASA World home</a><a href="#ecosystem">Our corporate events: Atelier by RASA</a><a href="#tabulah">Event technology</a><a href="#universes">Our ecosystem &amp; IPs</a></div>
       <div><p class="fk">Who we serve</p><a href="#brief">Brand leaders</a><a href="#brief">Agencies &amp; teams</a></div>
       <div><p class="fk">About</p><a href="#moments">Our story</a><a href="#moments">Our values</a><a href="#ecosystem">Corporate services</a></div>
-      <div id="news"><p class="fk">News</p><a href="#news">Latest news</a><a href="#work">Press</a></div>
+      <div><p class="fk">News</p><a href="#news">Latest news</a><a href="https://rasaworld.com/press" rel="noopener">Press ↗</a></div>
       <div><p class="fk">Insights</p><a href="#work">Case studies</a><a href="#work">Blog</a><a href="#work">Experiential marketing guide</a></div>
       <div><p class="fk">Get in touch</p><a href="#brief">Contact</a><a href="#monuments">Event calendar</a><a href="https://www.instagram.com/" rel="noopener">Instagram ↗</a></div>
     </div>
@@ -326,7 +343,7 @@
 <script src="assets/js/content.js?r=11"></script>
 <script type="module" src="assets/js/page2.js?r=11"></script>
 <script type="module" src="assets/js/gallery5.js?r=11"></script>
-<script type="module" src="assets/js/world2.js?r=11"></script>
+<script type="module" src="assets/js/world2.js?r=12"></script>
 <script type="module" src="assets/js/burst.js?r=1"></script>
 </body>
 </html>

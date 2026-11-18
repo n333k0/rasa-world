@@ -123,3 +123,11 @@ The client sent a copy round ("Website Copy.docx"; text in `docs/client-copy-r1-
 - **Menu:** /06 News, which links to the footer's News column for now.
 - **Starburst:** v8's particle sculpture in Prism's rainbow (`burst.js`). It shows only where the glass world rests: the RASA mark at the numbers, a data cube at Tabulah and a galaxy at the work list.
 - **Hub:** `index.html` now opens with an "In progress · the site" section that plays `assets/video/site.mp4` on a laptop, with a Live view, and adds a "The site" chip to the menu.
+
+## Round 5 (2026-11-18): Chloe's answers on WhatsApp
+- **Community:** 130K everywhere.
+- **Top banner:** the Monuments date (Nov 14) is gone from the banner and the phone menu.
+- **Meet Ophelia:** the link is hidden, on hold.
+- **06 News:** goes to a new "In the press" section (`.news-sec`). It shows six recent articles taken from rasaworld.com/press, and `world2.js` hides the glass world there.
+- **Still open:** the starburst (waiting on Ahmad), the higher-quality showreel (coming from Chloe) and "the map" (to be clarified).
+- **Request log:** every client request is now tracked in `docs/client-log.md`, which moves to Notion once it's connected.
