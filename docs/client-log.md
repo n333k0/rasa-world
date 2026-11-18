@@ -2,6 +2,8 @@
 
 Every client request: what they asked, what we did, and whether it reached them. This file stands in for the Notion "Client log" until Notion is connected, then moves there.
 
+**Working rule (owner, 2026-11-18):** small updates go straight onto the live site (`site.html`). A change that is too big or drastic gets built as a separate page so the current site is never lost.
+
 | # | Date asked | From | Request | What we did | Status | Sent to client |
 |---|---|---|---|---|---|---|
 | 1 | 2026-11-17 | Client doc "Website Copy.docx" | Copy round 1 on the chosen version (Prism): new hero, ecosystem cards from Origin in Prism colours, five figures, cut "What we do", Live experience IPs copy, Tabulah copy, no photo captions, Atelier close, bigger logos, 06/News, v8 starburst | Built `site.html` (Prism + all copy), added it to the hub. Live: https://n333k0.github.io/rasa-world/site.html | Done | 2026-11-18, link and 8 questions, by Neeko on WhatsApp |
@@ -14,3 +16,4 @@ Every client request: what they asked, what we did, and whether it reached them.
 | 8 | 2026-11-18 | Chloe, WhatsApp | Higher-quality showreel | Waiting for the file | Waiting on client (Chloe) | n/a |
 | 9 | 2026-11-18 | Chloe, WhatsApp | "The one thing we are missing is the map" | Not started: we need to know which map they mean | Question to client | 2026-11-18, asked by Neeko on WhatsApp |
 | 10 | 2026-11-18 | Chloe, WhatsApp | "Updated web design by Friday AM with my text changes + elements"; asks whether she can edit the text herself | Rounds 1–2 are live. Due Friday Nov 20, 9:00 PST (in Google Calendar, reminders 1 day and 3 h before). Text access: not built yet | In progress | Not yet |
+| 11 | 2026-11-16 (read 2026-11-18) | Chloe, Google Doc "Website Copy" (shared by email) | Doc updated since round 1: "What we do" changes from CUT to CHANGE, with new copy ("We create immersive music festivals…"). Rest of the landing copy unchanged. Doc comments: hero alternates (Options 1, 2, 4; body keeps Option 3), "Need to get MAP / REVIEW METRICS / send edits on starburst" | "What we do" back on `site.html` between the three arms and the numbers, with the new copy lighting up word by word; on phones the glass world rests below the text. Hero stays Option 3 | Done | Not yet |

@@ -203,6 +203,8 @@ function target(st) {
     Object.assign(T, { x: wide ? W * .25 : W * .5, y: wide ? H * .6 : H * .375, R, fade: 1, moons: 1, act: RW.arm ?? 0, orbit: 1.9 });
   } else if (st === 'outcome') {
     Object.assign(T, { x: wide ? W * .84 : W * .88, y: H * .5, R: m * (wide ? .28 : .24), fade: 1, moons: .6, orbit: 1.5 });
+    // site.html, phone: the paragraph fills the top of the screen, so the world rests below it, smaller
+    if (!wide && root.classList.contains('site')) Object.assign(T, { x: W * .78, y: H * .86, R: m * .2 });
   } else if (st === 'numbers') {
     Object.assign(T, { x: wide ? W * .84 : W * .88, y: H * .3, R: 0, fade: 0 });
   } else if (st === 'intro') {
