@@ -23,7 +23,10 @@ if (!reduced && window.Lenis) {
   lenis = new window.Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
   $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
     const id = a.getAttribute('href'); const t = id.length > 1 && $(id); if (!t) return;
-    e.preventDefault(); lenis.scrollTo(t, { offset: 0, duration: 1.6 });
+    e.preventDefault();
+    // a link with data-glide (site.html's "Enter RASA World") travels slower and evenly, so the welcome animation it scrolls through reads
+    const g = +a.dataset.glide;
+    lenis.scrollTo(t, g ? { offset: 0, duration: g, easing: x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 } : { offset: 0, duration: 1.6 });
   }));
 }
 
