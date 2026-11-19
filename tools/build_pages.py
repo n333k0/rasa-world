@@ -91,7 +91,7 @@ def shell(slug, title, desc, body, cur=''):
 <link rel="stylesheet" href="../assets/css/rasa3.css?r=11">
 <link rel="stylesheet" href="../assets/css/rasa5.css?r=11">
 <link rel="stylesheet" href="../assets/css/rasa6.css?r=11">
-<link rel="stylesheet" href="../assets/css/site.css?r=9">
+<link rel="stylesheet" href="../assets/css/site.css?r=11">
 <link rel="stylesheet" href="../assets/css/pages.css?r=5">
 </head>
 <body>
@@ -103,7 +103,7 @@ def shell(slug, title, desc, body, cur=''):
     <nav class="d-nav" aria-label="Pages">{nav}</nav>
     <a class="pill-cta d-cta" href="start-your-event.html">Start your brief {AR}</a>
     <button class="burger-btn" type="button" aria-expanded="false" aria-controls="m-nav" aria-label="Open menu"><span class="burger"><i></i><i></i></span></button>
-    <nav class="m-nav" id="m-nav" aria-label="Menu">{mnav}<a style="--i:7" class="pill-cta" href="start-your-event.html">Start your brief {AR}</a></nav>
+    <nav class="m-nav" id="m-nav" aria-label="Menu">{mnav}<p style="--i:7" class="m-ev">Nights of Wonder · Transamerica Pyramid · Dec 10–27</p><a style="--i:8" class="pill-cta" href="start-your-event.html">Start your brief {AR}</a></nav>
   </div>
 </header>
 <main id="top" class="pg pg-{slug}">

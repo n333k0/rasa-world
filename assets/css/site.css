@@ -143,3 +143,13 @@
 }
 .news .form-err { margin: 10px 0 0; font-size: .82rem; color: #ff9fd8; }
 .news .form-err a { color: inherit; }
+
+/* phone menu (owner, 2026-11-19): the brief button sits at the foot of the menu, full width inside the margins, on every page */
+@media (max-width: 1023px) {
+  .m-nav .pill-cta { margin-top: auto; width: 100%; box-sizing: border-box; flex: none; }
+  .m-nav .m-ev + .pill-cta { margin-top: 0; }
+}
+
+/* partner logos (owner, 2026-11-19: "some are black, make them all white"): every logo drawn in solid white on the dark ground */
+.logos-set img, .pg-logos img { filter: brightness(0) invert(1); }
+.pg-logos img { opacity: 1; }
