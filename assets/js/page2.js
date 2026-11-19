@@ -56,7 +56,10 @@ matchMedia('(min-width: 1024px)').addEventListener('change', m => m.matches && s
 const hero = $('.hero'), heroPin = $('.hero-pin'), film = $('.film'), filmV = $('.film-v');
 function heroScene() {
   const p = pinP(hero); RW.hero = p;
-  const W = innerWidth, H = innerHeight, D = Math.min(W, H) * heroD();
+  // measured on the pinned box, not the window: on phones the box is the small viewport (100svh) while innerHeight grows
+  // when the browser bars hide, and the difference squashed the circle (owner, 2026-11-19: "not always a complete circle")
+  const box = heroPin.getBoundingClientRect(), W = box.width, H = box.height, D = Math.min(W, H) * heroD();
+  RW.heroBox = { x: box.left + W / 2, y: box.top + H / 2, D };
   const c = o4(seg(p, 0, .16));
   setVar(heroPin, '--co', (1 - c).toFixed(3)); setVar(heroPin, '--cy', (-c * 80).toFixed(1) + 'px');
   const k = io(seg(p, .06, .58));

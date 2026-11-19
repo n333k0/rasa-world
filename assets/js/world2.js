@@ -196,8 +196,9 @@ function target(st) {
   const W = innerWidth, H = innerHeight, m = Math.min(W, H), wide = W >= 900;
   Object.assign(T, { hollow: 0, act: -1, gal: 0, moons: 0, orbit: 1.8, lines: 1 });
   if (st === 'hero') {
-    const p = RW.hero || 0, D = m * (root.classList.contains('site') ? (W < 600 ? .82 : .62) : .44), a = seg(p, .52, .66);
-    Object.assign(T, { x: W / 2, y: H / 2, R: D / 2, fade: a, moons: seg(p, .7, .95) });
+    const p = RW.hero || 0, B = RW.heroBox, D = B ? B.D : m * (root.classList.contains('site') ? (W < 600 ? .82 : .62) : .44), a = seg(p, .52, .66);
+    // the same box as the film's circle (page2.js), so the glass lands exactly on it whatever the browser bars do
+    Object.assign(T, { x: B ? B.x : W / 2, y: B ? B.y : H / 2, R: D / 2, fade: a, moons: seg(p, .7, .95) });
   } else if (st === 'eco') {
     const R = wide ? m * .17 : Math.min(W * .16, H * .075);
     Object.assign(T, { x: wide ? W * .25 : W * .5, y: wide ? H * .6 : H * .375, R, fade: 1, moons: 1, act: RW.arm ?? 0, orbit: 1.9 });
