@@ -61,6 +61,27 @@
     last.style.setProperty('--h', (.25 + Math.random() * .7).toFixed(2));
   });
 
+  /* ---------------------------------------------------------------- v3's three cards: they rise in turn, tilt under the
+     pointer with a glare, and their photos drift with the scroll */
+  const pl = $$('.pillars-v3 .pl-card');
+  if (pl.length) {
+    const grid = pl[0].parentElement;
+    if ('IntersectionObserver' in window && !reduced) new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { grid.classList.add('in'); ob.disconnect(); } }), { threshold: .2 }).observe(grid);
+    else grid.classList.add('in');
+    if (!reduced && matchMedia('(hover: hover)').matches) pl.forEach(c => {
+      c.addEventListener('pointermove', e => {
+        const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        c.style.setProperty('--ry', ((x - .5) * 10).toFixed(2) + 'deg'); c.style.setProperty('--rx', ((.5 - y) * 8).toFixed(2) + 'deg');
+        c.style.setProperty('--gx', (x * 100).toFixed(1) + '%'); c.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+      });
+      c.addEventListener('pointerleave', () => { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); });
+    });
+    if (!reduced) {
+      const drift = () => { pl.forEach((c, i) => { const r = c.getBoundingClientRect(); const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight; c.style.setProperty('--py', (p * (24 + i * 10)).toFixed(1) + 'px'); }); requestAnimationFrame(drift); };
+      requestAnimationFrame(drift);
+    }
+  }
+
   /* ---------------------------------------------------------------- the intro's app: automations run one after another */
   const app = $('.tri-app'), flows = $$('.ta-flow'), tick = $('[data-tick]');
   if (app) {

@@ -167,10 +167,11 @@
 .foot-atelier { margin: 0; max-width: 22rem; font-size: .9rem; line-height: 1.5; color: var(--mute); }
 .foot-atelier b { display: block; margin-bottom: 4px; font-weight: 500; color: var(--cream); }
 
-/* "Atelier by RASA" as a small lockup (owner, 2026-11-26): Atelier big, by small, then the RASA mark */
-.lockup { display: inline-flex; align-items: flex-end; gap: .34em; color: var(--cream); line-height: 1; }
-.lk-a { font: 300 clamp(1.7rem, 2.3vw, 2.4rem)/.9 var(--display); letter-spacing: -.045em; }
-.lk-by { font: 400 .66rem/1 var(--mono); letter-spacing: .08em; color: var(--mute); padding-bottom: .3em; }
-.lk-logo { width: clamp(50px, 4vw, 66px); color: var(--cream); margin-bottom: .12em; }
-.foot .lockup .lk-a { font-size: clamp(2.2rem, 3.4vw, 3.4rem); }
-.foot .lockup .lk-logo { width: clamp(64px, 5.6vw, 92px); }
+/* "Atelier by RASA" as a small lockup (owner, 2026-11-26): Atelier big in the brand gradient, BY small in capitals, the RASA
+   mark, all three centred on one line; the same size at the head of Atelier and in the footer */
+.lockup { display: inline-flex; align-items: center; gap: .38em; color: var(--cream); line-height: 1; }
+.lk-a { font: 300 clamp(1.7rem, 2.3vw, 2.4rem)/1 var(--display); letter-spacing: -.045em; padding-bottom: .06em;
+  background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: holo 10s linear infinite; }
+.lk-by { font: 400 .64rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+.lk-logo { width: clamp(50px, 4vw, 66px); color: var(--cream); }
+@media (prefers-reduced-motion: reduce) { .lk-a { animation: none; } }

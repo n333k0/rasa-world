@@ -34,8 +34,8 @@
 <link rel="stylesheet" href="assets/css/rasa4.css?r=11">
 <link rel="stylesheet" href="assets/css/rasa5.css?r=11">
 <link rel="stylesheet" href="assets/css/rasa6.css?r=11">
-<link rel="stylesheet" href="assets/css/site.css?r=13">
-<link rel="stylesheet" href="assets/css/site-v2.css?r=5">
+<link rel="stylesheet" href="assets/css/site.css?r=14">
+<link rel="stylesheet" href="assets/css/site-v2.css?r=7">
 <script>document.documentElement.classList.add('js');</script>
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three/three.module.js" } }</script>
 </head>
@@ -77,7 +77,7 @@
     </nav>
   </div>
 </header>
-<nav class="vswitch" aria-label="Site versions"><a href="site.html">V1</a><a href="site-v2.html" aria-current="page">V2</a></nav>
+<nav class="vswitch" aria-label="Site versions"><a href="site.html">V1</a><a href="site-v2.html" aria-current="page">V2</a><a href="site-v3.html">V3</a></nav>
 
 <main id="top">
 
@@ -94,30 +94,39 @@
         <figure class="tri-s" style="--i:0"><img src="https://rasaworld.com/assets/monuments-slide-02-BZnP82WB.jpg" alt="" decoding="async"><figcaption><span class="tri-t">Launch experiences.</span><span class="tri-k">Monuments · Palace of Fine Arts, San Francisco</span></figcaption></figure>
         <figure class="tri-s" style="--i:1"><img src="https://rasaworld.com/__l5e/assets-v1/ef782cdc-1af4-4d54-98de-c001bfa7549a/pier-play-crowd.webp" alt="" decoding="async" loading="lazy"><figcaption><span class="tri-t">Scale communities.</span><span class="tri-k">Pier Play · Santa Monica Pier</span></figcaption></figure>
         <figure class="tri-s tri-app-s" style="--i:2">
-          <div class="tri-app" aria-hidden="true">
-            <div class="ta-dash">
+          <div class="tri-app tri-wall" aria-hidden="true">
+            <div class="tw tw-sales"><p class="tw-k">Ticket sales · this edition</p><p class="tw-big">+36%</p><svg viewBox="0 0 200 60" preserveAspectRatio="none"><path d="M0 52 L20 48 L40 50 L60 40 L80 42 L100 30 L120 33 L140 22 L160 18 L180 12 L200 6"/></svg><p class="tw-s">vs. last edition, with re-engagement and referrals</p></div>
+            <div class="tw tw-kpi ta-dash">
               <div class="ta-top"><span class="ta-brand">Tabulah</span><span class="ta-ev">Pier Play · Santa Monica Pier</span><span class="ta-live"><i></i>Live</span></div>
               <div class="ta-kpis">
                 <p><b data-tick="9214" data-to="11240">9,214</b><span>Checked in</span></p>
                 <p><b>6</b><span>Sell-outs in a row</span></p>
                 <p><b>40%</b><span>Workflow automated</span></p>
               </div>
-              <div class="ta-flows">
-                <p class="ta-flow on"><i></i><span><b>Reminder SMS</b> sent to 2,340 ticket holders</span><em>Auto</em></p>
-                <p class="ta-flow"><i></i><span><b>VIP upgrade</b> offered to 412 returning guests</span><em>Auto</em></p>
-                <p class="ta-flow"><i></i><span><b>Waitlist</b> released 180 tickets after a sell-out</span><em>Auto</em></p>
-                <p class="ta-flow"><i></i><span><b>Recap email</b> queued for tomorrow, 10:00</span><em>Scheduled</em></p>
-              </div>
             </div>
-            <div class="ta-phone">
-              <p class="ta-pass-k">Your pass</p>
-              <p class="ta-pass-t">Pier Play</p>
-              <p class="ta-pass-d">Santa Monica Pier · Sat, Oct 17</p>
-              <span class="ta-qr"></span>
-              <p class="ta-ok">Checked in</p>
+            <div class="tw tw-seg"><p class="tw-k">Segments</p>
+              <p class="tw-bar" style="--w:.82"><span>First-timers</span><b>5,120</b></p>
+              <p class="tw-bar" style="--w:.46"><span>Locals, Santa Monica</span><b>2,340</b></p>
+              <p class="tw-bar" style="--w:.18"><span>Returning VIPs</span><b>412</b></p></div>
+            <div class="tw tw-feed"><p class="tw-k"><i class="tw-dot"></i>Check-ins</p>
+              <p class="tw-row"><i>MR</i><span><b>Maya R.</b>VIP · Table 4</span><em>9:41</em></p>
+              <p class="tw-row"><i>JK</i><span><b>Jordan K.</b>General admission</span><em>9:41</em></p>
+              <p class="tw-row"><i>SL</i><span><b>Sofia L.</b>Guest list +1</span><em>9:40</em></p></div>
+            <div class="tw tw-flows ta-flows">
+              <p class="ta-flow on"><i></i><span><b>Reminder SMS</b> sent to 2,340 ticket holders</span><em>Auto</em></p>
+              <p class="ta-flow"><i></i><span><b>VIP upgrade</b> offered to 412 returning guests</span><em>Auto</em></p>
+              <p class="ta-flow"><i></i><span><b>Waitlist</b> released 180 tickets after a sell-out</span><em>Auto</em></p>
+              <p class="ta-flow"><i></i><span><b>Recap email</b> queued for tomorrow, 10:00</span><em>Scheduled</em></p>
             </div>
+            <div class="tw tw-phone ta-phone">
+              <p class="ta-pass-k">Your pass</p><p class="ta-pass-t">Pier Play</p><p class="ta-pass-d">Santa Monica Pier · Sat, Oct 17</p>
+              <span class="ta-qr"></span><p class="ta-ok">Checked in</p>
+            </div>
+            <div class="tw tw-sms"><p class="tw-k">SMS · sent automatically</p><p class="tw-bub">Pier Play is tonight. Doors at 4pm, sunset set at 6:40. Your pass is in the app.</p><p class="tw-bub me">See you there!</p></div>
+            <div class="tw tw-mail"><p class="tw-k">Recap email</p><p class="tw-big">61%</p><p class="tw-s">opened · 2,914 clicks to the photo gallery</p></div>
+            <div class="tw tw-growth"><p class="tw-k">Community</p><p class="tw-big">5x</p><p class="tw-s">faster growth than with traditional RSVP tools</p></div>
           </div>
-          <figcaption><span class="tri-t">Automate operations.</span><span class="tri-k">Tabulah · ticketing, check-in and outreach in one place</span></figcaption></figure>
+          <figcaption class="tw-cap"><span class="tri-t">Automate operations.</span><span class="tri-k">Tabulah · ticketing, check-in and outreach in one place</span></figcaption></figure>
       </div>
     </div>
     <div class="hero-copy">
@@ -399,7 +408,7 @@
 <script type="module" src="assets/js/page2.js?r=16"></script>
 <script type="module" src="assets/js/gallery5.js?r=11"></script>
 <script type="module" src="assets/js/world2.js?r=23"></script>
-<script src="assets/js/v2.js?r=1" defer></script>
+<script src="assets/js/v2.js?r=2" defer></script>
 <script type="module" src="assets/js/burst.js?r=12"></script>
 <script type="module" src="assets/js/footprint.js?r=1"></script>
 <script src="assets/js/forms.js?r=1" defer></script>
