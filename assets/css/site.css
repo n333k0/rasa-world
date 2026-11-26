@@ -173,5 +173,5 @@
 .lk-a { font: 300 clamp(1.7rem, 2.3vw, 2.4rem)/1 var(--display); letter-spacing: -.045em; padding-bottom: .06em;
   background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: holo 10s linear infinite; }
 .lk-by { font: 400 .64rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
-.lk-logo { width: clamp(50px, 4vw, 66px); color: var(--cream); }
+.lk-logo { width: clamp(45px, 3.6vw, 59px); color: var(--cream); }   /* 10% smaller (owner, 2026-11-26) */
 @media (prefers-reduced-motion: reduce) { .lk-a { animation: none; } }

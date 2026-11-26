@@ -263,3 +263,6 @@
 .v3site .pillars-v3 .pl-lede { margin-left: auto; margin-right: auto; text-align: center; max-width: 44ch; }
 .v3site .end-t .acc { color: transparent; -webkit-text-fill-color: transparent; background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; animation: holo 10s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .v3site .end-t .acc { animation: none; } }
+/* V3 only: the sentence's second half in the brand gradient, as "worldwide." (owner, 2026-11-26) */
+.v3site .pillars-v3 .pl-soft { color: transparent; -webkit-text-fill-color: transparent; background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; animation: holo 10s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .v3site .pillars-v3 .pl-soft { animation: none; } }
