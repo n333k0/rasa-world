@@ -186,7 +186,9 @@ const SEC = { hero: $('.hero'), eco: $('.eco'), outcome: $('.outcome'), numbers:
   tabulah: $('.tabulah'), moments: $('.moments, .gal'), work: $('.work'), news: $('.news-sec'), close: $('.close'), foot: $('.foot'),
   // site-v2.html's photo block and last line: the world stays out of both
   pillars: $('.pillars'), end: $('.v2-end') };
-const tags = [...document.querySelectorAll('.moon-tags span')], heroTags = !!document.querySelector('.hero-tags');
+// one set of names per place they show (v2 has two: the welcome and the three cards); each set follows the same moons
+const tagSets = [...document.querySelectorAll('.moon-tags')].map(c => ({ hero: c.classList.contains('hero-tags'), spans: [...c.children] }));
+const heroTags = tagSets.some(t => t.hero);
 window.RWS = null; const S = { x: innerWidth / 2, y: innerHeight / 2, R: 0, fade: 0, moons: 0, orbit: 1.8, gal: 0, hollow: 0, act: -1, lines: 1 };
 const T = Object.assign({}, S); window.RWS = S;
 function station() {
@@ -299,10 +301,14 @@ function frame(now) {
     const o = orbits[i];
     o.position.set(S.x, -S.y, 0); o.quaternion.copy(PLANES[i]); o.scale.setScalar(Math.max(ro, .001));
     o.material.opacity = (on ? .5 : .14) * mA * (1 - S.hollow); o.visible = mA > .01;
-    const tg = tags[i];
-    if (tg) {
-      tg.style.setProperty('--x', clamp(S.x + v3.x, heroTags ? 72 : 44, W - (heroTags ? 72 : 44)).toFixed(1) + 'px');   // v2's longer names keep clear of the edges tg.style.setProperty('--y', (S.y - v3.y).toFixed(1) + 'px');
-      tg.style.setProperty('--o', (r + 12).toFixed(1) + 'px'); tg.style.setProperty('--a', ((st === 'eco' || (st === 'hero' && heroTags) ? mA : 0) * (v3.z > -R * .2 ? 1 : .3)).toFixed(2));   // v2: the three names ride their moons at the welcome
+    for (const set of tagSets) {
+      const tg = set.spans[i]; if (!tg) continue;
+      const shown = set.hero ? st === 'hero' : st === 'eco';   // v2: the welcome's names in the hero, the cards' names in the ecosystem
+      // v2's longer names keep clear of the screen edges
+      tg.style.setProperty('--x', clamp(S.x + v3.x, heroTags ? 72 : 44, W - (heroTags ? 72 : 44)).toFixed(1) + 'px');
+      tg.style.setProperty('--y', (S.y - v3.y).toFixed(1) + 'px');
+      tg.style.setProperty('--o', (r + 12).toFixed(1) + 'px');
+      tg.style.setProperty('--a', ((shown ? mA : 0) * (v3.z > -R * .2 ? 1 : .3)).toFixed(2));
       tg.classList.toggle('on', on);
     }
   }

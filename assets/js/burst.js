@@ -86,8 +86,9 @@ const pts = new THREE.Points(geo, mat); pts.frustumCulled = false; scene.add(pts
 
 /* ---------------------------------------------------------------- chapters */
 const $ = s => document.querySelector(s);
-// v2 drops the particle RASA mark behind the figures (owner, 2026-11-26)
-const CH = [['.hero', -1], ['.eco', -1], ['.numbers', document.documentElement.classList.contains('v2site') ? -1 : 0], ['.uni-intro', -1], ['.portals', -1], ['.tabulah', 2], ['.gal', -1], ['.work', 3], ['.close', -1], ['.foot', -1]]
+// v2 (owner, 2026-11-26): the figures first show the particle world, which turns into the RASA mark halfway through them
+const V2 = document.documentElement.classList.contains('v2site');
+const CH = [['.hero', -1], ['.eco', -1], ['.numbers', 0], ['.uni-intro', -1], ['.portals', -1], ['.tabulah', 2], ['.gal', -1], ['.work', 3], ['.close', -1], ['.foot', -1]]
   .map(([s, k]) => ({ el: $(s), k, s })).filter(c => c.el);
 const S = { x: innerWidth * .8, y: innerHeight * .3, size: 0, fade: 0 }, T = Object.assign({}, S);
 let shape = 1, from = 1, k = 1;
@@ -128,7 +129,9 @@ function frame(now) {
   lnx = lerp(lnx, ptr.nx, 1 - Math.exp(-dt * 3)); lny = lerp(lny, ptr.ny, 1 - Math.exp(-dt * 3));
   const c = chapter(); place(c);
   // a new chapter with a shape: burst from the last shape into the new one (from the globe the first time)
-  if (c.k >= 0 && c.k !== shape) { from = k > .5 ? shape : from; shape = c.k; k = 0; }
+  let ck = c.k;
+  if (V2 && c.s === '.numbers') { const r = c.el.getBoundingClientRect(); ck = (innerHeight * .5 - r.top) / r.height < .5 ? 1 : 0; }
+  if (ck >= 0 && ck !== shape) { from = k > .5 ? shape : from; shape = ck; k = 0; }
   k = Math.min(1, k + dt / (reduced ? .01 : 1.8));
   const e = 1 - Math.exp(-dt * (T.follow ? 14 : 4));             // keeps up with the scroll where it is anchored
   for (const key of ['x', 'y', 'size', 'fade']) S[key] = lerp(S[key], T[key], e);
