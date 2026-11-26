@@ -186,7 +186,7 @@ const SEC = { hero: $('.hero'), eco: $('.eco'), outcome: $('.outcome'), numbers:
   tabulah: $('.tabulah'), moments: $('.moments, .gal'), work: $('.work'), news: $('.news-sec'), close: $('.close'), foot: $('.foot'),
   // site-v2.html's photo block and last line: the world stays out of both
   pillars: $('.pillars'), end: $('.v2-end') };
-const tags = [...document.querySelectorAll('.moon-tags span')];
+const tags = [...document.querySelectorAll('.moon-tags span')], heroTags = !!document.querySelector('.hero-tags');
 window.RWS = null; const S = { x: innerWidth / 2, y: innerHeight / 2, R: 0, fade: 0, moons: 0, orbit: 1.8, gal: 0, hollow: 0, act: -1, lines: 1 };
 const T = Object.assign({}, S); window.RWS = S;
 function station() {
@@ -301,8 +301,8 @@ function frame(now) {
     o.material.opacity = (on ? .5 : .14) * mA * (1 - S.hollow); o.visible = mA > .01;
     const tg = tags[i];
     if (tg) {
-      tg.style.setProperty('--x', clamp(S.x + v3.x, 44, W - 44).toFixed(1) + 'px'); tg.style.setProperty('--y', (S.y - v3.y).toFixed(1) + 'px');
-      tg.style.setProperty('--o', (r + 12).toFixed(1) + 'px'); tg.style.setProperty('--a', ((st === 'eco' ? mA : 0) * (v3.z > -R * .2 ? 1 : .3)).toFixed(2));
+      tg.style.setProperty('--x', clamp(S.x + v3.x, heroTags ? 72 : 44, W - (heroTags ? 72 : 44)).toFixed(1) + 'px');   // v2's longer names keep clear of the edges tg.style.setProperty('--y', (S.y - v3.y).toFixed(1) + 'px');
+      tg.style.setProperty('--o', (r + 12).toFixed(1) + 'px'); tg.style.setProperty('--a', ((st === 'eco' || (st === 'hero' && heroTags) ? mA : 0) * (v3.z > -R * .2 ? 1 : .3)).toFixed(2));   // v2: the three names ride their moons at the welcome
       tg.classList.toggle('on', on);
     }
   }

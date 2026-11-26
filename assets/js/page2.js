@@ -54,13 +54,22 @@ matchMedia('(min-width: 1024px)').addEventListener('change', m => m.matches && s
 
 /* ---------------------------------------------------------------- 01 hero: the film closes into a circle, the circle becomes the world */
 const hero = $('.hero'), heroPin = $('.hero-pin'), film = $('.film'), filmV = $('.film-v');
+const tri = [...document.querySelectorAll('.tri-s')];
 function heroScene() {
-  const p = pinP(hero); RW.hero = p;
+  // v2 (site-v2.html): the first half of the pin is the intro, three photos rising one over the other with a line each
+  // (client's Atlas Card reference); the film-into-world timeline then runs on the second half
+  const P = pinP(hero), intro = tri.length > 0;
+  const p = intro ? seg(P, .47, 1) : P; RW.hero = p;
+  if (intro) tri.forEach((t, i) => {
+    const a = .1 + i * .12, r = io(seg(P, a, a + .09));
+    const tx = seg(P, a + .05, a + .1) * (i < 2 ? 1 - seg(P, a + .12, a + .15) : 1) * (1 - seg(P, .44, .5));
+    setVar(t, '--r', r.toFixed(4)); setVar(t, '--t', tx.toFixed(3));
+  });
   // measured on the pinned box, not the window: on phones the box is the small viewport (100svh) while innerHeight grows
   // when the browser bars hide, and the difference squashed the circle (owner, 2026-11-19: "not always a complete circle")
   const box = heroPin.getBoundingClientRect(), W = box.width, H = box.height, D = Math.min(W, H) * heroD();
   RW.heroBox = { x: box.left + W / 2, y: box.top + H / 2, D };
-  const c = o4(seg(p, 0, .16));
+  const c = intro ? o4(seg(P, .02, .09)) : o4(seg(p, 0, .16));
   setVar(heroPin, '--co', (1 - c).toFixed(3)); setVar(heroPin, '--cy', (-c * 80).toFixed(1) + 'px');
   const k = io(seg(p, .06, .58));
   const w = lerp(W, D, k), h = lerp(H, D, k);

@@ -153,3 +153,16 @@
 /* partner logos (owner, 2026-11-19: "some are black, make them all white"): every logo drawn in solid white on the dark ground */
 .logos-set img, .pg-logos img { filter: brightness(0) invert(1); }
 .pg-logos img { opacity: 1; }
+
+/* version switch (owner, 2026-11-26): a small floating pill at the foot of the screen to move between site versions */
+.vswitch { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 30; display: flex; gap: 2px; padding: 4px; border-radius: 999px;
+  background: rgba(14, 14, 18, .72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), 0 8px 30px rgba(0, 0, 0, .35); }
+.vswitch a { padding: 7px 12px; border-radius: 999px; font: 400 .62rem/1 var(--mono); letter-spacing: .08em; color: rgba(243, 242, 247, .7); text-decoration: none; transition: background-color .25s ease, color .25s ease; }
+.vswitch a:hover { color: #fff; }
+.vswitch a[aria-current="page"] { background: #f3f2f7; color: #09090b; }
+.site-header[data-menu] ~ .vswitch { opacity: 0; pointer-events: none; }
+
+/* footer: Atelier by RASA under the mark, as on rasaworld.com */
+.foot-brand { display: grid; gap: 18px; align-content: start; }
+.foot-atelier { margin: 0; max-width: 22rem; font-size: .9rem; line-height: 1.5; color: var(--mute); }
+.foot-atelier b { display: block; margin-bottom: 4px; font-weight: 500; color: var(--cream); }

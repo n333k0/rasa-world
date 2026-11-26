@@ -86,7 +86,8 @@ const pts = new THREE.Points(geo, mat); pts.frustumCulled = false; scene.add(pts
 
 /* ---------------------------------------------------------------- chapters */
 const $ = s => document.querySelector(s);
-const CH = [['.hero', -1], ['.eco', -1], ['.numbers', 0], ['.uni-intro', -1], ['.portals', -1], ['.tabulah', 2], ['.gal', -1], ['.work', 3], ['.close', -1], ['.foot', -1]]
+// v2 drops the particle RASA mark behind the figures (owner, 2026-11-26)
+const CH = [['.hero', -1], ['.eco', -1], ['.numbers', document.documentElement.classList.contains('v2site') ? -1 : 0], ['.uni-intro', -1], ['.portals', -1], ['.tabulah', 2], ['.gal', -1], ['.work', 3], ['.close', -1], ['.foot', -1]]
   .map(([s, k]) => ({ el: $(s), k, s })).filter(c => c.el);
 const S = { x: innerWidth * .8, y: innerHeight * .3, size: 0, fade: 0 }, T = Object.assign({}, S);
 let shape = 1, from = 1, k = 1;
