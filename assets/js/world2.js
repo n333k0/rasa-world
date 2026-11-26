@@ -183,7 +183,9 @@ const G = Array.from({ length: GAL }, () => { const r = 1.4 + Math.pow(Math.rand
 /* ---------------------------------------------------------------- where the world goes, per section */
 const $ = s => document.querySelector(s);
 const SEC = { hero: $('.hero'), eco: $('.eco'), outcome: $('.outcome'), numbers: $('.numbers'), footprint: $('.footprint'), intro: $('.uni-intro'), portals: $('.portals'),
-  tabulah: $('.tabulah'), moments: $('.moments, .gal'), work: $('.work'), news: $('.news-sec'), close: $('.close'), foot: $('.foot') };
+  tabulah: $('.tabulah'), moments: $('.moments, .gal'), work: $('.work'), news: $('.news-sec'), close: $('.close'), foot: $('.foot'),
+  // site-v2.html's photo block and last line: the world stays out of both
+  pillars: $('.pillars'), end: $('.v2-end') };
 const tags = [...document.querySelectorAll('.moon-tags span')];
 window.RWS = null; const S = { x: innerWidth / 2, y: innerHeight / 2, R: 0, fade: 0, moons: 0, orbit: 1.8, gal: 0, hollow: 0, act: -1, lines: 1 };
 const T = Object.assign({}, S); window.RWS = S;
@@ -217,6 +219,8 @@ function target(st) {
     Object.assign(T, { x: P.x ?? W / 2, y: P.y ?? H / 2, R: P.r ?? 0, fade: P.fade ?? 0, hollow: P.hollow ?? 0, lines: 0 });
   } else if (st === 'close' || st === 'foot') {
     Object.assign(T, { x: wide ? W * .72 : W * .5, y: wide ? H * .5 : H * .3, R: wide ? m * .15 : W * .17, fade: st === 'foot' ? 0 : 1, moons: .8, orbit: 1.6, gal: 1 });
+    // site pages, phone: the Atelier heading scrolls through where the world would rest, so it steps aside (2026-11-26)
+    if (!wide && root.classList.contains('site')) T.fade = 0;
   } else {
     Object.assign(T, { R: S.R * .6, fade: 0 });
   }

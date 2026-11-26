@@ -1,0 +1,92 @@
+/* RASA World v2 (2026-11-26, client's "Neeko 3.0" round). Loaded after site.css on site-v2.html only; site.html is untouched. */
+
+/* hero: the brand logos bigger (client: "make brand logos bigger") */
+.v2site .logos-set img { height: clamp(30px, 3.1vw, 54px); max-width: 210px; }
+.v2site .logos-set { gap: clamp(44px, 5vw, 88px); padding-right: clamp(44px, 5vw, 88px); }
+@media (max-width: 720px) { .v2site .logos-set img { height: 30px; max-width: 130px; } }
+
+/* welcome: the value line under "RASA World" */
+.after-d { margin: clamp(14px, 2.4vh, 26px) auto 0; max-width: 34rem; font: 300 clamp(1rem, 1.45vw, 1.4rem)/1.4 var(--display); letter-spacing: -.01em;
+  color: rgba(243, 242, 247, .9); text-shadow: 0 2px 24px rgba(9, 9, 11, .7); transform: translateY(calc(var(--ay, 0) * 1px)); }
+@media (max-width: 720px) { .after-d { font-size: 1rem; padding: 0 24px; } }
+
+/* the platform: three photos, one clear line each (after Atlas Card) */
+.pillars { position: relative; z-index: 2; padding: clamp(90px, 16vh, 180px) 0 clamp(60px, 10vh, 120px); }
+.pillars .eyebrow { margin-bottom: clamp(20px, 3vh, 32px); }
+.pl-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 18px); }
+.pl-card { position: relative; display: block; aspect-ratio: 3 / 4.2; max-height: 78vh; border-radius: 26px; overflow: hidden; color: var(--cream); text-decoration: none;
+  background: #111; isolation: isolate; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08); }
+.pl-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease), filter .8s ease; filter: saturate(1.05); }
+.pl-card:hover img { transform: scale(1.06); }
+.pl-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9, 9, 11, .05) 30%, rgba(9, 9, 11, .55) 62%, rgba(9, 9, 11, .92) 100%); }
+.pl-copy { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(20px, 2vw, 32px); display: grid; gap: 12px; }
+.pl-n { font: 400 .68rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: rgba(243, 242, 247, .75); }
+.pl-t { font: 300 clamp(1.7rem, 2.4vw, 2.7rem)/1.04 var(--display); letter-spacing: -.045em; text-wrap: balance; }
+.pl-go { justify-self: start; display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; padding: 10px 16px; border-radius: 999px; font-size: .82rem;
+  background: rgba(255, 255, 255, .1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18); transition: background-color .3s ease, color .3s ease; }
+.pl-go .ar { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+.pl-card:hover .pl-go { background: #fff; color: #09090b; }
+@media (max-width: 900px) { .pl-grid { grid-template-columns: 1fr; } .pl-card { aspect-ratio: 4 / 4.6; max-height: none; } }
+
+/* what we do: the sentence above the three cards, in place of "Three arms. One ecosystem." */
+.v2site .eco-head { max-width: min(42vw, 36rem); }
+.eco-lede { margin: 0; font: 300 clamp(1.35rem, 2.1vw, 2.25rem)/1.2 var(--display); letter-spacing: -.035em; color: var(--cream); }
+.eco-lede .acc { background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: holo 10s linear infinite; }
+@media (max-width: 720px) {
+  .v2site .eco-head { max-width: none; right: var(--gut); top: 78px; }
+  .eco-lede { font-size: clamp(1.02rem, 4.6vw, 1.2rem); line-height: 1.32; }
+  .v2site .arms-track { top: 286px; }
+  .v2site .acard-in { height: calc(100svh - 286px - 4svh); }
+}
+@media (max-width: 720px) and (max-height: 700px) { .eco-lede { font-size: .95rem; } .v2site .arms-track { top: 262px; } .v2site .acard-in { height: calc(100svh - 262px - 3svh); } }
+
+/* numbers and map: no empty block between them (client: "a weird block of space… move the map up") */
+.v2site .numbers { min-height: 0; padding: clamp(90px, 15vh, 160px) 0 clamp(50px, 8vh, 90px); }
+.v2site .footprint { padding-top: clamp(30px, 5vh, 60px); }
+
+/* Tabulah: what it unifies, drawn as a hub (client idea: "what if we made this into a graphic?") */
+.tab-hub { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin: clamp(20px, 4vh, 40px) 0 10px; }
+.hub-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.hub-lines line { stroke: url(#holoStroke); stroke-width: .7; stroke-dasharray: 3 5; animation: hubFlow 2.4s linear infinite; animation-delay: calc(var(--k) * -.3s); opacity: .8; }
+.hub-lines circle { fill: none; stroke: rgba(255, 255, 255, .08); stroke-width: .5; }
+@keyframes hubFlow { to { stroke-dashoffset: -16; } }
+.hub-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0; width: 30%; aspect-ratio: 1; border-radius: 50%; display: grid; place-content: center; text-align: center;
+  background: radial-gradient(circle at 35% 30%, rgba(195, 178, 255, .35), rgba(9, 9, 11, .85) 70%); box-shadow: inset 0 0 0 1px rgba(195, 178, 255, .45), 0 0 60px rgba(180, 156, 255, .25); z-index: 2; }
+.hub-core span { font: 300 clamp(1.1rem, 1.8vw, 1.6rem)/1 var(--display); letter-spacing: -.04em; }
+.hub-core small { margin-top: 6px; font: 400 .56rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.hub-nodes { list-style: none; margin: 0; padding: 0; }
+.hub-nodes li { position: absolute; left: calc(50% + 39% * cos(var(--k) * 45deg - 90deg)); top: calc(50% + 39% * sin(var(--k) * 45deg - 90deg)); transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 8px; padding: 9px 13px; border-radius: 999px; white-space: nowrap; font-size: .8rem; z-index: 2;
+  background: rgba(20, 20, 24, .82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14);
+  animation: hubGlow 6s ease-in-out infinite; animation-delay: calc(var(--k) * .75s); }
+.hub-nodes svg { width: 16px; height: 16px; fill: none; stroke: #c9f7e4; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+@keyframes hubGlow { 0%, 70%, 100% { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14); } 80% { box-shadow: inset 0 0 0 1px rgba(201, 247, 228, .7), 0 0 22px rgba(143, 211, 255, .35); } }
+.tab-all { margin-top: 6px; }
+@media (max-width: 720px) {
+  .tab-hub { aspect-ratio: auto; display: grid; gap: 14px; }
+  .hub-lines { display: none; }
+  .hub-core { position: static; transform: none; width: auto; aspect-ratio: auto; border-radius: 18px; padding: 18px; }
+  .hub-nodes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .hub-nodes li { position: static; transform: none; white-space: normal; border-radius: 14px; font-size: .78rem; }
+}
+@media (prefers-reduced-motion: reduce) { .hub-lines line, .hub-nodes li { animation: none; } }
+
+/* case studies after Atelier: photo cards, as on rasaworld.com */
+.work-v2 { padding: clamp(80px, 13vh, 150px) 0; }
+.wc-grid { list-style: none; margin: clamp(28px, 4vh, 44px) 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: clamp(10px, 1.2vw, 18px); }
+.wc { position: relative; display: block; color: var(--cream); text-decoration: none; border-radius: 22px; overflow: hidden; background: rgba(255, 255, 255, .03); box-shadow: inset 0 0 0 1px var(--line); transition: transform .6s var(--ease); }
+.wc:hover { transform: translateY(-4px); }
+.wc-ph { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #111; }
+.wc-ph img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s var(--ease); }
+.wc:hover .wc-ph img { transform: scale(1.05); }
+.wc-b { display: grid; gap: 8px; padding: 18px 20px 22px; }
+.wc-k { font: 400 .64rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.wc-t { font: 400 1.08rem/1.3 var(--display); letter-spacing: -.02em; }
+.wc-go { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(9, 9, 11, .55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .2); transition: background-color .3s ease, color .3s ease; }
+.wc-go .ar { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+.wc:hover .wc-go { background: #fff; color: #09090b; }
+
+/* the last line */
+.v2-end { position: relative; z-index: 2; min-height: 70vh; display: grid; place-items: center; padding: 12vh var(--gut); text-align: center; border-top: 1px solid var(--line); }
+.end-t { margin: 0; font: 300 clamp(3rem, 9.5vw, 10.5rem)/.95 var(--display); letter-spacing: -.06em; text-wrap: balance; }
+.end-t .acc { background: var(--holo); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: holo 10s linear infinite; }

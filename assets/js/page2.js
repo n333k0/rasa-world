@@ -32,7 +32,7 @@ if (!reduced && window.Lenis) {
 
 /* ---------------------------------------------------------------- header: detaches into a floating pill */
 const header = $('.site-header'), phone = matchMedia('(max-width: 767px)');
-const navLinks = $$('.d-nav a'), navTargets = navLinks.map(a => $(a.getAttribute('href')));
+const navLinks = $$('.d-nav a'), navTargets = navLinks.map(a => { const h = a.getAttribute('href'); return h.startsWith('#') ? $(h) : null; });   // links to other pages have no section here
 function onHeader() {
   header.toggleAttribute('data-scrolled', phone.matches || scrollY > 24);
   header.toggleAttribute('data-top', scrollY <= 24);   // under the ticker while it is on screen
