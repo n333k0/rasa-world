@@ -182,3 +182,26 @@ a.pg-press .pg-ph img, .pg-press a.pg-icard:hover .pg-ph img { transform: none; 
 .pg-form.busy { opacity: .75; pointer-events: none; }
 .form-err { margin: 0; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(255, 159, 216, .45); background: rgba(255, 159, 216, .08); font-size: .9rem; }
 .form-err a { color: var(--cream); }
+
+/* ================================================================ owner's review of the inner pages (2026-11-26) */
+/* the top of every page centred (pages with a form beside the copy keep their two columns); everything below stays left */
+.pg-hero:not(.pg-brief-hero) > .wrap:not(.pg-split) { text-align: center; }
+.pg-hero:not(.pg-brief-hero) > .wrap:not(.pg-split) > .eyebrow { justify-content: center; }
+.pg-hero:not(.pg-brief-hero) > .wrap:not(.pg-split) > :is(.pg-h1, .pg-lede, .pg-prose) { margin-left: auto; margin-right: auto; }
+.pg-hero:not(.pg-brief-hero) > .wrap:not(.pg-split) > :is(.pg-btns, .pg-chips) { justify-content: center; }
+.pg-hero:not(.pg-brief-hero) > .wrap:not(.pg-split) .pg-card, .pg-hero:not(.pg-brief-hero) > .wrap:not(.pg-split) .pg-stats { text-align: left; }
+.pg-hero .pg-prose p { margin-left: auto; margin-right: auto; }
+.pg-hero .pg-h1 { max-width: 20ch; }
+/* card grids fill the full width (auto-fill left empty columns, e.g. Our Story's origin and photo took two thirds) */
+.pg-grid.c3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.pg-grid.c2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+/* in a pair, a photo card's photo fills its height, so it reads as large as the text beside it */
+.pg-grid.c2 .pg-icard { min-height: 100%; }
+.pg-grid.c2 .pg-icard .pg-ph { flex: 1; aspect-ratio: auto; min-height: clamp(260px, 32vw, 520px); }
+.pg-grid.c2 .pg-tcard { padding: clamp(26px, 3vw, 44px); }
+.pg-grid.c2 .pg-tcard .pg-ct { font-size: clamp(1.4rem, 2vw, 2rem); }
+.pg-grid.c2 .pg-tcard .pg-cd { font-size: 1rem; }
+/* a label inside a list of names (e.g. "Family offices, founders & operators from") */
+.pg-chips-k { margin: 1.6rem 0 .2rem; }
+.pg-hero > .wrap > .pg-prose { margin-top: clamp(18px, 3vh, 30px); }
+.pg-h2.pg-h2-long { font-size: clamp(1.7rem, min(3vw, 6vh), 3rem); line-height: 1.1; max-width: 32ch; }

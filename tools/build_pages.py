@@ -92,7 +92,7 @@ def shell(slug, title, desc, body, cur=''):
 <link rel="stylesheet" href="../assets/css/rasa5.css?r=11">
 <link rel="stylesheet" href="../assets/css/rasa6.css?r=11">
 <link rel="stylesheet" href="../assets/css/site.css?r=15">
-<link rel="stylesheet" href="../assets/css/pages.css?r=5">
+<link rel="stylesheet" href="../assets/css/pages.css?r=7">
 </head>
 <body>
 <div class="pg-room" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -196,6 +196,8 @@ def sentence(t):
 
 def heading(t, tag='h2', cls='pg-h2'):
     t = sentence(t)
+    if tag == 'h2' and len(t) > 70:
+        cls += ' pg-h2-long'                       # a long statement reads better smaller and wider than a title
     parts = [p.strip() for p in t.split('\n') if p.strip()]
     if len(parts) > 1:
         inner = '<br>'.join(e(p) if k < len(parts) - 1 else f'<span class="acc">{e(p)}</span>' for k, p in enumerate(parts))
@@ -282,7 +284,15 @@ def stats_and_rest(run):
     if rows:
         out.append('<dl class="pg-rows">' + ''.join(f'<div><dt>{e(a)}</dt><dd>{e(b)}</dd></div>' for a, b in rows) + '</dl>')
     if chips:
-        out.append('<ul class="pg-chips">' + ''.join(f'<li>{e(c)}</li>' for c in chips) + '</ul>')
+        # a long label in capitals among names starts a new group under its own heading
+        group = []
+        for c in chips:
+            if c.upper() == c and len(c) > 20:
+                if group: out.append('<ul class="pg-chips">' + ''.join(f'<li>{e(x)}</li>' for x in group) + '</ul>'); group = []
+                out.append(f'<p class="pg-k pg-chips-k">{e(c)}</p>')
+            else:
+                group.append(c)
+        if group: out.append('<ul class="pg-chips">' + ''.join(f'<li>{e(x)}</li>' for x in group) + '</ul>')
     return out
 
 
@@ -349,6 +359,12 @@ def render_items(items):
 
 def generic(blocks, hero_cls=''):
     secs = sections(clean(blocks))
+    # a page that opens with loose labels before its first heading (e.g. "Who we serve · Brand leaders"): they become the
+    # hero's eyebrow, so the hero is the real headline
+    if len(secs) > 1 and not secs[0]['h'] and all(('s' in b or 'p' in b) and len(txt(b)) < 40 for b in secs[0]['items']):
+        lab = ' · '.join(t for t in (txt(b).strip() for b in secs[0]['items']) if t and t != '·')
+        secs[1]['eb'] = ' · '.join(x for x in (lab, secs[1]['eb']) if x)
+        secs = secs[1:]
     out = []
     for n, s in enumerate(secs):
         if not s['h'] and not s['items']:
